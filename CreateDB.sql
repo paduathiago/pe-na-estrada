@@ -1,4 +1,6 @@
-/* Codigo para criar o banco de dados */
+/*Para criar o banco de dados em si: "sqlite3 TravisWorldwide.db < CreateDB.sql"*/
+
+/* Codigo para criar as tabelas do banco de dados: */
 
 CREATE TABLE Usuario(
     UsuarioID INTEGER PRIMARY KEY,
