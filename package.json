@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/paduathiago/pe-na-estrada/issues"
   },
-  "homepage": "https://github.com/paduathiago/pe-na-estrada#readme"
+  "homepage": "https://github.com/paduathiago/pe-na-estrada#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
