@@ -4,7 +4,7 @@
   "description": "Projeto realizado como progressão no processo de Trainee da iJunior.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    
   },
   "repository": {
     "type": "git",
