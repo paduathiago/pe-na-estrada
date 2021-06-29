@@ -1,0 +1,19 @@
+{
+  "name": "pe-na-estrada",
+  "version": "1.0.0",
+  "description": "Projeto realizado como progressão no processo de Trainee da iJunior.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paduathiago/pe-na-estrada.git"
+  },
+  "author": "Equipe Lumina",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paduathiago/pe-na-estrada/issues"
+  },
+  "homepage": "https://github.com/paduathiago/pe-na-estrada#readme"
+}
