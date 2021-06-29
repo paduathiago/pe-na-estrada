@@ -18,7 +18,8 @@
   "homepage": "https://github.com/paduathiago/pe-na-estrada#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "mysql2": "^2.2.5"
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.6.4"
   },
   "devDependencies": {
     "eslint": "^7.29.0",
