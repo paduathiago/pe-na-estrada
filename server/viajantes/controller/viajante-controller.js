@@ -22,5 +22,13 @@ viajanteRouter.post('/', async (req, res)=>{
   }
 });
 
+viajanteRouter.get('/', async (req, res)=>{
+  try {
+    const viajantes=await ViajanteService.getAllViajantes();
+    res.json(viajantes).status(200);
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 module.exports=viajanteRouter;
