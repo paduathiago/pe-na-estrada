@@ -3,19 +3,23 @@ const ViajanteService=require('../service/ViajanteService');
 
 viajanteRouter.post('/', async (req, res)=>{
   // TEMPORARARIO
-  const viajante={
-    nome: req.body.nome,
-    email: req.body.email,
-    senhaHash: req.body.senhaHash,
-    senhaSalt: req.body.senhaSalt,
-    isAdmin: req.body.isAdmin,
-    introducao: req.body.introducao,
-    imagemPerfil: req.body.imagemPerfil,
-  };
+  try {
+    const viajante={
+      nome: req.body.nome,
+      email: req.body.email,
+      senhaHash: req.body.senhaHash,
+      senhaSalt: req.body.senhaSalt,
+      isAdmin: req.body.isAdmin,
+      introducao: req.body.introducao,
+      imagemPerfil: req.body.imagemPerfil,
+    };
 
-  await ViajanteService.createViajante(viajante);
+    await ViajanteService.createViajante(viajante);
 
-  res.status(201).end();
+    res.status(201).end();
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 
