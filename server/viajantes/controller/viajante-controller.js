@@ -86,4 +86,13 @@ viajanteRouter.post('/login', async (req, res, next)=>{
   }
 });
 
+viajanteRouter.get('/logout', (req, res)=>{
+  try {
+    res.clearCookie('jwt');
+    res.status(204).end();
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 module.exports=viajanteRouter;
