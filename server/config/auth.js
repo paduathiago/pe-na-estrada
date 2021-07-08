@@ -4,7 +4,7 @@ const JwtStrategy = require('passport-jwt').Strategy;
 const User = require('../viajantes/model/Viajante');
 
 Passport.use(
-  'login',
+  'logar',
   new LocalStrategy(
     {
       usernameField: 'email',
