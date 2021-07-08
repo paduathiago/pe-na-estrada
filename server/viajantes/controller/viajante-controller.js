@@ -38,7 +38,7 @@ viajanteRouter.post('/login', async (req, res, next)=>{
     // QUEBRAR ISSO EM PARTES QUANDO FOR MANDAR O OFICIAL! TIPO VÁRIOS COMMITS
     passport.authenticate(
       'logar',
-      (erro, viaj, info) =>{
+      (err, viaj, info) =>{
         try {
           if (err) {
           // Aparentemente manda o erro pra frente. E se n tivesse o return?
@@ -52,8 +52,8 @@ viajanteRouter.post('/login', async (req, res, next)=>{
                 if (error) next(error);
                 else {
                   const payload ={
-                    id: user.id,
-                    isAdmin: user.isAdmin,
+                    id: viaj.id,
+                    isAdmin: viaj.isAdmin,
                   };
 
                   const token = jwt.sign(
