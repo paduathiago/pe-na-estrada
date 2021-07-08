@@ -5,7 +5,7 @@ const express= require('express');
 const web=express();
 
 const cors = require('cors');
-web.use(cors);
+web.use(cors());
 
 const cookieParser = require('cookie-parser');
 web.use(cookieParser());
