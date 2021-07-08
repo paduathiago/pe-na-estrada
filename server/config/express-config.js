@@ -16,6 +16,8 @@ web.use(express.urlencoded({
 
 web.use(express.json());
 
+require('./auth');
+
 const viajanteRouter=require('../viajantes/controller/viajante-controller');
 web.use('/viajantes', viajanteRouter);
 
