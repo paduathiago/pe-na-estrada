@@ -57,7 +57,8 @@ viajanteRouter.post('/login', async (req, res, next)=>{
                   };
 
                   const token = jwt.sign(
-                    {user: payload},
+                    // Aqui é o nome que é enviado pro cliente!
+                    {viajante: payload},
                     process.env.SECRET_KEY,
                     {expiresIn: process.env.JWT_EXPIRATION},
                   );
