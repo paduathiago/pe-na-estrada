@@ -1,5 +1,7 @@
 const viajanteRouter=require('express').Router();
+const passport = require('passport');
 const ViajanteService=require('../service/ViajanteService');
+const jwt = require('jsonwebtoken');
 
 viajanteRouter.post('/', async (req, res)=>{
   // TEMPORARARIO
