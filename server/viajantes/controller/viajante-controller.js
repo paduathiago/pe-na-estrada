@@ -9,8 +9,9 @@ viajanteRouter.post('/', async (req, res)=>{
     const viajante={
       nome: req.body.nome,
       email: req.body.email,
-      senhaHash: req.body.senhaHash,
-      senhaSalt: req.body.senhaSalt,
+      // senhaHash: req.body.senhaHash,
+      // senhaSalt: req.body.senhaSalt,
+      senha: req.body.senha,
       isAdmin: req.body.isAdmin,
       introducao: req.body.introducao,
       imagemPerfil: req.body.imagemPerfil,
