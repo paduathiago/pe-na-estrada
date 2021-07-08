@@ -20,7 +20,8 @@ Passport.use(
           throw new Error('E-mail ou senha incorretos!');
         }
 
-        const senhaBateu = (senha === user.senha);
+        // Gambiarra minha aqui
+        const senhaBateu = (senha === user.senhaHash);
         if (!senhaBateu) {
           throw new Error('E-mail ou senha incorretos!');
         }
