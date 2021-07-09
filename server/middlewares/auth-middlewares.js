@@ -50,7 +50,22 @@ function loginMiddleware(req, res, next) {
   )(req, res, next);
 }
 
+function notLoggedIn(req, res, next) {
+  const jwtToken=req.cookies['jwt'];
+  if (jwtToken) {
+    jwt.verify(jwtToken, process.env.SECRET_KEY, (err, decoded)=>{
+      if (err instanceof jwt.TokenExpiredError) {
+
+      } else {
+        res.status(400).send('Voce ja esta logado no sistema!');
+      }
+    });
+  }
+  next();
+}
+
 // Pq como objeto?
 module.exports={
   loginMiddleware,
+  notLoggedIn,
 };

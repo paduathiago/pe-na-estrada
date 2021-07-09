@@ -1,6 +1,9 @@
 const viajanteRouter=require('express').Router();
 const ViajanteService=require('../service/ViajanteService');
-const {loginMiddleware}=require('../../middlewares/auth-middlewares');
+const {
+  loginMiddleware,
+  notLoggedIn,
+}=require('../../middlewares/auth-middlewares');
 
 viajanteRouter.post('/', async (req, res)=>{
   // TEMPORARARIO
@@ -33,7 +36,7 @@ viajanteRouter.get('/', async (req, res)=>{
   }
 });
 
-viajanteRouter.post('/login', loginMiddleware);
+viajanteRouter.post('/login', notLoggedIn, loginMiddleware);
 
 viajanteRouter.get('/logout', (req, res)=>{
   try {
