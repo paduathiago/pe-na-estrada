@@ -54,9 +54,9 @@ Passport.use(
     },
     async (jwtPayload, done)=>{
       try {
-        return done(null, jwtPayload.user);
+        return done(null, jwtPayload.viajante);
       } catch (error) {
-        return (done, false);
+        return done(error, false);
       }
     },
   ),
