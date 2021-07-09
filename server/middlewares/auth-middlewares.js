@@ -64,8 +64,26 @@ function notLoggedIn(req, res, next) {
   next();
 }
 
+function jwtMiddleware(req, res, next) {
+  passport.authenticate(
+    'jwt',
+    {session: false},
+    (err, viaj, info)=>{
+      if (err) return next(err); // E se n tivesse return?
+      if (!viaj) {
+        res.status(401).send(
+          'Voce precisa estar logado para realizar essa operacao!',
+        );
+      }
+      req.viajante=viaj;
+      next();
+    },
+  )(req, res, next);
+}
+
 // Pq como objeto?
 module.exports={
   loginMiddleware,
   notLoggedIn,
+  jwtMiddleware,
 };
