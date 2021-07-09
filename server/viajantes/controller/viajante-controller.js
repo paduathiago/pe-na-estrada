@@ -3,6 +3,7 @@ const ViajanteService=require('../service/ViajanteService');
 const {
   loginMiddleware,
   notLoggedIn,
+  jwtMiddleware,
 }=require('../../middlewares/auth-middlewares');
 
 viajanteRouter.post('/', async (req, res)=>{
@@ -27,6 +28,7 @@ viajanteRouter.post('/', async (req, res)=>{
   }
 });
 
+// Não vou por middleware aqui pra qq um poder ver os posts.
 viajanteRouter.get('/', async (req, res)=>{
   try {
     const viajantes=await ViajanteService.getAllViajantes();
@@ -38,7 +40,7 @@ viajanteRouter.get('/', async (req, res)=>{
 
 viajanteRouter.post('/login', notLoggedIn, loginMiddleware);
 
-viajanteRouter.get('/logout', (req, res)=>{
+viajanteRouter.get('/logout', jwtMiddleware, (req, res)=>{
   try {
     res.clearCookie('jwt');
     res.status(204).end();
