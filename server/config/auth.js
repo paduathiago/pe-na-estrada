@@ -2,6 +2,7 @@ const Passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const JwtStrategy = require('passport-jwt').Strategy;
 const User = require('../viajantes/model/Viajante');
+const bcrypt = require('bcrypt');
 
 Passport.use(
   'logar',
@@ -21,7 +22,7 @@ Passport.use(
         }
 
         // Gambiarra minha aqui
-        const senhaBateu = (senha === user.senhaHash);
+        const senhaBateu = await bcrypt.compare(senha, user.senhaHash);
         if (!senhaBateu) {
           throw new Error('E-mail ou senha incorretos!');
         }
