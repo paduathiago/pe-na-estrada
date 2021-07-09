@@ -11,7 +11,6 @@ const Viajante = sequelize.define('Users', {
   nome: {
     type: DataTypes.STRING,
     allowNull: false,
-
   },
   email: {
     type: DataTypes.STRING,
@@ -19,10 +18,6 @@ const Viajante = sequelize.define('Users', {
     unique: true,
   },
   senhaHash: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  senhaSalt: {
     type: DataTypes.STRING,
     allowNull: false,
   },

@@ -10,5 +10,7 @@ web.use(express.urlencoded({
 
 web.use(express.json());
 
+const viajanteRouter=require('../viajantes/controller/viajante-controller');
+web.use('/viajantes', viajanteRouter);
 
 module.exports=web;
