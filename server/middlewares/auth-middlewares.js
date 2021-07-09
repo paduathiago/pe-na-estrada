@@ -55,13 +55,14 @@ function notLoggedIn(req, res, next) {
   if (jwtToken) {
     jwt.verify(jwtToken, process.env.SECRET_KEY, (err, decoded)=>{
       if (err instanceof jwt.TokenExpiredError) {
-
+        next();
       } else {
         res.status(400).send('Voce ja esta logado no sistema!');
       }
     });
+  } else {
+    next();
   }
-  next();
 }
 
 function jwtMiddleware(req, res, next) {
@@ -74,9 +75,10 @@ function jwtMiddleware(req, res, next) {
         res.status(401).send(
           'Voce precisa estar logado para realizar essa operacao!',
         );
+      } else {
+        req.viajante=viaj;
+        next();
       }
-      req.viajante=viaj;
-      next();
     },
   )(req, res, next);
 }
