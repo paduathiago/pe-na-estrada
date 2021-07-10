@@ -12,8 +12,6 @@ viajanteRouter.post('/', async (req, res)=>{
     const viajante={
       nome: req.body.nome,
       email: req.body.email,
-      // senhaHash: req.body.senhaHash,
-      // senhaSalt: req.body.senhaSalt,
       senha: req.body.senha,
       isAdmin: req.body.isAdmin,
       introducao: req.body.introducao,
@@ -28,7 +26,6 @@ viajanteRouter.post('/', async (req, res)=>{
   }
 });
 
-// Não vou por middleware aqui pra qq um poder ver os posts.
 viajanteRouter.get('/', async (req, res)=>{
   try {
     const viajantes=await ViajanteService.getAllViajantes();

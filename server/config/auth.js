@@ -21,7 +21,6 @@ Passport.use(
           throw new Error('E-mail ou senha incorretos!');
         }
 
-        // Gambiarra minha aqui
         const senhaBateu = await bcrypt.compare(senha, user.senhaHash);
         if (!senhaBateu) {
           throw new Error('E-mail ou senha incorretos!');
