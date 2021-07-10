@@ -7,7 +7,6 @@ class ViajanteService {
       const saltRounds=10;
       viajante.senhaHash= await bcrypt.hash(viajante.senha, saltRounds);
       delete viajante.senha;
-      viajante.senhaSalt='';
       await Viajante.create(viajante);
     } catch (error) {
       throw error;
