@@ -38,17 +38,7 @@ viajanteRouter.get('/', async (req, res)=>{
   }
 });
 
-// viajanteRouter.get('/:numeroViajantes', async (req, res)=>{
-//   try {
-//     const numeroViajantes = req.params.numeroViajantes;
-//     const viajantes=await ViajanteService.getAllViajantes(numeroViajantes);
-//     res.json(viajantes).status(200);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// });
-
-viajanteRouter.get('/viajante/:id', async (req,res) =>{
+viajanteRouter.get('/:id', async (req,res) =>{
   try {
     const viajanteId = req.params.id;
     const viajante = await ViajanteService.getViajanteById(viajanteId);
@@ -58,7 +48,7 @@ viajanteRouter.get('/viajante/:id', async (req,res) =>{
   }
 });
 
-viajanteRouter.put('/viajante/:id', async (req,res) =>{
+viajanteRouter.put('/:id', async (req,res) =>{
   try {
     const viajanteId = req.params.id;
     await ViajanteService.updateViajante(viajanteId, req.body);
@@ -69,7 +59,7 @@ viajanteRouter.put('/viajante/:id', async (req,res) =>{
   }
 });
 
-viajanteRouter.delete('/viajante/:id', async (req,res)=>{
+viajanteRouter.delete('/:id', async (req,res)=>{
   try {
     const viajanteId = req.params.id;
     await ViajanteService.deleteViajante(viajanteId);
