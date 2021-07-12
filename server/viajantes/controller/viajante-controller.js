@@ -5,6 +5,7 @@ const {
   notLoggedIn,
   jwtMiddleware,
   isAdminOrRequester,
+  roleChangeFilter,
 }=require('../../middlewares/auth-middlewares');
 const { Router } = require('express');
 const { getViajanteById } = require('../service/ViajanteService');
