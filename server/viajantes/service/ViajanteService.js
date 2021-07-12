@@ -12,8 +12,8 @@ class ViajanteService {
       throw error;
     }
   }
-  async getAllViajantes() {
-    return await Viajante.findAll({raw: true});
+  async getAllViajantes(numeroViajantes) {
+    return await Viajante.findAll({limit: parseInt(numeroViajantes), raw: true});
   }
   async getViajanteById(id){
     return await Viajante.findByPk(id, {raw:true});
