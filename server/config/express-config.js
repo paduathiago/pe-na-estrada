@@ -24,5 +24,7 @@ web.use('/viajantes', viajanteRouter);
 const viagemRouter=require('../viagens/controller/viagem-controller');
 web.use('/viagens', viagemRouter);
 
+const viajanteViagensRouter=require('../viajantesviagens/controller/viajantes-viagens-controller');
+web.use('/viajantesviagens', viajanteViagensRouter);
 
 module.exports=web;
