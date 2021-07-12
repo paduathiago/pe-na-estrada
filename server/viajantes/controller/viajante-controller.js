@@ -1,8 +1,6 @@
 const viajanteRouter=require('express').Router();
 const ViajanteService=require('../service/ViajanteService');
 const {
-  loginMiddleware,
-  notLoggedIn,
   jwtMiddleware,
   isAdminOrRequester,
   roleChangeFilter,
@@ -65,17 +63,6 @@ viajanteRouter.delete('/:id', jwtMiddleware, isAdminOrRequester, async (req,res)
   try {
     const viajanteId = req.params.id;
     await ViajanteService.deleteViajante(viajanteId);
-    res.status(204).end();
-  } catch (error) {
-    console.log(error);
-  }
-});
-
-viajanteRouter.post('/login', notLoggedIn, loginMiddleware);
-
-viajanteRouter.get('/logout', jwtMiddleware, (req, res)=>{
-  try {
-    res.clearCookie('jwt');
     res.status(204).end();
   } catch (error) {
     console.log(error);
