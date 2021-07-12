@@ -38,4 +38,12 @@ web.get('/logout', jwtMiddleware, (req, res)=>{
   }
 });
 
+const { getViajanteAtual } = require('../viajantes/service/ViajanteService');
+
+web.get('/me',jwtMiddleware, (req,res)=>{
+  const viajante = await getViajanteAtual(req.viajante.id);
+  
+  res.status(200).json(viajante);
+})
+
 module.exports=web;
