@@ -4,6 +4,7 @@ const {
   loginMiddleware,
   notLoggedIn,
   jwtMiddleware,
+  isAdminOrRequester,
 }=require('../../middlewares/auth-middlewares');
 const { Router } = require('express');
 const { getViajanteById } = require('../service/ViajanteService');

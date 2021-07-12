@@ -77,8 +77,16 @@ function jwtMiddleware(req, res, next) {
   )(req, res, next);
 }
 
+function isAdminOrRequester(req,res,next){
+  if(req.viajante.isAdmin=="true"||req.params.id===req.viajante.id)
+    next();
+  else
+    res.status(401).send("Voce nao esta autorizado a realizar essa operacao.");
+}
+
 module.exports={
   loginMiddleware,
   notLoggedIn,
   jwtMiddleware,
+  isAdminOrRequester,
 };
