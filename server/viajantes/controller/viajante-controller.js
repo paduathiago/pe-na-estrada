@@ -60,7 +60,7 @@ viajanteRouter.get('/viajante/:id', async (req,res) =>{
   }
 });
 
-viajanteRouter.put('/viajante/:id', async (req,res) =>{
+viajanteRouter.put('/viajante/:id', jwtMiddleware, isAdminOrRequester, roleChangeFilter, async (req,res) =>{
   try {
     const viajanteId = req.params.id;
     await ViajanteService.updateViajante(viajanteId, req.body);
@@ -71,7 +71,7 @@ viajanteRouter.put('/viajante/:id', async (req,res) =>{
   }
 });
 
-viajanteRouter.delete('/viajante/:id', async (req,res)=>{
+viajanteRouter.delete('/viajante/:id', jwtMiddleware, isAdminOrRequester, async (req,res)=>{
   try {
     const viajanteId = req.params.id;
     await ViajanteService.deleteViajante(viajanteId);
