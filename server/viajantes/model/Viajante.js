@@ -1,7 +1,7 @@
 const sequelize = require('../../database/index');
 const {DataTypes} = require('sequelize');
 
-const Viajante = sequelize.define('Users', {
+const Viajante = sequelize.define('Viajantes', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
