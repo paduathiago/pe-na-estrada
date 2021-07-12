@@ -28,15 +28,25 @@ viajanteRouter.post('/', async (req, res)=>{
   }
 });
 
-viajanteRouter.get('/:numeroViajantes', async (req, res)=>{
+viajanteRouter.get('/', async (req, res)=>{
   try {
-    const numeroViajantes = req.params.numeroViajantes;
-    const viajantes=await ViajanteService.getAllViajantes(numeroViajantes);
+    const numViajantes = parseInt(req.query.limit);
+    const viajantes=await ViajanteService.getAllViajantes(numViajantes);
     res.json(viajantes).status(200);
   } catch (error) {
     console.log(error);
   }
 });
+
+// viajanteRouter.get('/:numeroViajantes', async (req, res)=>{
+//   try {
+//     const numeroViajantes = req.params.numeroViajantes;
+//     const viajantes=await ViajanteService.getAllViajantes(numeroViajantes);
+//     res.json(viajantes).status(200);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
 
 viajanteRouter.get('/viajante/:id', async (req,res) =>{
   try {

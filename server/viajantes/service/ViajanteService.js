@@ -13,7 +13,7 @@ class ViajanteService {
     }
   }
   async getAllViajantes(numeroViajantes) {
-    return await Viajante.findAll({limit: parseInt(numeroViajantes), order:[['updatedAt', 'DESC']], raw: true});
+    return await Viajante.findAll({limit: numeroViajantes, order:[['updatedAt', 'DESC']], raw: true});
   }
   async getViajanteById(id){
     return await Viajante.findByPk(id, {raw:true});
