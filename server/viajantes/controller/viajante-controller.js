@@ -5,6 +5,8 @@ const {
   notLoggedIn,
   jwtMiddleware,
 }=require('../../middlewares/auth-middlewares');
+const { Router } = require('express');
+const { getViajanteById } = require('../service/ViajanteService');
 
 viajanteRouter.post('/', async (req, res)=>{
   // TEMPORARARIO
@@ -30,6 +32,37 @@ viajanteRouter.get('/', async (req, res)=>{
   try {
     const viajantes=await ViajanteService.getAllViajantes();
     res.json(viajantes).status(200);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+viajanteRouter.get('/viajante/:id', async (req,res) =>{
+  try {
+    const viajanteId = req.params.id;
+    const viajante = await ViajanteService.getViajanteById(viajanteId);
+    res.status(200).json(viajante);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+viajanteRouter.put('/viajante/:id', async (req,res) =>{
+  try {
+    const viajanteId = req.params.id;
+    await ViajanteService.updateViajante(viajanteId, req.body);
+    
+    res.status(204).end();
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+viajanteRouter.delete('/viajante/:id', async (req,res)=>{
+  try {
+    const viajanteId = req.params.id;
+    await ViajanteService.deleteViajante(viajanteId);
+    res.status(204).end();
   } catch (error) {
     console.log(error);
   }
