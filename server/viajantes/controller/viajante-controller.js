@@ -1,12 +1,16 @@
 const viajanteRouter=require('express').Router();
-const ViajanteService=require('../service/ViajanteService');
 const {
-  loginMiddleware,
-  notLoggedIn,
   jwtMiddleware,
+  isAdminOrRequester,
+  roleChangeFilter,
 }=require('../../middlewares/auth-middlewares');
-const { Router } = require('express');
-const { getViajanteById } = require('../service/ViajanteService');
+const { 
+  createViajante,
+  getAllViajantes,
+  getViajanteById,
+  updateViajante, 
+  deleteViajante,
+} = require('../service/ViajanteService');
 
 viajanteRouter.post('/', async (req, res)=>{
   // TEMPORARARIO
@@ -20,7 +24,7 @@ viajanteRouter.post('/', async (req, res)=>{
       imagemPerfil: req.body.imagemPerfil,
     };
 
-    await ViajanteService.createViajante(viajante);
+    await createViajante(viajante);
 
     res.status(201).end();
   } catch (error) {
@@ -31,7 +35,7 @@ viajanteRouter.post('/', async (req, res)=>{
 viajanteRouter.get('/', async (req, res)=>{
   try {
     const numViajantes = parseInt(req.query.limit);
-    const viajantes=await ViajanteService.getAllViajantes(numViajantes);
+    const viajantes=await getAllViajantes(numViajantes);
     res.json(viajantes).status(200);
   } catch (error) {
     console.log(error);
@@ -41,17 +45,17 @@ viajanteRouter.get('/', async (req, res)=>{
 viajanteRouter.get('/:id', async (req,res) =>{
   try {
     const viajanteId = req.params.id;
-    const viajante = await ViajanteService.getViajanteById(viajanteId);
+    const viajante = await getViajanteById(viajanteId);
     res.status(200).json(viajante);
   } catch (error) {
     console.log(error);
   }
 });
 
-viajanteRouter.put('/:id', async (req,res) =>{
+viajanteRouter.put('/:id', jwtMiddleware, isAdminOrRequester, roleChangeFilter, async (req,res) =>{
   try {
     const viajanteId = req.params.id;
-    await ViajanteService.updateViajante(viajanteId, req.body);
+    await updateViajante(viajanteId, req.body);
     
     res.status(204).end();
   } catch (error) {
@@ -59,21 +63,10 @@ viajanteRouter.put('/:id', async (req,res) =>{
   }
 });
 
-viajanteRouter.delete('/:id', async (req,res)=>{
+viajanteRouter.delete('/:id', jwtMiddleware, isAdminOrRequester, async (req,res)=>{
   try {
     const viajanteId = req.params.id;
-    await ViajanteService.deleteViajante(viajanteId);
-    res.status(204).end();
-  } catch (error) {
-    console.log(error);
-  }
-});
-
-viajanteRouter.post('/login', notLoggedIn, loginMiddleware);
-
-viajanteRouter.get('/logout', jwtMiddleware, (req, res)=>{
-  try {
-    res.clearCookie('jwt');
+    await deleteViajante(viajanteId);
     res.status(204).end();
   } catch (error) {
     console.log(error);

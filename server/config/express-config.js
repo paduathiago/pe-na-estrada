@@ -27,4 +27,29 @@ web.use('/viagens', viagemRouter);
 const viajanteViagensRouter=require('../viajantesviagens/controller/viajantes-viagens-controller');
 web.use('/viajantesviagens', viajanteViagensRouter);
 
+const {
+  loginMiddleware,
+  notLoggedIn,
+  jwtMiddleware,
+}=require('../middlewares/auth-middlewares');
+
+web.post('/login', notLoggedIn, loginMiddleware);
+
+web.get('/logout', jwtMiddleware, (req, res)=>{
+  try {
+    res.clearCookie('jwt');
+    res.status(204).end();
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+const { getViajanteAtual } = require('../viajantes/service/ViajanteService');
+
+web.get('/me',jwtMiddleware, (req,res)=>{
+  const viajante = await getViajanteAtual(req.viajante.id);
+  
+  res.status(200).json(viajante);
+})
+
 module.exports=web;

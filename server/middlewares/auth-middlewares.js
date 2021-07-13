@@ -77,8 +77,26 @@ function jwtMiddleware(req, res, next) {
   )(req, res, next);
 }
 
+function isAdminOrRequester(req,res,next){
+  if(req.viajante.isAdmin==true||req.params.id==req.viajante.id)
+    next();
+  else
+    res.status(401).send("Voce nao esta autorizado a realizar essa operacao.");
+}
+
+function roleChangeFilter(req,res,next){
+  if(req.viajante.isAdmin==true)
+    next();
+  else if('isAdmin' in req.body)
+    res.status(401).send("Voce nao pode mudar seu proprio papel.");
+  else
+    next();
+}
+
 module.exports={
   loginMiddleware,
   notLoggedIn,
   jwtMiddleware,
+  isAdminOrRequester,
+  roleChangeFilter,
 };

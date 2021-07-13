@@ -24,6 +24,13 @@ class ViajanteService {
   async deleteViajante(id){
     await Viajante.destroy({where: {id: id}});
   }
+  async getViajanteAtual(id){
+    return await Viajante.findByPk(id,{
+      attributes:{
+        exclude: ['senhaHash','createdAt','updatedAt'],
+      }
+    });
+  }
 }
 
 module.exports = new ViajanteService;
