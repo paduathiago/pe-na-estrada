@@ -21,6 +21,12 @@ require('./auth');
 const viajanteRouter=require('../viajantes/controller/viajante-controller');
 web.use('/viajantes', viajanteRouter);
 
+const viagemRouter=require('../viagens/controller/viagem-controller');
+web.use('/viagens', viagemRouter);
+
+const viajanteViagensRouter=require('../viajantesviagens/controller/viajantes-viagens-controller');
+web.use('/viajantesviagens', viajanteViagensRouter);
+
 const {
   loginMiddleware,
   notLoggedIn,

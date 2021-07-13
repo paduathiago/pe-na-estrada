@@ -1,4 +1,4 @@
-const Viajante= require('../model/Viajante');
+const Viajante = require('../model/Viajante');
 const bcrypt= require('bcrypt');
 
 class ViajanteService {
