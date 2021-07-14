@@ -6,6 +6,7 @@ const {DataTypes} = require('sequelize');
 const ViajanteViagens = sequelize.define('ViajanteViagens', {
   viajanteId: {
     type: DataTypes.INTEGER,
+    onDelete: 'CASCADE',
     references: {
       model: Viajante,
       key: 'id',
@@ -13,6 +14,7 @@ const ViajanteViagens = sequelize.define('ViajanteViagens', {
   },
   viagemId: {
     type: DataTypes.INTEGER,
+    onDelete: 'CASCADE',
     references: {
       model: Viagem,
       key: 'id',
@@ -20,6 +22,12 @@ const ViajanteViagens = sequelize.define('ViajanteViagens', {
   },
 });
 
+/* Viajante.belongsToMany(
+  Viagem,
+  {
+    through:
+  },
+);*/
 
 ViajanteViagens.sync({alter: false, force: false})
   .then(() => console.log('Tabela de Viajantes e Viagens (re)criada!'))
