@@ -1,5 +1,8 @@
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
+const {
+  hasViajanteViagem,
+} = require('../viajantesviagens/service/ViajantesViagensService');
 
 function loginMiddleware(req, res, next) {
   passport.authenticate(
@@ -84,6 +87,15 @@ function isAdminOrRequester(req, res, next) {
   }
 }
 
+async function isAdminOrInvolved(req, res, next) {
+  const isInvolved=await hasViajanteViagem(req.viajante.id, req.params.id);
+  if (req.viajante.isAdmin==true||isInvolved) {
+    next();
+  } else {
+    res.status(401).send('Voce nao esta autorizado a realizar essa operacao.');
+  }
+}
+
 function roleChangeFilter(req, res, next) {
   if (req.viajante.isAdmin==true) next();
   else if ('isAdmin' in req.body) {
@@ -97,4 +109,5 @@ module.exports={
   jwtMiddleware,
   isAdminOrRequester,
   roleChangeFilter,
+  isAdminOrInvolved,
 };
