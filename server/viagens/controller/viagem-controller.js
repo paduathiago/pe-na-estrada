@@ -1,8 +1,11 @@
 const viagemRouter = require('express').Router();
 const ViagemService = require('../service/ViagemService');
+const {
+  jwtMiddleware,
+  isAdminOrInvolved,
+} = require('../../middlewares/auth-middlewares');
 
-
-viagemRouter.post('/', async (req, res)=>{
+viagemRouter.post('/', jwtMiddleware, async (req, res)=>{
   try {
     const viagem={
       imagemViagem: req.body.imagemViagem,
@@ -40,7 +43,7 @@ viagemRouter.get('/:id', async (req, res) =>{
   }
 });
 
-viagemRouter.put('/:id', async (req, res)=>{
+viagemRouter.put('/:id', jwtMiddleware, isAdminOrInvolved, async (req, res)=>{
   try {
     const viagemId = req.params.id;
     await ViagemService.updateViagem(viagemId, req.body);
@@ -50,14 +53,18 @@ viagemRouter.put('/:id', async (req, res)=>{
   }
 });
 
-viagemRouter.delete('/:id', async (req, res)=>{
-  try {
-    const viagemId = req.params.id;
-    await ViagemService.deleteViagem(viagemId);
-    res.status(204).end();
-  } catch (error) {
-    console.log(error);
-  }
-});
+viagemRouter.delete(
+  '/:id',
+  jwtMiddleware,
+  isAdminOrInvolved,
+  async (req, res)=>{
+    try {
+      const viagemId = req.params.id;
+      await ViagemService.deleteViagem(viagemId);
+      res.status(204).end();
+    } catch (error) {
+      console.log(error);
+    }
+  });
 
 module.exports = viagemRouter;
