@@ -24,7 +24,9 @@ web.use('/viajantes', viajanteRouter);
 const viagemRouter=require('../viagens/controller/viagem-controller');
 web.use('/viagens', viagemRouter);
 
-const viajanteViagensRouter=require('../viajantesviagens/controller/viajantes-viagens-controller');
+const viajanteViagensRouter=require(
+  '../viajantesviagens/controller/viajantes-viagens-controller',
+);
 web.use('/viajantesviagens', viajanteViagensRouter);
 
 const {
@@ -44,12 +46,11 @@ web.get('/logout', jwtMiddleware, (req, res)=>{
   }
 });
 
-const { getViajanteAtual } = require('../viajantes/service/ViajanteService');
+const {getViajanteAtual} = require('../viajantes/service/ViajanteService');
 
-web.get('/me',jwtMiddleware, (req,res)=>{
+web.get('/me', jwtMiddleware, async (req, res)=>{
   const viajante = await getViajanteAtual(req.viajante.id);
-  
   res.status(200).json(viajante);
-})
+});
 
 module.exports=web;
