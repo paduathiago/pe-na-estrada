@@ -5,8 +5,8 @@ viajanteViagensRouter.post('/', async (req, res)=>{
   // TEMPORARARIO
   try {
     const viajanteviagem={
-        viajanteId: req.body.viajanteId,
-        viagemId: req.body.viagemId,
+      viajanteId: req.body.viajanteId,
+      viagemId: req.body.viagemId,
     };
 
     await ViajanteViagensService.createViajanteViagem(viajanteviagem);

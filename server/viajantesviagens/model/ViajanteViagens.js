@@ -4,22 +4,21 @@ const sequelize = require('../../database/index');
 const {DataTypes} = require('sequelize');
 
 const ViajanteViagens = sequelize.define('ViajanteViagens', {
-    viajanteId: {
-        type: DataTypes.INTEGER,
-        references: {
-            model: Viajante,
-            key: 'id',
-        },
+  viajanteId: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: Viajante,
+      key: 'id',
     },
-    viagemId: {
-        type: DataTypes.INTEGER,
-        references: {
-            model: Viagem,
-            key: 'id',
-        },
+  },
+  viagemId: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: Viagem,
+      key: 'id',
     },
+  },
 });
-
 
 
 ViajanteViagens.sync({alter: false, force: false})

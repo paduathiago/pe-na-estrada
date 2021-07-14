@@ -13,22 +13,24 @@ class ViajanteService {
     }
   }
   async getAllViajantes(numeroViajantes) {
-    return await Viajante.findAll({limit: numeroViajantes, order:[['updatedAt', 'DESC']], raw: true});
+    return await Viajante.findAll(
+      {limit: numeroViajantes, order: [['updatedAt', 'DESC']], raw: true},
+    );
   }
-  async getViajanteById(id){
-    return await Viajante.findByPk(id, {raw:true});
+  async getViajanteById(id) {
+    return await Viajante.findByPk(id, {raw: true});
   }
-  async updateViajante(id, body){
+  async updateViajante(id, body) {
     await Viajante.update(body, {where: {id: id}});
   }
-  async deleteViajante(id){
+  async deleteViajante(id) {
     await Viajante.destroy({where: {id: id}});
   }
-  async getViajanteAtual(id){
-    return await Viajante.findByPk(id,{
-      attributes:{
-        exclude: ['senhaHash','createdAt','updatedAt'],
-      }
+  async getViajanteAtual(id) {
+    return await Viajante.findByPk(id, {
+      attributes: {
+        exclude: ['senhaHash', 'createdAt', 'updatedAt'],
+      },
     });
   }
 }

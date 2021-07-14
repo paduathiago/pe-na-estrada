@@ -4,11 +4,11 @@ const {
   isAdminOrRequester,
   roleChangeFilter,
 }=require('../../middlewares/auth-middlewares');
-const { 
+const {
   createViajante,
   getAllViajantes,
   getViajanteById,
-  updateViajante, 
+  updateViajante,
   deleteViajante,
 } = require('../service/ViajanteService');
 
@@ -42,7 +42,7 @@ viajanteRouter.get('/', async (req, res)=>{
   }
 });
 
-viajanteRouter.get('/:id', async (req,res) =>{
+viajanteRouter.get('/:id', async (req, res) =>{
   try {
     const viajanteId = req.params.id;
     const viajante = await getViajanteById(viajanteId);
@@ -52,25 +52,33 @@ viajanteRouter.get('/:id', async (req,res) =>{
   }
 });
 
-viajanteRouter.put('/:id', jwtMiddleware, isAdminOrRequester, roleChangeFilter, async (req,res) =>{
-  try {
-    const viajanteId = req.params.id;
-    await updateViajante(viajanteId, req.body);
-    
-    res.status(204).end();
-  } catch (error) {
-    console.log(error);
-  }
-});
+viajanteRouter.put(
+  '/:id',
+  jwtMiddleware,
+  isAdminOrRequester,
+  roleChangeFilter,
+  async (req, res) =>{
+    try {
+      const viajanteId = req.params.id;
+      await updateViajante(viajanteId, req.body);
+      res.status(204).end();
+    } catch (error) {
+      console.log(error);
+    }
+  });
 
-viajanteRouter.delete('/:id', jwtMiddleware, isAdminOrRequester, async (req,res)=>{
-  try {
-    const viajanteId = req.params.id;
-    await deleteViajante(viajanteId);
-    res.status(204).end();
-  } catch (error) {
-    console.log(error);
-  }
-});
+viajanteRouter.delete(
+  '/:id',
+  jwtMiddleware,
+  isAdminOrRequester,
+  async (req, res)=>{
+    try {
+      const viajanteId = req.params.id;
+      await deleteViajante(viajanteId);
+      res.status(204).end();
+    } catch (error) {
+      console.log(error);
+    }
+  });
 
 module.exports=viajanteRouter;

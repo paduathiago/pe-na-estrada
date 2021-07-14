@@ -21,47 +21,43 @@ viagemRouter.post('/', async (req, res)=>{
 });
 
 viagemRouter.get('/', async (req, res)=>{
-    try {
-      const numViagens = parseInt(req.query.limit);
-      const viagens = await ViagemService.getAllViagens(numViagens);
-      res.json(viagens).status(200);
-    } catch (error) {
-      console.log(error);
-    }
+  try {
+    const numViagens = parseInt(req.query.limit);
+    const viagens = await ViagemService.getAllViagens(numViagens);
+    res.json(viagens).status(200);
+  } catch (error) {
+    console.log(error);
+  }
 });
 
-viagemRouter.get('/:id', async (req,res) =>{
-    try {
-      const viagemId = req.params.id;
-      const viagem = await ViagemService.getViagemById(viagemId);
-      res.status(200).json(viagem);
-    } catch (error) {
-      console.log(error);
-    }
-});
-  
-viagemRouter.put('/:id', async (req,res)=>{
-    try {
-        const viagemId = req.params.id;
-        await ViagemService.updateViagem(viagemId, req.body);
-        res.status(204).end();
-    } catch (error) {
-        console.log(error);
-    }
+viagemRouter.get('/:id', async (req, res) =>{
+  try {
+    const viagemId = req.params.id;
+    const viagem = await ViagemService.getViagemById(viagemId);
+    res.status(200).json(viagem);
+  } catch (error) {
+    console.log(error);
+  }
 });
 
-viagemRouter.delete('/:id', async(req,res)=>{
-    try {
-        const viagemId = req.params.id;
-        await ViagemService.deleteViagem(viagemId);
-        res.status(204).end();
-    } catch (error) {
-        console.log(error);
-    }
+viagemRouter.put('/:id', async (req, res)=>{
+  try {
+    const viagemId = req.params.id;
+    await ViagemService.updateViagem(viagemId, req.body);
+    res.status(204).end();
+  } catch (error) {
+    console.log(error);
+  }
 });
 
-
-
-
+viagemRouter.delete('/:id', async (req, res)=>{
+  try {
+    const viagemId = req.params.id;
+    await ViagemService.deleteViagem(viagemId);
+    res.status(204).end();
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 module.exports = viagemRouter;

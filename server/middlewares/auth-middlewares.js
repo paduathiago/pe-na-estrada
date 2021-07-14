@@ -64,7 +64,7 @@ function jwtMiddleware(req, res, next) {
     'jwt',
     {session: false},
     (err, viaj, info)=>{
-      if (err) return next(err); 
+      if (err) return next(err);
       if (!viaj) {
         res.status(401).send(
           'Voce precisa estar logado para realizar essa operacao!',
@@ -77,20 +77,18 @@ function jwtMiddleware(req, res, next) {
   )(req, res, next);
 }
 
-function isAdminOrRequester(req,res,next){
-  if(req.viajante.isAdmin==true||req.params.id==req.viajante.id)
-    next();
-  else
-    res.status(401).send("Voce nao esta autorizado a realizar essa operacao.");
+function isAdminOrRequester(req, res, next) {
+  if (req.viajante.isAdmin==true||req.params.id==req.viajante.id) next();
+  else {
+    res.status(401).send('Voce nao esta autorizado a realizar essa operacao.');
+  }
 }
 
-function roleChangeFilter(req,res,next){
-  if(req.viajante.isAdmin==true)
-    next();
-  else if('isAdmin' in req.body)
-    res.status(401).send("Voce nao pode mudar seu proprio papel.");
-  else
-    next();
+function roleChangeFilter(req, res, next) {
+  if (req.viajante.isAdmin==true) next();
+  else if ('isAdmin' in req.body) {
+    res.status(401).send('Voce nao pode mudar seu proprio papel.');
+  } else next();
 }
 
 module.exports={
