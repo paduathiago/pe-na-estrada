@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 
 import Home from './components/Home/Home';
+import './App.css'
 
 function App() {
   axios.defaults.baseURL=process.env.REACT_APP_API_URL;
