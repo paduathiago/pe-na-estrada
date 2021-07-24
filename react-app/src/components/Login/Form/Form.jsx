@@ -1,6 +1,7 @@
 import Logo from '../../../assets/logo.png'
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import axios from 'axios';
 
 export default function Form() {
     const [email,setEmail] = useState('')//As aspas são o estado inicial!
@@ -12,9 +13,13 @@ export default function Form() {
     function handleSenhaChange(event){
         setSenha(event.target.value)
     }
+    function handleSubmit(event){
+        event.preventDefault()
+        axios.post('/login',{email,senha}).catch((err)=>alert(err))
+    }
 
     return (
-      <div className="Form">
+      <div className="Form" onSubmit={handleSubmit}>
         <form method="POST">
           <div className="container2">
             <img src={Logo} 
