@@ -12,6 +12,7 @@ import './App.css'
 
 function App() {
   axios.defaults.baseURL=process.env.REACT_APP_API_URL;
+  axios.defaults.withCredentials = true;
   return (
     <div className="App">
       <Router>
