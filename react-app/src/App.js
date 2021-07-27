@@ -13,6 +13,7 @@ import './App.css'
 function App() {
   axios.defaults.baseURL=process.env.REACT_APP_API_URL;
   axios.defaults.withCredentials = true;
+  document.title="Rotas Worldwide"
   return (
     <div className="App">
       <Router>
