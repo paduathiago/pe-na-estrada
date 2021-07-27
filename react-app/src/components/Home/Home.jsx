@@ -1,6 +1,7 @@
 import React from 'react'
 import './Home.css'
 import Menu from '../Menu/Menu'
+import Footer from '../Footer/Footer'
 
 export default function Home(){
     return(
@@ -9,6 +10,7 @@ export default function Home(){
             <div className="Conteudo">
                 Conteudo.
             </div>
+            <Footer />
         </div>
     )
 }
