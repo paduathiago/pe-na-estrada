@@ -10,7 +10,7 @@ h1 {
 
 .hero {
 	background-image: radial-gradient(50% 176%, #253854 80%, #061922 100%);
-	min-height: 30rem;
+	min-height: 100vh;
 	position: relative;
 	overflow: hidden;
 	display: flex;
