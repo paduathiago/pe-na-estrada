@@ -1,7 +1,7 @@
 .Menu{
     background-color: #5F83AD;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     height: 10%;
     padding: 1vw;
 }
@@ -12,19 +12,12 @@ button{
     border-radius: 50px;
     color: black;
     width: 8vw;
-    padding: 0.5vw;
     font-size: 1.5vw;
     font-family: Bitter;
     font-weight: 800;
 }
 
-.home-button{
-    margin-left: 15vw;
-}
 
-.login-button{
-    margin-right: 15vw;
-}
 button:hover{
     color: #3F5268;
     background-color: #F0F7FF;

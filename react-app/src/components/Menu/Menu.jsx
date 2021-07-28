@@ -11,7 +11,7 @@ export default function Menu(){
                     Home
                 </button>
             </Link>
-            <Link to="/login">
+            <Link to="/login" className= "Link">
                 <button className="login-button">
                     Login
                 </button>
