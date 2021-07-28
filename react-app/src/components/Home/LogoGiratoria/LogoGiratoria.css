@@ -1,0 +1,69 @@
+.logoMovel{
+    -webkit-animation:newspaper 4s linear 0s 1 normal;
+    -moz-animation:newspaper 4s linear 0s 1 normal;
+    -ms-animation:newspaper 4s linear 0s 1 normal;
+    animation:newspaper 4s linear 0s 1 normal;
+}
+.descLogo{
+    animation: fadeIn 8s;
+    -webkit-animation: fadeIn 8s;
+    -moz-animation: fadeIn 8s;
+    -o-animation: fadeIn 8s;
+    -ms-animation: fadeIn 8s;
+}
+
+@keyframes fadeIn {
+    0% {opacity:0;}
+    40% {opacity:0;}
+    100% {opacity:1;}
+}
+  
+@-moz-keyframes fadeIn {
+    0% {opacity:0;}
+    40% {opacity:0;}
+    100% {opacity:1;}
+}
+  
+@-webkit-keyframes fadeIn {
+    0% {opacity:0;}
+    40% {opacity:0;}
+    100% {opacity:1;}
+}
+ 
+@-o-keyframes fadeIn {
+    0% {opacity:0;}
+    40% {opacity:0;}
+    100% {opacity:1;}
+}
+  
+@-ms-keyframes fadeIn {
+    0% {opacity:0;}
+    40% {opacity:0;}
+    100% {opacity:1;}
+}
+
+
+@-webkit-keyframes newspaper {
+    0%{ opacity: 0; -webkit-transform: scale3d(0.3, 0.3, 0.3) rotate(720deg); transform: scale3d(0.3, 0.3, 0.3) rotate(720deg); }
+    30%{ opacity: 1; -webkit-transform: scale3d(1,1,1) rotate(0deg); transform: scale3d(1,1,1) rotate(0deg); }
+    
+    31%{ -webkit-transform: scale(1); transform: scale(1); }
+    44%{ -webkit-transform: scaleX(1.25) scaleY(0.75); transform: scaleX(1.25) scaleY(0.75); }
+    50%{ -webkit-transform: scaleX(0.75) scaleY(1.25); transform: scaleX(0.75) scaleY(1.25); }
+    63%{ -webkit-transform: scaleX(1.15) scaleY(0.85); transform: scaleX(1.15) scaleY(0.85); }
+    80%{ -webkit-transform: scale(1); transform: scale(1); }
+
+    100%{ opacity: 1; -webkit-transform: scale3d(1,1,1) rotate(0deg); transform: scale3d(1,1,1) rotate(0deg);}
+}
+@keyframes newspaper {
+    0%{ opacity: 0; transform: scale3d(0.3, 0.3, 0.3) rotate(720deg); }
+    30%{ opacity: 1; transform: scale3d(1,1,1) rotate(0deg); }
+    
+    31%{ -ms-transform: scale(1); transform: scale(1); }
+    44%{ -ms-transform: scaleX(1.25) scaleY(0.75); transform: scaleX(1.25) scaleY(0.75); }
+    50%{ -ms-transform: scaleX(0.75) scaleY(1.25); transform: scaleX(0.75) scaleY(1.25); }
+    63%{ -ms-transform: scaleX(1.15) scaleY(0.85); transform: scaleX(1.15) scaleY(0.85); }
+    80%{ -ms-transform: scale(1); transform: scale(1); }
+
+    100%{ opacity: 1; transform: scale3d(1,1,1) rotate(0deg);}
+}
