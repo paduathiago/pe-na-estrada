@@ -2,8 +2,8 @@
     background-color: #5F83AD;
     display: flex;
     justify-content: space-around;
-    height: 10%;
-    padding: 1vw;
+    align-items: center;
+    height: 10vh;
 }
 button{
     transition-duration: 0.5s;
