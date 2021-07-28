@@ -1,0 +1,32 @@
+.Menu{
+    background-color: #5F83AD;
+    display: flex;
+    justify-content: space-between;
+    height: 10%;
+    padding: 1em;
+}
+
+button{
+    transition-duration: 0.5s;
+    background-color: #5F83AD;
+    border: solid black 1px;
+    border-radius: 50px;
+    color: black;
+    width: 8em;
+    padding: 0.5em;
+    font-size: 1.5em;
+    font-family: Bitter;
+    font-weight: 800;
+}
+
+.home-button{
+    margin-left: 10em;
+}
+
+.login-button{
+    margin-right: 10em;
+}
+button:hover{
+    color: #3F5268;
+    background-color: #F0F7FF;
+}
