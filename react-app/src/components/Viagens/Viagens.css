@@ -1,0 +1,17 @@
+.Dashboard{
+    height: 100%;
+  }
+  
+  .flex-column.nav{
+    position: fixed;
+    top: 0%;
+    margin: 0;
+    display: inline-flex;
+    width: 20%;
+    height: 100%;
+    background-color: #e4e4e4;
+  }
+  
+  .flex-column.nav *{
+    margin-inline: auto;
+  }

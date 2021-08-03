@@ -8,6 +8,8 @@ import {
 
 import Home from './components/Home/Home'
 import Login from './components/Login/Login'
+import Viagens from './components/Viagens/Viagens';
+
 import './App.css'
 
 function App() {
@@ -20,6 +22,9 @@ function App() {
         <Switch>
           <Route path="/login">
             <Login />
+          </Route>
+          <Route path="/viagens">
+            <Viagens />
           </Route>
           <Route path="/">
             <Home />
