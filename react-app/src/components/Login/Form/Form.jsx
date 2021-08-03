@@ -6,6 +6,7 @@ import axios from 'axios';
 export default function Form() {
     const [email,setEmail] = useState('')//As aspas são o estado inicial!
     const [senha, setSenha] = useState('')
+    const [msg,setMsg]=useState('Submeta seus dados para acessar sua conta:')
 
     function handleEmailChange(event){
         setEmail(event.target.value)
@@ -15,7 +16,7 @@ export default function Form() {
     }
     function handleSubmit(event){
         event.preventDefault()
-        axios.post('/login',{email,senha}).catch((err)=>alert(err))
+        axios.post('/login',{email,senha}).catch((err)=>setMsg(err.response.data))
     }
 
     return (
@@ -28,6 +29,7 @@ export default function Form() {
                 height="220px"
               />
               <br />
+            <p>{msg}</p>
             <div id="Email">
               <label htmlFor='email'><p>Login:</p></label>
               <input type='text' placeholder="Digite seu email" name="email"
