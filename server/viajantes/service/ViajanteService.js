@@ -33,6 +33,12 @@ class ViajanteService {
       },
     });
   }
+  async isTheLastAdmin(id) {
+    const numAdmin=await Viajante.count(
+      {where: {'isAdmin': 1}},
+    );
+    return numAdmin==1;
+  }
 }
 
 module.exports = new ViajanteService;

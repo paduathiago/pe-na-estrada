@@ -3,6 +3,10 @@ const jwt = require('jsonwebtoken');
 const {
   hasViajanteViagem,
 } = require('../viajantesviagens/service/ViajantesViagensService');
+const {
+  isTheLastAdmin,
+}= require('../viajantes/service/ViajanteService');
+
 
 function loginMiddleware(req, res, next) {
   passport.authenticate(
@@ -104,9 +108,20 @@ function roleChangeFilter(req, res, next) {
 }
 
 function insertAdminFilter(req, res, next) {
-  if (req.isAdmin==true) next();
+  if (!(req.body.isAdmin=='true')) next();
   else if ('isAdmin' in req.body) {
     res.status(401).send('Voce nao pode inserir um administrador.');
+  } else next();
+}
+
+async function removeAllAdmFilter(req, res, next) {
+  const lastAdmin=await isTheLastAdmin(req.params.id);
+  if (lastAdmin) {
+    res.status(403).send('Operacao negada.');
+    // Não dando detalhe pros possíveis hackers :D
+    // Mas basicamente isso aqui impede que todos os admins sejam deletados,
+    // pois isso geraria uma inconsistência, já que não teria mais como
+    // adicionar novos admins.
   } else next();
 }
 
@@ -118,4 +133,5 @@ module.exports={
   roleChangeFilter,
   isAdminOrInvolved,
   insertAdminFilter,
+  removeAllAdmFilter,
 };

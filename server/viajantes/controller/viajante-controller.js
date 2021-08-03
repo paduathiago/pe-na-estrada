@@ -4,6 +4,7 @@ const {
   isAdminOrRequester,
   roleChangeFilter,
   insertAdminFilter,
+  removeAllAdmFilter,
 }=require('../../middlewares/auth-middlewares');
 const {
   createViajante,
@@ -71,6 +72,7 @@ viajanteRouter.delete(
   '/:id',
   jwtMiddleware,
   isAdminOrRequester,
+  removeAllAdmFilter,
   async (req, res)=>{
     try {
       const viajanteId = req.params.id;
