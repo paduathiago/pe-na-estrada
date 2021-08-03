@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Corben:700');
 
+.colContainer{
+	display: flex;
+	flex-direction: column;
+	padding-bottom: 2vw;
+}
+
 h1 {
 	font-family: 'Corben', cursive;
 	font-size: 6rem;

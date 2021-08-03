@@ -3,13 +3,16 @@ import './Home.css'
 import LogoGiratoria from './LogoGiratoria/LogoGiratoria'
 import Menu from '../Menu/Menu'
 import Footer from '../Footer/Footer'
+import '../../assets/Colors/Colors.css'
+import '../../assets/TextStyle/Fonts.css'
+import '../../assets/TextStyle/Sizes.css'
 
 export default function Home() {
     return (
         <div className="Home">
             <Menu />
-            <div class="hero">
-                <div class="snow">
+            <div class="hero colContainer">
+                <div class="snow ">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1536" preserveAspectRatio="xMidYMax slice">
                         <g fill="#FFF" fill-opacity=".15" transform="translate(55 42)">
                             <g id="snow-bottom-layer">
@@ -82,6 +85,14 @@ export default function Home() {
                     </svg>
                 </div>
                 <LogoGiratoria />
+                <div>
+                <div className='Tbranco Ftexto Stexto'>
+                    <p className='FsubTitulo Ssubtitulo '>Sejam bem vindos, aventureiros!</p>
+                    <p>O grande encanto da vida para mim pode ser representado por todas as formas que ela se expressa, a cada nova forma um novo encanto. Procurei desde cedo me encantar, e por em palavras o que vivenciei pois penso que destas experiencias devo compartilhar algo com o mundo!</p>
+                    <p>O meu nome é Travis Worldwide, eu fiz o curso de jornalismo, ainda que não completamente, pois senti que eu precisava sair ao mundo e conhecer o máximo dele. Tal aventura foi originalmente registrada em formato de diário de viagens e agora nesse site, onde também poderemos experienciar tais registros.</p>
+                    <p>Aqui se encontra os relatos de minhas viagens, todas essa experiências representadas em imagens e mapas, no esforço de trazer a você um gosto dessas culturas excepcionais que tive a honra de conhecer. Espero que gostem do conteúdo e sintam-se livres para entrar em contato comigo, seja para comentar os relatos ou sugerir novos destinos.</p>
+                </div>
+                </div>
             </div>
             <Footer />
         </div>
