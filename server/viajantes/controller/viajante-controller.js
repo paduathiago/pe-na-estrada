@@ -3,6 +3,7 @@ const {
   jwtMiddleware,
   isAdminOrRequester,
   roleChangeFilter,
+  insertAdminFilter,
 }=require('../../middlewares/auth-middlewares');
 const {
   createViajante,
@@ -12,8 +13,7 @@ const {
   deleteViajante,
 } = require('../service/ViajanteService');
 
-viajanteRouter.post('/', async (req, res)=>{
-  // TEMPORARARIO
+viajanteRouter.post('/', insertAdminFilter, async (req, res)=>{
   try {
     const viajante={
       nome: req.body.nome,

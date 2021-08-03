@@ -103,6 +103,13 @@ function roleChangeFilter(req, res, next) {
   } else next();
 }
 
+function insertAdminFilter(req, res, next) {
+  if (req.isAdmin==true) next();
+  else if ('isAdmin' in req.body) {
+    res.status(401).send('Voce nao pode inserir um administrador.');
+  } else next();
+}
+
 module.exports={
   loginMiddleware,
   notLoggedIn,
@@ -110,4 +117,5 @@ module.exports={
   isAdminOrRequester,
   roleChangeFilter,
   isAdminOrInvolved,
+  insertAdminFilter,
 };
