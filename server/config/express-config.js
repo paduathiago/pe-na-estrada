@@ -56,4 +56,10 @@ web.get('/me', jwtMiddleware, async (req, res)=>{
   res.status(200).json(viajante);
 });
 
+function defaultErrorMiddleware(err, req, res, next) {
+  res.status(500).send(err.toString());
+}
+
+web.use(defaultErrorMiddleware);
+
 module.exports=web;
