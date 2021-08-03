@@ -1,3 +1,12 @@
 .Stitulo{
-    font-size:10vw
+    font-size:10vw;
+}
+
+.Ssubtitulo{
+    font-size:5vw;
+    
+}
+
+.Stexto{
+    font-size: 1.5vw;
 }
