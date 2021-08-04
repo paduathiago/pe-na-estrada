@@ -17,15 +17,15 @@ const Viagem = sequelize.define('Viagens', {
     allowNull: false,
   },
   descricao: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT("medium"),
     allowNull: true,
   },
   inicio: {
-    type: DataTypes.DATEONLY,
-    allowNull: false,
+    type: DataTypes.STRING, 
+    allowNull: false,          
   },
   fim: {
-    type: DataTypes.DATEONLY,
+    type: DataTypes.STRING,
     allowNull: false,
   },
 });

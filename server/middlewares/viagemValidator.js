@@ -24,12 +24,16 @@ function getValidations(metodo) {
         .exists()
         .withMessage('Informe a data de inicio.')
         .notEmpty()
-        .withMessage('Informe a data de inicio.'),
+        .withMessage('Informe a data de inicio.')
+        .isDate()
+        .withMessage('Informe uma data válida.'),
       body('fim')
         .exists()
         .withMessage('Informe a data de fim.')
         .notEmpty()
-        .withMessage('Informe a data de fim.'),
+        .withMessage('Informe a data de fim.')   
+        .isDate()
+        .withMessage('Informe uma data válida.'),
     ];
   };
   case 'update': {
@@ -49,11 +53,15 @@ function getValidations(metodo) {
       body('inicio')
         .optional()
         .notEmpty()
-        .withMessage('Informe a data de inicio.'),
+        .withMessage('Informe a data de inicio.')
+        .isDate()
+        .withMessage('Informe uma data válida.'),
       body('fim')
         .optional()
         .notEmpty()
-        .withMessage('Informe a data de fim.'),
+        .withMessage('Informe a data de fim.')
+        .isDate()
+        .withMessage('Informe uma data válida.'),
     ];
   };
   }
