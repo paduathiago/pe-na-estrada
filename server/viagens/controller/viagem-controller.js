@@ -5,23 +5,33 @@ const {
   isAdminOrInvolved,
 } = require('../../middlewares/auth-middlewares');
 
-viagemRouter.post('/', jwtMiddleware, async (req, res)=>{
-  try {
-    const viagem={
-      imagemViagem: req.body.imagemViagem,
-      localizacao: req.body.localizacao,
-      descricao: req.body.descricao,
-      inicio: req.body.inicio,
-      fim: req.body.fim,
-    };
+const {objectValidator} = require('../../middlewares/data-validators');
+const {viagemValidate} = require('../../middlewares/viagemValidator');
 
-    await ViagemService.createViagem(viagem);
 
-    res.status(201).end();
-  } catch (error) {
-    console.log(error);
-  }
-});
+viagemRouter.post('/',
+  objectValidator('body', [
+    'imagemViagem', 'localizacao', 'descricao', 'inicio', 'fim',
+  ]),
+  viagemValidate('create'),
+  jwtMiddleware, async (req, res)=>{
+    try {
+      const viagem={
+        imagemViagem: req.body.imagemViagem,
+        localizacao: req.body.localizacao,
+        descricao: req.body.descricao,
+        inicio: req.body.inicio,
+        fim: req.body.fim,
+      };
+
+      await ViagemService.createViagem(viagem);
+
+      res.status(201).end();
+    } catch (error) {
+      console.log(error);
+    }
+  },
+);
 
 viagemRouter.get('/', async (req, res)=>{
   try {
@@ -43,15 +53,21 @@ viagemRouter.get('/:id', async (req, res) =>{
   }
 });
 
-viagemRouter.put('/:id', jwtMiddleware, isAdminOrInvolved, async (req, res)=>{
-  try {
-    const viagemId = req.params.id;
-    await ViagemService.updateViagem(viagemId, req.body);
-    res.status(204).end();
-  } catch (error) {
-    console.log(error);
-  }
-});
+viagemRouter.put('/:id',
+  objectValidator('body', [
+    'imagemViagem', 'localizacao', 'descricao', 'inicio', 'fim',
+  ]),
+  viagemValidate('update'),
+  jwtMiddleware, isAdminOrInvolved, async (req, res)=>{
+    try {
+      const viagemId = req.params.id;
+      await ViagemService.updateViagem(viagemId, req.body);
+      res.status(204).end();
+    } catch (error) {
+      console.log(error);
+    }
+  },
+);
 
 viagemRouter.delete(
   '/:id',
