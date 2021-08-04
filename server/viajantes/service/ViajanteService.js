@@ -21,6 +21,11 @@ class ViajanteService {
     return await Viajante.findByPk(id, {raw: true});
   }
   async updateViajante(id, body) {
+    if (body.senha) {
+      const saltRounds=10;
+      body.senhaHash= await bcrypt.hash(body.senha, saltRounds);
+      delete body.senha;
+    }
     await Viajante.update(body, {where: {id: id}});
   }
   async deleteViajante(id) {
