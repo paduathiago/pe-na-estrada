@@ -9,4 +9,4 @@ function objectValidator(obj, keys) {
   };
 }
 
-module.exports=objectValidator;
+module.exports={objectValidator};

@@ -14,8 +14,8 @@ const {
   deleteViajante,
 } = require('../service/ViajanteService');
 
-const objectValidator = require('../../middlewares/data-validators');
-const viajanteValidate = require('../../middlewares/viajanteValidator');
+const {objectValidator} = require('../../middlewares/data-validators');
+const {viajanteValidate} = require('../../middlewares/viajanteValidator');
 
 viajanteRouter.post('/',
   objectValidator('body', [

@@ -1,5 +1,5 @@
 const {body} = require('express-validator');
-const validate = require('./validatorGenerico');
+const {validate} = require('./validatorGenerico');
 
 function getValidations(metodo) {
   switch (metodo) {
@@ -10,7 +10,7 @@ function getValidations(metodo) {
         .withMessage('Preencha o campo de e-mail.')
         .isEmail()
         .withMessage('E-mail invalido.'),
-      body('password')
+      body('senha')
         .exists()
         .withMessage('Preencha o campo de senha.')
         .notEmpty()
@@ -71,9 +71,9 @@ function getValidations(metodo) {
   }
 }
 
-function userValidate(metodo) {
+function viajanteValidate(metodo) {
   const validations=getValidations(metodo);
   return validate(validations);
 }
 
-module.exports=userValidate;
+module.exports={viajanteValidate};
