@@ -38,7 +38,20 @@ const {
   jwtMiddleware,
 }=require('../middlewares/auth-middlewares');
 
-web.post('/login', notLoggedIn, loginMiddleware);
+const {
+  objectValidator,
+}=require('../middlewares/data-validators');
+
+const {
+  viajanteValidate,
+}=require('../middlewares/viajanteValidator');
+
+web.post('/login',
+  objectValidator(
+    'body',
+    ['email', 'senha'],
+  ),
+  viajanteValidate('login'), notLoggedIn, loginMiddleware);
 
 web.get('/logout', jwtMiddleware, (req, res)=>{
   try {
@@ -57,6 +70,7 @@ web.get('/me', jwtMiddleware, async (req, res)=>{
 });
 
 function defaultErrorMiddleware(err, req, res, next) {
+  console.log(err);
   res.status(500).send(err.toString());
 }
 
