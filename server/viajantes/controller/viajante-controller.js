@@ -15,11 +15,13 @@ const {
 } = require('../service/ViajanteService');
 
 const objectValidator = require('../../middlewares/data-validators');
+const viajanteValidate = require('../../middlewares/viajanteValidator');
 
 viajanteRouter.post('/',
   objectValidator('body', [
     'nome', 'email', 'senha', 'isAdmin', 'introducao', 'imagemPerfil',
   ]),
+  viajanteValidate('create'),
   insertAdminFilter,
   async (req, res)=>{
     try {
@@ -66,6 +68,7 @@ viajanteRouter.put(
   objectValidator('body', [
     'nome', 'email', 'senha', 'isAdmin', 'introducao', 'imagemPerfil',
   ]),
+  viajanteValidate('update'),
   jwtMiddleware,
   isAdminOrRequester,
   roleChangeFilter,
