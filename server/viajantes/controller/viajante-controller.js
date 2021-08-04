@@ -14,27 +14,35 @@ const {
   deleteViajante,
 } = require('../service/ViajanteService');
 
-viajanteRouter.post('/', insertAdminFilter, async (req, res)=>{
-  try {
-    const viajante={
-      nome: req.body.nome,
-      email: req.body.email,
-      senha: req.body.senha,
-      isAdmin: req.body.isAdmin,
-      introducao: req.body.introducao,
-      imagemPerfil: req.body.imagemPerfil,
-    };
+const objectValidator = require('../../middlewares/data-validators');
 
-    await createViajante(viajante);
+viajanteRouter.post('/',
+  objectValidator('body', [
+    'nome', 'email', 'senha', 'isAdmin', 'introducao', 'imagemPerfil',
+  ]),
+  insertAdminFilter,
+  async (req, res)=>{
+    try {
+      const viajante={
+        nome: req.body.nome,
+        email: req.body.email,
+        senha: req.body.senha,
+        isAdmin: req.body.isAdmin,
+        introducao: req.body.introducao,
+        imagemPerfil: req.body.imagemPerfil,
+      };
 
-    res.status(201).end();
-  } catch (error) {
-    console.log(error);
-  }
-});
+      await createViajante(viajante);
+
+      res.status(201).end();
+    } catch (error) {
+      console.log(error);
+    }
+  },
+);
 
 viajanteRouter.get('/', async (req, res)=>{
-  try {
+  try {// E se req.query.limit nao existir?
     const numViajantes = parseInt(req.query.limit);
     const viajantes=await getAllViajantes(numViajantes);
     res.json(viajantes).status(200);
@@ -44,7 +52,7 @@ viajanteRouter.get('/', async (req, res)=>{
 });
 
 viajanteRouter.get('/:id', async (req, res) =>{
-  try {
+  try {// E se o ID for invalido?
     const viajanteId = req.params.id;
     const viajante = await getViajanteById(viajanteId);
     res.status(200).json(viajante);
@@ -54,12 +62,15 @@ viajanteRouter.get('/:id', async (req, res) =>{
 });
 
 viajanteRouter.put(
-  '/:id',
+  '/:id', // E se o ID for invalido?
+  objectValidator('body', [
+    'nome', 'email', 'senha', 'isAdmin', 'introducao', 'imagemPerfil',
+  ]),
   jwtMiddleware,
   isAdminOrRequester,
   roleChangeFilter,
   async (req, res) =>{
-    try {
+    try {// E se nao tiver req.params? Ou req.params.id? Ou req.body?
       const viajanteId = req.params.id;
       await updateViajante(viajanteId, req.body);
       res.status(204).end();
@@ -69,12 +80,12 @@ viajanteRouter.put(
   });
 
 viajanteRouter.delete(
-  '/:id',
+  '/:id', // E se o ID for invalido?
   jwtMiddleware,
   isAdminOrRequester,
   removeAllAdmFilter,
   async (req, res)=>{
-    try {
+    try {// E se nao tiver req.params.id?
       const viajanteId = req.params.id;
       await deleteViajante(viajanteId);
       res.status(204).end();
