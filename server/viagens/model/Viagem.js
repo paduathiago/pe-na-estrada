@@ -21,11 +21,11 @@ const Viagem = sequelize.define('Viagens', {
     allowNull: true,
   },
   inicio: {
-    type: DataTypes.DATE,
+    type: DataTypes.DATEONLY,
     allowNull: false,
   },
   fim: {
-    type: DataTypes.DATE,
+    type: DataTypes.DATEONLY,
     allowNull: false,
   },
 });
