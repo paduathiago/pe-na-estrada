@@ -102,7 +102,7 @@ async function isAdminOrInvolved(req, res, next) {
 
 function roleChangeFilter(req, res, next) {
   if (req.viajante.isAdmin==true) next();
-  else if ('isAdmin' in req.body) {
+  else if (req.body.isAdmin=='true') {
     res.status(401).send('Voce nao pode mudar seu proprio papel.');
   } else next();
 }
