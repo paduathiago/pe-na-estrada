@@ -12,6 +12,7 @@ const {viagemValidate} = require('../../middlewares/viagemValidator');
 viagemRouter.post('/',
   objectValidator('body', [
     'imagemViagem', 'localizacao', 'descricao', 'inicio', 'fim',
+    'viajantes'
   ]),
   viagemValidate('create'),
   jwtMiddleware, async (req, res)=>{
@@ -57,6 +58,7 @@ viagemRouter.get('/:id', async (req, res) =>{
 viagemRouter.put('/:id',
   objectValidator('body', [
     'imagemViagem', 'localizacao', 'descricao', 'inicio', 'fim',
+    'addViajantes','remViajantes'
   ]),
   viagemValidate('update'),
   jwtMiddleware, isAdminOrInvolved, async (req, res)=>{
