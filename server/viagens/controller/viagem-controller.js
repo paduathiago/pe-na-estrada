@@ -23,8 +23,9 @@ viagemRouter.post('/',
         inicio: req.body.inicio,
         fim: req.body.fim,
       };
+      const viajantes=req.body.viajantes;
 
-      await ViagemService.createViagem(viagem);
+      await ViagemService.createViagem(viagem,viajantes);
 
       res.status(201).end();
     } catch (error) {

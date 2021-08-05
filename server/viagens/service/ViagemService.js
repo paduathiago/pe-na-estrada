@@ -1,8 +1,14 @@
 const Viagem = require('../model/Viagem');
+const Viajante = require('../../viajantes/model/Viajante')
 
 class ViagemService {
-  async createViagem(viagem) {
-    await Viagem.create(viagem);
+  async createViagem(viagem,viajantes) {
+    const vi=await Viagem.create(viagem);
+    viajantes=JSON.parse(viajantes)
+    for(v in viajantes){
+      const viaj=await Viajante.findByPk(viajantes[v]);
+      await vi.addViajante(viaj)
+    }
   }
   async getAllViagens(numeroViagens) {
     return await Viagem.findAll(
