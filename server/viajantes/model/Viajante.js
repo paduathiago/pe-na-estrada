@@ -35,8 +35,6 @@ const Viajante = sequelize.define('Viajantes', {
   },
 });
 
-Viajante.sync({alter: false, force: false})
-  .then(() => console.log('Tabela de Viajantes (re)criada!'))
-  .catch((err) => console.log(err));
+
 
 module.exports=Viajante;

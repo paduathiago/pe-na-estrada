@@ -18,6 +18,10 @@ class ViagemService {
   async deleteViagem(id) {
     await Viagem.destroy({where: {id: id}});
   }
+  async viagemHasViajante(viagemID,viajanteID) {
+    //await Viagem.
+    return true;//temp
+  }
 }
 
 module.exports = new ViagemService;

@@ -1,5 +1,6 @@
 const sequelize = require('../../database/index');
 const {DataTypes} = require('sequelize');
+const Viajante = require('../../viajantes/model/Viajante');
 
 const Viagem = sequelize.define('Viagens', {
   id: {
@@ -30,8 +31,21 @@ const Viagem = sequelize.define('Viagens', {
   },
 });
 
+const ViajantesViagens = sequelize.define('ViajantesViagens', {}, { timestamps: false });
+
+Viagem.belongsToMany(Viajante, {through: ViajantesViagens});
+Viajante.belongsToMany(Viagem, {through: ViajantesViagens});
+
+ViajantesViagens.sync({alter: false, force: false})
+  .then(() => console.log('Tabela de ViajantesViagens criada/sincronizada!'))
+  .catch((err) => console.log(err));
+
 Viagem.sync({alter: false, force: false})
-  .then(() => console.log('Tabela de Viagens (re)criada!'))
+  .then(() => console.log('Tabela de Viagens criada/sincronizada!'))
+  .catch((err) => console.log(err));
+
+Viajante.sync({alter: false, force: false})
+  .then(() => console.log('Tabela de Viajantes criada/sincronizada!'))
   .catch((err) => console.log(err));
 
 module.exports = Viagem;

@@ -1,8 +1,8 @@
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const {
-  hasViajanteViagem,
-} = require('../viajantesviagens/service/ViajantesViagensService');
+  viagemHasViajante,
+} = require('../viagens/service/ViagemService');
 const {
   isTheLastAdmin,
 }= require('../viajantes/service/ViajanteService');
@@ -92,7 +92,7 @@ function isAdminOrRequester(req, res, next) {
 }
 
 async function isAdminOrInvolved(req, res, next) {
-  const isInvolved=await hasViajanteViagem(req.viajante.id, req.params.id);
+  const isInvolved=await viagemHasViajante(req.params.id,req.viajante.id);
   if (req.viajante.isAdmin==true||isInvolved) {
     next();
   } else {
