@@ -1,6 +1,21 @@
 const {body} = require('express-validator');
 const {validate} = require('./validatorGenerico');
 
+function isJson(str) {
+  try {
+      JSON.parse(str);
+  } catch (e) {
+      return false;
+  }
+  return true;
+}
+
+function isInt(value) {
+  return !isNaN(value) && 
+         parseInt(Number(value)) == value && 
+         !isNaN(parseInt(value, 10));
+}
+
 function getValidations(metodo) {
   switch (metodo) {
   case 'create': {
@@ -34,6 +49,24 @@ function getValidations(metodo) {
         .withMessage('Informe a data de fim.')
         .isDate()
         .withMessage('Informe uma data válida.'),
+      body('viajantes')
+        .exists()
+        .withMessage('Informe os viajantes envolvidos')
+        .notEmpty()
+        .withMessage('Informe os viajantes envolvidos')
+        .custom((value)=>{
+          return isJson(value);
+        })
+        .withMessage('Os viajantes devem ser uma lista')
+        .custom((value) => {
+          vals=JSON.parse(value)
+          for(v in vals)
+            if(!isInt(vals[v]))
+              return false;
+          return true;
+        })
+        .withMessage('Coloque na lista de viajantes somente os IDs dos viajantes.')
+        //ADICIONAR VALIDACAO DE SER UM ID VAlIDO!!!!
     ];
   };
   case 'update': {
@@ -62,6 +95,22 @@ function getValidations(metodo) {
         .withMessage('Informe a data de fim.')
         .isDate()
         .withMessage('Informe uma data válida.'),
+      body('addViajantes')
+        .optional()
+        .notEmpty()
+        .withMessage('Informe os viajantes envolvidos')
+        .custom((value)=>{
+          return isJson(value);
+        })
+        .withMessage('Os viajantes devem ser uma lista')
+        .custom((value) => {
+          vals=JSON.parse(value)
+          for(v in vals)
+            if(!isInt(vals[v]))
+              return false;
+          return true;
+        })
+        .withMessage('Coloque na lista de viajantes somente os IDs dos viajantes.')
     ];
   };
   }
