@@ -11,10 +11,10 @@ export default function Home() {
     return (
         <div className="Home">
             <Menu />
-            <div class="hero colContainer">
-                <div class="snow ">
+            <div className="hero colContainer">
+                <div className="snow ">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1536" preserveAspectRatio="xMidYMax slice">
-                        <g fill="#FFF" fill-opacity=".15" transform="translate(55 42)">
+                        <g fill="#FFF" fillOpacity=".15" transform="translate(55 42)">
                             <g id="snow-bottom-layer">
                                 <ellipse cx="6" cy="1009.5" rx="6" ry="5.5" />
                                 <ellipse cx="138" cy="1110.5" rx="6" ry="5.5" />
@@ -58,7 +58,7 @@ export default function Home() {
                                 <ellipse cx="887" cy="598.5" rx="6" ry="5.5" />
                             </g>
                         </g>
-                        <g fill="#FFF" fill-opacity=".3" transform="translate(65 63)">
+                        <g fill="#FFF" fillOpacity=".3" transform="translate(65 63)">
                             <g id="snow-top-layer">
                                 <circle cx="8" cy="776" r="8" />
                                 <circle cx="189" cy="925" r="8" />
