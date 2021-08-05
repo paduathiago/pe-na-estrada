@@ -31,7 +31,7 @@ function getValidations(metodo) {
         .exists()
         .withMessage('Informe a data de fim.')
         .notEmpty()
-        .withMessage('Informe a data de fim.')   
+        .withMessage('Informe a data de fim.')
         .isDate()
         .withMessage('Informe uma data válida.'),
     ];
