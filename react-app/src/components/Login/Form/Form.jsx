@@ -1,9 +1,10 @@
 import Logo from '../../../assets/logo.png'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
 
 export default function Form() {
+    const history=useHistory();
     const [email,setEmail] = useState('')//As aspas são o estado inicial!
     const [senha, setSenha] = useState('')
     const [msg,setMsg]=useState('Submeta seus dados para acessar sua conta:')
@@ -16,7 +17,7 @@ export default function Form() {
     }
     function handleSubmit(event){
         event.preventDefault()
-        axios.post('/login',{email,senha}).catch((err)=>setMsg(err.response.data))
+        axios.post('/login',{email,senha}).then((ans)=>history.push('/')).catch((err)=>setMsg(err.response.data))
     }
 
     return (
