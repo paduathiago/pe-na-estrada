@@ -110,6 +110,22 @@ function getValidations(metodo) {
               return false;
           return true;
         })
+        .withMessage('Coloque na lista de viajantes somente os IDs dos viajantes.'),
+      body('remViajantes')
+        .optional()
+        .notEmpty()
+        .withMessage('Informe os viajantes envolvidos')
+        .custom((value)=>{
+          return isJson(value);
+        })
+        .withMessage('Os viajantes devem ser uma lista')
+        .custom((value) => {
+          vals=JSON.parse(value)
+          for(v in vals)
+            if(!isInt(vals[v]))
+              return false;
+          return true;
+        })
         .withMessage('Coloque na lista de viajantes somente os IDs dos viajantes.')
     ];
   };
