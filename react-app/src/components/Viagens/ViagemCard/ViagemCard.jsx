@@ -3,6 +3,9 @@ import { ListGroup, Card, Button, ListGroupItem} from 'react-bootstrap';
 
 
 export default function ViagemCard(props) {
+
+    let dataInicio = new Date(props.viagens.inicio)
+    let dataFim = new Date(props.viagens.fim)
     return (
         <div className="viagem-card">
             <Card style={{ width: '16vw'}}>
@@ -14,8 +17,8 @@ export default function ViagemCard(props) {
                     </Card.Text>
                 </Card.Body>
                 <ListGroup className="list-group-flush">
-                    <ListGroupItem>Início: {props.viagens.inicio}</ListGroupItem>
-                    <ListGroupItem>Fim: {props.viagens.fim}</ListGroupItem>
+                    <ListGroupItem>Início: {dataInicio.toLocaleDateString()}</ListGroupItem>
+                    <ListGroupItem>Fim: {dataFim.toLocaleDateString()}</ListGroupItem>
                 </ListGroup>
                 <Card.Body>
                     <Button variant="primary">Ver mais</Button>

@@ -6,7 +6,7 @@ class ViagemService {
   }
   async getAllViagens(numeroViagens) {
     return await Viagem.findAll(
-      {limit: numeroViagens, order: [['inicio', 'ASC']], raw: true},
+      {limit: numeroViagens, order: [['inicio', 'DESC']], raw: true},
     );
   }
   async getViagemById(id) {
