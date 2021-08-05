@@ -1,9 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './Menu.css'
+import axios from 'axios';
 
 //MENU TEMPORARIO! ARRUMAR!!!
 export default function Menu(){
+    function logout(){
+        axios.get('/logout').catch((err)=>console.log(err.response.data))
+    }
     return(
         <div className="Menu">
             <Link to='/'>
@@ -31,6 +35,9 @@ export default function Menu(){
                     Perfil
                 </button> 
             </Link>
+                <button onClick={logout}>
+                    Logout
+                </button>
         </div>
     );
 }
