@@ -1,6 +1,6 @@
 import React from 'react'
 import { ListGroup, Card, Button, ListGroupItem} from 'react-bootstrap';
-
+import { Link } from 'react-router-dom';
 
 export default function ViagemCard(props) {
 
@@ -21,7 +21,11 @@ export default function ViagemCard(props) {
                     <ListGroupItem>Fim: {dataFim.toLocaleDateString()}</ListGroupItem>
                 </ListGroup>
                 <Card.Body>
-                    <Button variant="primary">Ver mais</Button>
+                        <Link to='/viagem'>
+                            <Button variant="primary">
+                                Ver mais
+                            </Button>
+                        </Link>                        
                 </Card.Body>
             </Card>            
         </div>
