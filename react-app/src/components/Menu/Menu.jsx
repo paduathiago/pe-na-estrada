@@ -1,23 +1,22 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import './Menu.css'
 import axios from 'axios';
 
 //MENU TEMPORARIO! ARRUMAR!!!
 export default function Menu(){
+    const history=useHistory();
+
     function logout(){
         axios.get('/logout').catch((err)=>console.log(err.response.data))
+        history.push('/')
     }
+
     return(
         <div className="Menu">
             <Link to='/'>
                 <button>
                     Home
-                </button>
-            </Link>
-            <Link to="/login" className= "Link">
-                <button>
-                    Login
                 </button>
             </Link>
             <Link to='/viagens'>

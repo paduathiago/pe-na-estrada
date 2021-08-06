@@ -1,12 +1,12 @@
 import Welcome from './Welcome/Welcome';
 import Form from './Form/Form';
-import Menu from '../Menu/Menu'
+import MenuDeslogado from '../MenuDeslogado/MenuDeslogado'
 
 export default function Login() {
 
   return (
   <div className="Login">
-    <Menu />
+    <MenuDeslogado />
     <section className="container">
       <div className="left">
         <Welcome />

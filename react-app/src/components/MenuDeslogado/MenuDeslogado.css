@@ -1,0 +1,39 @@
+.Menu{
+    background-color: #5F83AD;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 10vh;
+}
+button{
+    transition-duration: 0.5s;
+    background-color: #5F83AD;
+    border: solid black 1px;
+    border-radius: 50px;
+    color: black;
+    width: 8vw;
+    font-size: 1.5vw;
+    font-family: Bitter,serif;
+    font-weight: 800;
+}
+
+
+button:hover{
+    color: #3F5268;
+    background-color: #F0F7FF;
+}
+
+@media(max-device-width: 480px){
+    button{
+        transition-duration: 0.5s;
+        background-color: #5F83AD;
+        border: solid black 1px;
+        border-radius: 50px;
+        color: black;
+        width: 8vh;
+        padding: 0.5vh;
+        font-size: 1.5vh;
+        font-family: Bitter;
+        font-weight: 800;
+    }
+}
