@@ -16,7 +16,17 @@ class ViagemService {
     );
   }
   async getViagemById(id) {
-    return await Viagem.findByPk(id, {raw: true});
+    const viagem= await Viagem.findByPk(id);
+    const viajantes=await viagem.getViajantes({
+      attributes: {
+        exclude: ['senhaHash', 'createdAt', 'updatedAt','isAdmin'],
+      },
+    })
+
+    return {
+      "Viagem":viagem,
+      "Viajantes":viajantes
+    } 
   }
   async updateViagem(id, body) {
     let addViajantes
