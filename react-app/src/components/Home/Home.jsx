@@ -110,7 +110,6 @@ export default function Home() {
             </div>
         )
     }
-    
     else{
         return (
             <div className="Home">

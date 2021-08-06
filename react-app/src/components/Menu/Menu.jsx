@@ -1,15 +1,15 @@
 import React from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './Menu.css'
 import axios from 'axios';
-
+import { useHistory } from 'react-router';
 //MENU TEMPORARIO! ARRUMAR!!!
 export default function Menu(){
-    const history=useHistory();
-
+    const history = useHistory();
     function logout(){
-        axios.get('/logout').catch((err)=>console.log(err.response.data))
+        axios.get('/logout').catch((err)=>console.log(err.response.data));
         history.push('/')
+        window.location.reload();
     }
 
     return(

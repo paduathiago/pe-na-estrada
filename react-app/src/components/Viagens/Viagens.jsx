@@ -1,14 +1,18 @@
 import axios from 'axios';
-import './Viagens.css';
-import ViagemCard from '././ViagemCard/ViagemCard'
-import Viagem from './Viagem/Viagem'
-import Menu from '../Menu/Menu';
 import { useState, useEffect } from 'react';
 import { 
-  BrowserRouter as Router,
+BrowserRouter as Router,
   Switch,
   Route
 } from 'react-router-dom';
+import MenuDeslogado from '../MenuDeslogado/MenuDeslogado';
+
+
+import ViagemCard from '././ViagemCard/ViagemCard'
+import Viagem from './Viagem/Viagem'
+import Menu from '../Menu/Menu';
+
+import './Viagens.css';
 
 export default function Viagens() {
     
@@ -19,13 +23,21 @@ export default function Viagens() {
     .catch( (err) => console.log(err.response) )
   }, []);
 
-
+  const [user, setUser] = useState(false);
+  useEffect(() => {
+    axios.get('/me')
+      .then( (res) => setUser(res.data) )
+      .catch( (err) => console.log(err.response) )
+  }, []);
+  
   let loadedViagens = [];
   const viagensToCards = (element, index) => <ViagemCard key={index} viagens={element} />
-
+  
   if(viagens) loadedViagens = viagens.map(viagensToCards)
-  return(
-    <div className="pagina-viagens">
+
+  if(user){ 
+    return(
+      <div className="pagina-viagens">
       <Menu />
 
       <p className="title">Viagens</p>
@@ -41,5 +53,25 @@ export default function Viagens() {
       </Router>
     </div>
   )
+  }
+  else{
+    return(
+      <div className="pagina-viagens">
+      <MenuDeslogado />
 
+      <p className="title">Viagens</p>
+      <div className="viagens">
+        {loadedViagens}
+      </div>
+      <Router>
+        <Switch>
+          <Route path="/viagem">
+            <Viagem />
+          </Route>
+        </Switch>
+      </Router>
+    </div>
+  )
+  }
+  
 }
