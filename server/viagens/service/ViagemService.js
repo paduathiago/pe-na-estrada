@@ -59,8 +59,8 @@ class ViagemService {
     await Viagem.destroy({where: {id: id}});
   }
   async viagemHasViajante(viagemID,viajanteID) {
-    //await Viagem.
-    return true;//temp
+    const viagem= await Viagem.findByPk(viagemID);
+    return viagem.hasViajante(viajanteID);
   }
 }
 
