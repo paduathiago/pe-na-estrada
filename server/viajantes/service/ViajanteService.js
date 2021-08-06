@@ -1,5 +1,6 @@
 const Viajante = require('../model/Viajante');
 const bcrypt= require('bcrypt');
+const Viagem = require('../../viagens/model/Viagem');
 
 class ViajanteService {
   async createViajante(viajante) {
@@ -18,7 +19,13 @@ class ViajanteService {
     );
   }
   async getViajanteById(id) {
-    return await Viajante.findByPk(id, {raw: true});
+    const viajante= await Viajante.findByPk(id,);
+    const viagens= await viajante.getViagens();
+
+    return {
+      "Viajante":viajante,
+      "Viagens":viagens
+    }
   }
   async updateViajante(id, body) {
     if (body.senha) {
