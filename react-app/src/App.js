@@ -12,6 +12,9 @@ import Viagens from './components/Viagens/Viagens';
 import Me from './components/Me/Me';
 import Viajantes from './components/Viajantes/Viajantes'
 import './App.css'
+import ConditionalMenu from './components/Menu/ConditionalMenu'
+import Footer from './components/Footer/Footer'
+
 
 function App() {
   axios.defaults.baseURL=process.env.REACT_APP_API_URL;
@@ -20,6 +23,7 @@ function App() {
   return (
     <div className="App">
       <Router>
+        <ConditionalMenu/>
         <Switch>
           <Route path="/login">
             <Login />
@@ -37,6 +41,7 @@ function App() {
             <Home />
           </Route>
         </Switch>
+        <Footer />
       </Router>
     </div>
   );

@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Image } from 'react-bootstrap';
-import Menu from '../../Menu/Menu';
 
 export default function Viagem() {
     const [user, setUser] = useState(false);
@@ -14,7 +13,6 @@ export default function Viagem() {
 
     return (
         <div>
-            <Menu/>
             <p>{user.nome}</p>
             <Image width="400px" height="400px" src={user.imagemPerfil} roundedCircle />
             <p>{user.introducao}</p>

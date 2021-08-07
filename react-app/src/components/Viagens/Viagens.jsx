@@ -5,7 +5,6 @@ BrowserRouter as Router,
   Switch,
   Route
 } from 'react-router-dom';
-import ConditionalMenu from '../Menu/ConditionalMenu'
 
 
 import ViagemCard from '././ViagemCard/ViagemCard'
@@ -21,31 +20,30 @@ export default function Viagens() {
     .then( (res) => setViagens(res.data) )
     .catch( (err) => console.log(err.response) )
   }, []);
-  
+
   let loadedViagens = [];
   const viagensToCards = (element, index) => <ViagemCard key={index} viagens={element} />
   
   if(viagens) loadedViagens = viagens.map(viagensToCards)
   
     return(
-      <div className="pagina-viagens">
-        <Router> 
-          <Switch>
-            <Route exact path="/viagens/">
-              <div>
-                <ConditionalMenu />
-                <p className="title">Viagens</p>
-                <div className="viagens">
-                  {loadedViagens}
-                </div>
-              </div>
-            </Route>
-            <Route path="/viagens/:id">
-              <Viagem />
-            </Route>
-          </Switch>
-        </Router>
-      </div>
+    <div className="pagina-viagens">
+    <Router> 
+      <Switch>
+        <Route exact path="/viagens/">
+          <div>
+            <p className="title">Viagens</p>
+            <div className="viagens">
+              {loadedViagens}
+            </div>
+          </div>
+        </Route>
+        <Route path="/viagens/:id">
+          <Viagem />
+        </Route>
+      </Switch>
+    </Router>
+    </div>
   )
   
   
