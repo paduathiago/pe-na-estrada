@@ -15,7 +15,7 @@ export default function Viagem( {match}) {
         setViajantes(res.data.Viajantes)
       })
       .catch( (err) => console.log(err.response) )
-  });
+  },[match.params.id]);
 
   let listedViajantes = [];
   let loadedViajantes = [];
@@ -25,15 +25,26 @@ export default function Viagem( {match}) {
     const url=`/viagens/${element.id}`;
     return <div className="viajanteNome"><Link to={url}>{element}</Link></div>
   }
+  let hasViajantes=false;
+  if(viajantes) 
+    if(viajantes.length)
+      hasViajantes=true
   
-  if(viajantes) {
-    listedViajantes = viajantes.map(viagensToLista)
-    let listSize=listedViajantes.length
-    let sizLast=listedViajantes[listSize-1].length
-    listedViajantes[listSize-1]=listedViajantes[listSize-1].substr(0,sizLast-1);
-    loadedViajantes = listedViajantes.map(viagensToDiv)
+  function viajantesEnvolvidos(){
+    if(hasViajantes){
+      listedViajantes = viajantes.map(viagensToLista)
+      let listSize=listedViajantes.length
+      let sizLast=listedViajantes[listSize-1].length
+      listedViajantes[listSize-1]=listedViajantes[listSize-1].substr(0,sizLast-1);
+      loadedViajantes = listedViajantes.map(viagensToDiv)
+      return <p>Viajantes envolvidos:{loadedViajantes}.</p>
+    } else {
+      return <p>Nennum viajante cadastrado nesta viagem.</p>
+      //Isso deve ser impossível! Toda viagem deveria ter pelo menos quem criou ela de
+      //viajante.
+    }
+    
   }
-
 
   return (
     <div>
@@ -41,7 +52,7 @@ export default function Viagem( {match}) {
       <Image width="400px" height="400px" src={viagem.imagemViagem} roundedCircle />
       <p>{viagem.descricao}</p>
       <div className="viajantes">
-        <p>Viajantes envolvidos:{loadedViajantes}.</p>
+        {viajantesEnvolvidos()}
       </div>
     </div>
   )
