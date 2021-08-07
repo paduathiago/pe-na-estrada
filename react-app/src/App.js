@@ -9,6 +9,7 @@ import {
 import Home from './components/Home/Home'
 import Login from './components/Login/Login'
 import Viagens from './components/Viagens/Viagens';
+import Me from './components/Me/Me';
 
 import './App.css'
 
@@ -25,6 +26,9 @@ function App() {
           </Route>
           <Route path="/viagens">
             <Viagens />
+          </Route>
+          <Route path="/me">
+            <Me />
           </Route>
           <Route path="/">
             <Home />
