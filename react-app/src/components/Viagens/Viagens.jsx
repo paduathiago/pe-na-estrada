@@ -38,8 +38,7 @@ export default function Viagens() {
             </div>
           </div>
         </Route>
-        <Route path="/viagens/:id">
-          <Viagem />
+        <Route path="/viagens/:id" component={Viagem}>
         </Route>
       </Switch>
     </Router>

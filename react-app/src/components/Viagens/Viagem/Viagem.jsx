@@ -2,20 +2,27 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Image } from 'react-bootstrap';
 
-export default function Viagem() {
-    const [user, setUser] = useState(false);
+export default function Viagem( {match}) {
+    const [viagem, setViagem] = useState(false);
+    const [viajantes, setViajantes] = useState(false);
     useEffect(() => {
-      axios.get('/me')
-        .then( (res) => setUser(res.data) )
+      axios.get(`/viagens/2`)
+        .then( (res) => {
+          setViagem(res.data.Viagem);
+          setViajantes(res.data.Viajantes)
+        })
         .catch( (err) => console.log(err.response) )
     }, []);
 
 
-    return (
-        <div>
-            <p>{user.nome}</p>
-            <Image width="400px" height="400px" src={user.imagemPerfil} roundedCircle />
-            <p>{user.introducao}</p>
-        </div>
-    )
+  return (
+    <div>
+      <p>{viagem.localizacao}</p>
+      <Image width="400px" height="400px" src={viagem.imagemViagem} roundedCircle />
+      <p>{viagem.descricao}</p>
+      <div>
+        
+      </div>
+    </div>
+  )
 }
