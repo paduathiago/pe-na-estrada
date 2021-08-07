@@ -21,7 +21,7 @@ export default function ViagemCard(props) {
                     <ListGroupItem>Fim: {dataFim.toLocaleDateString()}</ListGroupItem>
                 </ListGroup>
                 <Card.Body>
-                        <Link to={`/viagens/${props.viagens.id}`}>
+                        <Link to={`/viagem/${props.viagens.id}`}>
                             <Button variant="primary">
                                 Ver mais
                             </Button>

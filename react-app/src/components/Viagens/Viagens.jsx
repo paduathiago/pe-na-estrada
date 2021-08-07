@@ -46,7 +46,7 @@ export default function Viagens() {
       </div>
       <Router>
         <Switch>
-          <Route path="/viagem">
+          <Route path="/viagem/:id">
             <Viagem />
           </Route>
         </Switch>
@@ -65,7 +65,7 @@ export default function Viagens() {
       </div>
       <Router>
         <Switch>
-          <Route path="/viagem">
+          <Route path="/viagem/:id">
             <Viagem />
           </Route>
         </Switch>
