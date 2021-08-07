@@ -8,7 +8,6 @@ export default function Viagem( {match}) {
   const [viagem, setViagem] = useState(false);
   const [viajantes, setViajantes] = useState(false);
   useEffect(() => {
-    console.log(match.params.id)
     axios.get(`/viagens/${match.params.id}`)
       .then( (res) => {
         setViagem(res.data.Viagem);
@@ -19,11 +18,15 @@ export default function Viagem( {match}) {
 
   let listedViajantes = [];
   let loadedViajantes = [];
-  const viagensToLista = (element, index) => ` ${element.nome},`
+  const viagensToLista = (element, index) => {
+    return {
+      nome:` ${element.nome},`,
+      id: element.id,
+    }
+  }
   const viagensToDiv = (element, index) => {
-    console.log(element.id)
-    const url=`/viagens/${element.id}`;
-    return <div className="viajanteNome"><Link to={url}>{element}</Link></div>
+    const url=`/viajantes/${element.id}`;
+    return <div className="viajanteNome"><Link to={url}>{element.nome}</Link></div>
   }
   let hasViajantes=false;
   if(viajantes) 
@@ -34,8 +37,8 @@ export default function Viagem( {match}) {
     if(hasViajantes){
       listedViajantes = viajantes.map(viagensToLista)
       let listSize=listedViajantes.length
-      let sizLast=listedViajantes[listSize-1].length
-      listedViajantes[listSize-1]=listedViajantes[listSize-1].substr(0,sizLast-1);
+      let sizLast=listedViajantes[listSize-1].nome.length
+      listedViajantes[listSize-1].nome=listedViajantes[listSize-1].nome.substr(0,sizLast-1);
       loadedViajantes = listedViajantes.map(viagensToDiv)
       return <p>Viajantes envolvidos:{loadedViajantes}.</p>
     } else {
