@@ -6,6 +6,7 @@ const {
 const {
   isTheLastAdmin,
 }= require('../viajantes/service/ViajanteService');
+const {getViajanteAtual} = require('../viajantes/service/ViajanteService');
 
 
 function loginMiddleware(req, res, next) {
@@ -19,7 +20,7 @@ function loginMiddleware(req, res, next) {
           req.login(
             viaj,
             {session: false},
-            (error) => {
+            async (error) => {
               if (error) next(error);
               else {
                 const payload ={
@@ -40,7 +41,8 @@ function loginMiddleware(req, res, next) {
                 },
                 );
               }
-              res.status(204).end();
+              const viajante = await getViajanteAtual(viaj.id);
+              res.status(200).json(viajante);
             },
           );
         }
