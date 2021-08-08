@@ -4,15 +4,9 @@ import { useState, useEffect } from 'react';
 import MenuDeslogado from './MenuDeslogado/MenuDeslogado';
 import MenuLogado from './MenuLogado/MenuLogado';
 
-export default function ConditionalMenu(){
-  const [user, setUser] = useState(false);
-  useEffect(() => {
-    axios.get('/me')
-      .then( (res) => setUser(res.data) )
-      .catch( (err) => console.log(err.response) )
-  }, []);
+export default function ConditionalMenu({user, setUser}){
   if(user)
-    return <MenuLogado />
+    return <MenuLogado setUser={setUser}/>
   else
     return <MenuDeslogado />
 }
