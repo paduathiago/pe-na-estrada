@@ -14,25 +14,33 @@ import Viajantes from './components/Viajantes/Viajantes'
 import './App.css'
 import ConditionalMenu from './components/Menu/ConditionalMenu'
 import Footer from './components/Footer/Footer'
+import { useState, useEffect } from 'react';
 
 
 function App() {
   axios.defaults.baseURL=process.env.REACT_APP_API_URL;
   axios.defaults.withCredentials = true;
   document.title="Rotas Worldwide"
+
+  const [user, setUser] = useState(false);
+  useEffect(() => {
+    axios.get('/me')
+      .then( (res) => setUser(res.data) )
+      .catch( (err) => console.log(err.response) )
+  }, []);
   return (
     <div className="App">
       <Router>
-        <ConditionalMenu/>
+        <ConditionalMenu user={user} setUser={setUser}/>
         <Switch>
           <Route path="/login">
-            <Login />
+            <Login setUser={setUser}/>
           </Route>
           <Route path="/viagens">
             <Viagens />
           </Route>
           <Route path="/me">
-            <Me />
+            <Me user={user}/>
           </Route>
           <Route path="/viajantes">
             <Viajantes />
