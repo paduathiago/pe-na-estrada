@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
 
-export default function Form() {
+export default function Form({setUser}) {
     const history=useHistory();
     const [email,setEmail] = useState('')//As aspas são o estado inicial!
     const [senha, setSenha] = useState('')
@@ -17,7 +17,11 @@ export default function Form() {
     }
     function handleSubmit(event){
         event.preventDefault()
-        axios.post('/login',{email,senha}).then((ans)=>history.push('/')).catch((err)=>setMsg(err.response.data))
+        axios.post('/login',{email,senha}).then((res)=>{
+          setUser(res.data)
+          history.push('/')
+        })
+        .catch((err)=>setMsg(err.response.data))
     }
 
     return (
