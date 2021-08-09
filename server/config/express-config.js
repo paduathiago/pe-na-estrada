@@ -57,10 +57,10 @@ web.get('/logout', jwtMiddleware, (req, res)=>{
   }
 });
 
-const {getViajanteAtual} = require('../viajantes/service/ViajanteService');
+const {getViajanteById} = require('../viajantes/service/ViajanteService');
 
 web.get('/me', jwtMiddleware, async (req, res)=>{
-  const viajante = await getViajanteAtual(req.viajante.id);
+  const viajante = await getViajanteById(req.viajante.id);
   res.status(200).json(viajante);
 });
 
