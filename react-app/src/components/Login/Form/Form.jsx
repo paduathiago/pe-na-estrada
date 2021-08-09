@@ -42,20 +42,23 @@ export default function Form({setUser}) {
                 />
             </div>
             <div id="Password">
+              <label htmlFor='password'><p>Senha:</p></label>
               <input id="form-bottom" type="password"
                 placeholder="Digite sua senha"
                 name="password" required
                 onChange={handleSenhaChange} value={senha}
                 />
-              <span className="password">
+            </div>
+            <span className="password">
                 <Link to="/">
                   Esqueci minha senha
                 </Link>
-              </span>
-            </div>
+            </span>
+            <br className="unselectable" />
             <button type="submit">Entrar</button>
             <br className="unselectable" />
             <br className="unselectable" />
+
           </div>
         </form>
       </div>
