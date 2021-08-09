@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import ViagemCard from '../ViagemCard/ViagemCard'
 
 
-export default function ViagensList(){
+export default function ViagensList({user}){
   const [viagens, setViagens] = useState(false);
   useEffect(() => {
     axios.get('/viagens/?limit=15')
