@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import MenuModViagens from '../../Menu/MenuModViagens/MenuModViagens';
 import ViagemCard from '../ViagemCard/ViagemCard'
 
 
@@ -16,6 +17,7 @@ export default function ViagensList({user}){
   
   if(viagens) loadedViagens = viagens.map(viagensToCards)
   return <div>
+    <MenuModViagens user={user}/>
     <p className="title">Viagens</p>
     <div className="viagens">
       {loadedViagens}
