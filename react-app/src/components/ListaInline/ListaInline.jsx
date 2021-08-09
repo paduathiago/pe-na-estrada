@@ -12,7 +12,6 @@ export default function ListaInline({itens,itensEnvolvidos,ifNone,tituloAttr,rot
   }
   const itensToDiv = (element, index) => {
     const url=`/${rota}/${element.id}`;
-    console.log(element)
     return <div className="itemNome"><Link to={url}>{element.titulo}</Link></div>
   }
   let hasItens=false;
