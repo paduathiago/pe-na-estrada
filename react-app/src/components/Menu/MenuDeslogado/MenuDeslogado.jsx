@@ -15,14 +15,14 @@ export default function Menu(){
           Viagens
         </button>
       </Link>
-      <Link to="/login" className= "Link">
+      <Link to="/login">
         <button>
           Login
         </button>
       </Link>
-      <Link>
+      <Link to="/registrar">
         <button>
-          Registrar-se
+          Registrar
         </button>
       </Link>
     </div>
