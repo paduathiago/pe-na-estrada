@@ -19,7 +19,11 @@ class ViajanteService {
     );
   }
   async getViajanteById(id) {
-    const viajante= await Viajante.findByPk(id,);
+    const viajante= await Viajante.findByPk(id,{
+      attributes: {
+        exclude: ['senhaHash', 'createdAt', 'updatedAt','isAdmin'],
+      },
+    });
     const viagens= await viajante.getViagens();
 
     return {
@@ -41,7 +45,7 @@ class ViajanteService {
   async getViajanteAtual(id) {
     return await Viajante.findByPk(id, {
       attributes: {
-        exclude: ['senhaHash', 'createdAt', 'updatedAt'],
+        exclude: ['senhaHash', 'createdAt', 'updatedAt','isAdmin'],
       },
     });
   }
@@ -49,7 +53,13 @@ class ViajanteService {
     const numAdmin=await Viajante.count(
       {where: {'isAdmin': 1}},
     );
-    return numAdmin==1;
+    if(numAdmin==1){
+      const viajante=await Viajante.findByPk(id)
+      if(viajante.id==id)
+        return false;
+    }
+    return true
+      
   }
 }
 
