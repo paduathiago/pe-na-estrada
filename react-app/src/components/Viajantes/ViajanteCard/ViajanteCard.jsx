@@ -1,11 +1,8 @@
 import React from 'react'
-import { ListGroup, Card, Button, ListGroupItem} from 'react-bootstrap';
+import { Card, Button} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 export default function ViajanteCard(props) {
-
-  let dataInicio = new Date(props.viajantes.inicio)
-  let dataFim = new Date(props.viajantes.fim)
   return (
     <div className="viajante-card">
       <Card style={{ width: '16vw'}}>
