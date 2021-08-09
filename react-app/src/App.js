@@ -14,6 +14,7 @@ import Viajantes from './components/Viajantes/Viajantes'
 import './App.css'
 import ConditionalMenu from './components/Menu/ConditionalMenu'
 import Footer from './components/Footer/Footer'
+import Registrar from './components/Registrar/Registrar'
 import { useState, useEffect } from 'react';
 
 
@@ -44,6 +45,9 @@ function App() {
           </Route>
           <Route path="/viajantes">
             <Viajantes />
+          </Route>
+          <Route path="/registrar">
+            <Registrar/>
           </Route>
           <Route path="/">
             <Home />
