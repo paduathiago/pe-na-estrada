@@ -38,13 +38,13 @@ function App() {
             <Login setUser={setUser}/>
           </Route>
           <Route path="/viagens">
-            <Viagens />
+            <Viagens user={user}/>
           </Route>
           <Route path="/me">
             <Me user={user}/>
           </Route>
           <Route path="/viajantes">
-            <Viajantes />
+            <Viajantes user={user}/>
           </Route>
           <Route path="/registrar">
             <Registrar/>
