@@ -57,11 +57,6 @@ export default function Form() {
                 onChange={handleSenhaChange} value={senha}
                 />
             </div>
-            <span className="password">
-                <Link to="/">
-                  Esqueci minha senha
-                </Link>
-            </span>
             <br className="unselectable" />
             <button type="submit">Entrar</button>
             <br className="unselectable" />
