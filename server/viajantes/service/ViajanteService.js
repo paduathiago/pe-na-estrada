@@ -21,7 +21,7 @@ class ViajanteService {
   async getViajanteById(id) {
     const viajante= await Viajante.findByPk(id,{
       attributes: {
-        exclude: ['senhaHash', 'createdAt', 'updatedAt','isAdmin'],
+        exclude: ['senhaHash', 'createdAt', 'updatedAt'],
       },
     });
     const viagens= await viajante.getViagens();
@@ -45,7 +45,7 @@ class ViajanteService {
   async getViajanteAtual(id) {
     return await Viajante.findByPk(id, {
       attributes: {
-        exclude: ['senhaHash', 'createdAt', 'updatedAt','isAdmin'],
+        exclude: ['senhaHash', 'createdAt', 'updatedAt'],
       },
     });
   }
