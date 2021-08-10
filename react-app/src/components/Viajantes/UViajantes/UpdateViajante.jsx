@@ -36,12 +36,18 @@ export default function UpdateViajante({match,user}){
   }
   function handleSubmit(event){
     event.preventDefault()
-    axios.put(`/viajantes/${match.params.id}`,{nome,email,isAdmin,introducao,imagemPerfil,
-    senha}).then(()=>{
-      history.push(`/viajantes/${match.params.id}`)
-      //window.location.reload()
-    })
-    .catch((err)=>setMsg(err.response.data))
+    if(!senha)
+      axios.put(`/viajantes/${match.params.id}`,{nome,email,isAdmin,introducao,imagemPerfil,
+      }).then(()=>{
+        history.push(`/viajantes/${match.params.id}`)
+      })
+      .catch((err)=>setMsg(err.response.data))
+    else
+      axios.put(`/viajantes/${match.params.id}`,{nome,email,isAdmin,introducao,imagemPerfil,
+      senha}).then(()=>{
+        history.push(`/viajantes/${match.params.id}`)
+      })
+      .catch((err)=>setMsg(err.response.data))
   }
   return <div className="UpdateViajante" onSubmit={handleSubmit}>
 <form method="POST">
@@ -71,6 +77,12 @@ export default function UpdateViajante({match,user}){
          name="imagemPerfil" onChange={handleChange(setImagemPerfil)} value={imagemPerfil}
         />
       </div>
+      <div id="isAdmin">
+        <label htmlFor='isAdmin'><p>É admin?:</p></label>
+        <input type='text' placeholder="Digite se o usuário deve ser admin" name="isAdmin"
+        required onChange={handleChange(setIsAdmin)} value={isAdmin}
+        />
+      </div>
       <div id="Email">
         <label htmlFor='email'><p>E-mail:</p></label>
         <input type='text' placeholder="Digite seu email" name="email"
@@ -80,8 +92,8 @@ export default function UpdateViajante({match,user}){
       <div id="Password">
         <label htmlFor='password'><p>Senha:</p></label>
         <input id="form-bottom"
-        placeholder="Digite sua senha"
-        name="password" required
+        placeholder="Senha (vazio para não mudar)"
+        name="password"
         onChange={handleChange(setSenha)} value={senha}
         />
         <br className="unselectable" />
