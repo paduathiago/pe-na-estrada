@@ -17,7 +17,7 @@ export default function Viajante( {match,user}) {
       .catch( (err) => console.log(err.response) )
   },[match.params.id]);
   if(!user)
-    <p>Você precisa estar logado para acessar essa página!</p>
+    return <p>Você precisa estar logado para acessar essa página!</p>
   else
     return (
       <div>
