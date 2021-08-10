@@ -19,9 +19,15 @@ export default function Form({setUser}) {
         event.preventDefault()
         axios.post('/login',{email,senha}).then((res)=>{
           axios.get('/me')
-          .then( (res) => setUser(res.data) )
+          .then( (res) => {
+            let viajante=res.data.Viajante
+            const viagens=res.data.Viagens
+            viajante.Viagens=viagens
+            setUser(viajante) 
+            history.push('/me')
+          })
           .catch( (err) => console.log(err.response) )
-          history.push('/')
+          
         })
         .catch((err)=>setMsg(err.response.data))
     }
