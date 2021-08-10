@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
 
-export default function RegForm({setUser}) {
+export default function RegForm() {
     const history=useHistory();
     const [email,setEmail] = useState('')//As aspas são o estado inicial!
     const [senha, setSenha] = useState('')

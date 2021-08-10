@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
 
-export default function Form({setUser}) {
+export default function Form() {
     const history=useHistory();
     const [email,setEmail] = useState('')//As aspas são o estado inicial!
     const [senha, setSenha] = useState('')
@@ -23,7 +23,7 @@ export default function Form({setUser}) {
             let viajante=res.data.Viajante
             const viagens=res.data.Viagens
             viajante.Viagens=viagens
-            setUser(viajante) 
+            history.push('/reloadUser')
             history.push('/me')
           })
           .catch( (err) => console.log(err.response) )

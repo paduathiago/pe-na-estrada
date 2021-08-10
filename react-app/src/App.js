@@ -38,10 +38,10 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <ConditionalMenu user={user} setUser={setUser}/>
+        <ConditionalMenu user={user}/>
         <Switch>
           <Route path="/login">
-            <Login user={user} setUser={setUser}/>
+            <Login user={user}/>
           </Route>
           <Route path="/viagens">
             <Viagens user={user}/>
@@ -55,7 +55,8 @@ function App() {
           <Route path="/registrar">
             <Registrar user={user}/>
           </Route>
-          <Route path="/reloadUser" component={UserReloader}/>
+          <Route path="/reloadUser/:url" component={({match})=>UserReloader({setUser,match})}/>
+          <Route exact path="/reloadUser/" component={()=>UserReloader({setUser})}/>
           <Route path="/">
             <Home />
           </Route>

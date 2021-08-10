@@ -1,7 +1,7 @@
 import Welcome from './Welcome/Welcome';
 import Form from './Form/Form';
 
-export default function Login({user,setUser}) {
+export default function Login({user}) {
   if(user)
     return <p>Você já está logado!</p>
   else
@@ -12,7 +12,7 @@ export default function Login({user,setUser}) {
           <Welcome />
         </div>
         <div className="right">
-          <Form setUser={setUser}/>
+          <Form/>
         </div>
       </section>
     </div>

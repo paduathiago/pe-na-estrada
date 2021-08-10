@@ -20,8 +20,7 @@ export default function CreateViagem({user}){
     event.preventDefault()
     axios.post('/viagens',{localizacao,descricao,imagemViagem,inicio,fim,
       viajantes}).then(()=>{
-        history.push('/viagens')
-        window.location.reload()//reload viajante
+        history.push(`/reloadUser/viagens`)
     })
     .catch((err)=>setMsg(err.response.data))
   } 
