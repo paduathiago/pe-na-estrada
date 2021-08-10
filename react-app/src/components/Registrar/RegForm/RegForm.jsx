@@ -26,7 +26,7 @@ export default function RegForm({setUser}) {
           .catch((err)=>setMsg(err.response.data))
         }
         const imgAlt="http://robohash.org/"+encodeURIComponent(`${nome}`)
-        if(imagemPerfil==''){
+        if(imagemPerfil===''){
           postar(imgAlt)
         }else{
           postar(imagemPerfil)
