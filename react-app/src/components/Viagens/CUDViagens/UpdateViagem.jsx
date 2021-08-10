@@ -2,7 +2,6 @@
 export default function UpdateViagem({match,user}){
   let autorizado=false
   if(user){
-    console.log(user.isAdmin)
     if(user.isAdmin)
       autorizado=true
     for(let viag in user.Viagens)
