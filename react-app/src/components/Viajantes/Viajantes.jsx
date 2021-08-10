@@ -8,12 +8,12 @@ import {
 
 import ViajanteCard from '././ViajanteCard/ViajanteCard'
 import Viajante from './Viajante/Viajante'
+import UpdateViajante from './UViajantes/UpdateViajante'
 
 import './Viajantes.css';
 
 
 export default function Viajantes({user}) {
-    
   const [viajantes, setViajantes] = useState(false);
   useEffect(() => {
     axios.get('/viajantes/?limit=15')
@@ -40,7 +40,8 @@ export default function Viajantes({user}) {
     <div className="pagina-viajantes">
       <Switch>
         <Route exact path={`/viajantes/`} component={viajantesList}/>
-        <Route path={`/viajantes/:id`} component={Viajante}/>
+        <Route path={`/viajantes/:id/editar`} component={({match})=>UpdateViajante({match,user})}/>
+        <Route path={`/viajantes/:id`} component={({match})=>Viajante({match,user})}/>
       </Switch>
     </div>
   )

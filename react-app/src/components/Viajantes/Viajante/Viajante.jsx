@@ -3,8 +3,9 @@ import React, { useEffect, useState } from 'react'
 import { Image } from 'react-bootstrap';
 import './Viajante.css'
 import ListaInline from '../../ListaInline/ListaInline'
+import MenuModViajante from '../../Menu/MenuModViajante/MenuModViajante'
 
-export default function Viajante( {match}) {
+export default function Viajante( {match,user}) {
   const [viajante, setViajante] = useState(false);
   const [viagens, setViagens] = useState(false);
   useEffect(() => {
@@ -18,6 +19,7 @@ export default function Viajante( {match}) {
   
   return (
     <div>
+      <MenuModViajante user={user} match={match}/>
       <p>{viajante.nome}</p>
       <Image width="400px" height="400px" src={viajante.imagemPerfil} roundedCircle />
       <p>{viajante.introducao}</p>
