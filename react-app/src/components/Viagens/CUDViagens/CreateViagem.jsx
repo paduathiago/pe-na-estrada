@@ -6,7 +6,7 @@ import axios from 'axios';
 export default function CreateViagem({user}){
   
   const history=useHistory();
-  const [msg,setMsg]=useState('Submeta seus dados para acessar sua conta:')
+  const [msg,setMsg]=useState('Submeta os dados para criar a viagem:')
   const [localizacao,setLocal]=useState('')
   const [descricao,setDescricao]=useState('')
   const [imagemViagem,setImagem]=useState('')
@@ -23,7 +23,7 @@ export default function CreateViagem({user}){
       history.push('/')
     })
     .catch((err)=>setMsg(err.response.data))
-} 
+  } 
   if(!user)
     return <p>Você precisa estar logado para acessar essa página!</p>
   else
