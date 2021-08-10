@@ -26,24 +26,24 @@ export default function Viajantes({user}) {
   
   if(viajantes) loadedViajantes = viajantes.map(viajantesToCards)
   function viajantesList(){
-    return <div>
-    <p className="title">Viajantes</p>
-    <div className="viajantes">
-      {loadedViajantes}
-    </div>
-  </div>
+    if(!user)
+      return <p>Você precisa estar logado para acessar essa página!</p>
+    else
+      return <div>
+        <p className="title">Viajantes</p>
+        <div className="viajantes">
+          {loadedViajantes}
+        </div>
+      </div>
   }
-  if(!user)
-    return <p>Você precisa estar logado para acessar essa página!</p>
-  else
-    return(
-    <div className="pagina-viajantes">
-      <Switch>
-        <Route exact path={`/viajantes/`} component={viajantesList}/>
-        <Route path={`/viajantes/:id/editar`} component={({match})=>UpdateViajante({match,user})}/>
-        <Route path={`/viajantes/:id`} component={({match})=>Viajante({match,user})}/>
-      </Switch>
-    </div>
+  return(
+  <div className="pagina-viajantes">
+    <Switch>
+      <Route exact path={`/viajantes/`} component={viajantesList}/>
+      <Route path={`/viajantes/:id/editar`} component={({match})=>UpdateViajante({match,user})}/>
+      <Route path={`/viajantes/:id`} component={({match})=>Viajante({match,user})}/>
+    </Switch>
+  </div>
   )
   
   

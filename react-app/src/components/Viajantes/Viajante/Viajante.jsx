@@ -16,17 +16,19 @@ export default function Viajante( {match,user}) {
       })
       .catch( (err) => console.log(err.response) )
   },[match.params.id]);
-  
-  return (
-    <div>
-      <MenuModViajante user={user} match={match}/>
-      <p>{viajante.nome}</p>
-      <Image width="400px" height="400px" src={viajante.imagemPerfil} roundedCircle />
-      <p>{viajante.introducao}</p>
-      <div className="viagens">
-      <ListaInline itens={viagens} ifNone="Nenhuma viagem cadastrada."
-        itensEnvolvidos="Viagens envolvido(a)" tituloAttr="localizacao" rota="viagens"/>
+  if(!user)
+    <p>Você precisa estar logado para acessar essa página!</p>
+  else
+    return (
+      <div>
+        <MenuModViajante user={user} match={match}/>
+        <p>{viajante.nome}</p>
+        <Image width="400px" height="400px" src={viajante.imagemPerfil} roundedCircle />
+        <p>{viajante.introducao}</p>
+        <div className="viagens">
+        <ListaInline itens={viagens} ifNone="Nenhuma viagem cadastrada."
+          itensEnvolvidos="Viagens envolvido(a)" tituloAttr="localizacao" rota="viagens"/>
+        </div>
       </div>
-    </div>
-  )
+  ) 
 }
