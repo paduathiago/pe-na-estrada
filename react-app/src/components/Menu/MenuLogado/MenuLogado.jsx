@@ -9,7 +9,7 @@ export default function Menu({setUser}){
   function logout(){
     axios.get('/logout').catch((err)=>console.log(err.response.data));
     history.push('/')
-    window.location.reload()
+    //window.location.reload()
     setUser(false)
   }
 

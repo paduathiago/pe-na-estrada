@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom'
+import axios from 'axios'
+import { useHistory } from 'react-router-dom';
 
 export default function MenuModViagens({match,user}){
+  const history=useHistory();
   let autorizado=false
   if(user){
     if(user.isAdmin)
@@ -12,6 +15,10 @@ export default function MenuModViagens({match,user}){
           autorizado=true
           break;
         }
+  }
+  function deleteViagem(){
+    axios.delete(`/viagens/${match.params.id}`).then(()=>history.push('/viagens'))
+    .catch((err)=>console.log(err.response.data));
     
   }
   if(autorizado)
@@ -21,7 +28,7 @@ export default function MenuModViagens({match,user}){
           Editar como {user.nome}
         </button>
       </Link>
-      <button onClick="window.alert('CERTEZA BIXO?')">
+      <button onClick={deleteViagem}>
         Deletar viagem
       </button>
     </div>
