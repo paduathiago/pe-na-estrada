@@ -18,9 +18,9 @@ export default function Viagens({user}) {
   <div className="pagina-viagens">
     <Switch>
       <Route exact path={`/viagens/`} component={()=>ViagensList({user})}/>
-      <Route exact path={`/viagens/criar`} component={CreateViagem}/>
-      <Route path={`/viagens/:id/editar`} component={UpdateViagem}/>
-      <Route path={`/viagens/:id/remover`} component={RemoveViagem}/>
+      <Route exact path={`/viagens/criar`} component={()=>CreateViagem({user})}/>
+      <Route path={`/viagens/:id/editar`} component={()=>UpdateViagem({user})}/>
+      <Route path={`/viagens/:id/remover`} component={()=>RemoveViagem({user})}/>
       <Route path={`/viagens/:id`} component={Viagem}/>
     </Switch>
   </div>
