@@ -12,7 +12,11 @@ export default function MenuModViagem({match,user}){
     autorizado=true
   
   function deleteViajante(){
-    axios.delete(`/viajantes/${match.params.id}`).then(()=>history.push('/reloadUser/viajantes'))
+    axios.delete(`/viajantes/${match.params.id}`).then(()=>{
+      axios.get('/logout').then(()=>{
+        history.push('/reloadUser/')
+      }).catch((err)=>console.log(err.response.data));
+    })
     .catch((err)=>console.log(err.response.data));
     
   }
