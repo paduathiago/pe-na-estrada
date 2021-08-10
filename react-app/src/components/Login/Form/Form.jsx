@@ -18,7 +18,9 @@ export default function Form({setUser}) {
     function handleSubmit(event){
         event.preventDefault()
         axios.post('/login',{email,senha}).then((res)=>{
-          setUser(res.data)
+          axios.get('/me')
+          .then( (res) => setUser(res.data) )
+          .catch( (err) => console.log(err.response) )
           history.push('/')
         })
         .catch((err)=>setMsg(err.response.data))

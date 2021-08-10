@@ -13,7 +13,7 @@ import './Viagens.css';
 
 
 export default function Viagens({user}) {
-  
+  console.log(user)
   return(
   <div className="pagina-viagens">
     <Switch>
