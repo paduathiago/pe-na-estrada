@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitter&display=swap');
+
+.Welcome{
+    background-color: #3f5268;
+}
+
+.saudacao{
+    padding-top: 30px;
+    padding-bottom: 10px;
+    font-family: 'Bitter', serif;
+    color: #f0f7ff;
+    font-size: larger;
+}

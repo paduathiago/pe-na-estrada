@@ -1,5 +1,6 @@
 import Welcome from './Welcome/Welcome';
 import Form from './Form/Form';
+import './Login.css'
 
 export default function Login({user}) {
   if(user)

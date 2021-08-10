@@ -2,6 +2,7 @@ import Logo from '../../../assets/logo.png'
 import { Link, useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
+import './Form.css';
 
 export default function Form() {
     const history=useHistory();
