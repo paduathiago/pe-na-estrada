@@ -20,7 +20,7 @@ export default function Viagens({user}) {
       <Route exact path={`/viagens/criar`} component={()=>CreateViagem({user})}/>
       <Route path={`/viagens/:id/editar`} component={({match})=>UpdateViagem({match,user})}/>
       <Route path={`/viagens/:id/remover`} component={({match})=>RemoveViagem({match,user})}/>
-      <Route path={`/viagens/:id`} component={Viagem}/>
+      <Route path={`/viagens/:id`} component={({match})=>Viagem({match,user})}/>
     </Switch>
   </div>
   )

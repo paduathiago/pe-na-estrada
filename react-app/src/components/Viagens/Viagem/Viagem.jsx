@@ -3,9 +3,10 @@ import React, { useEffect, useState } from 'react'
 import { Image } from 'react-bootstrap';
 import './Viagem.css'
 import ListaInline from '../../ListaInline/ListaInline'
+import MenuModViagem from '../../Menu/MenuModViagem/MenuModViagem';
 
 
-export default function Viagem( {match}) {
+export default function Viagem( {user, match}) {
   const [viagem, setViagem] = useState(false);
   const [viajantes, setViajantes] = useState(false);
   useEffect(() => {
@@ -18,7 +19,8 @@ export default function Viagem( {match}) {
   },[match.params.id]);
 
   return (
-    <div>
+    <div className="Viagem">
+      <MenuModViagem user={user} match={match}/>
       <p>{viagem.localizacao}</p>
       <Image width="400px" height="400px" src={viagem.imagemViagem} roundedCircle />
       <p>{viagem.descricao}</p>
