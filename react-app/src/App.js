@@ -16,6 +16,7 @@ import ConditionalMenu from './components/Menu/ConditionalMenu'
 import Footer from './components/Footer/Footer'
 import Registrar from './components/Registrar/Registrar'
 import { useState, useEffect } from 'react';
+import UserReloader from './components/UserReloader/UserReloader';
 
 
 function App() {
@@ -54,6 +55,7 @@ function App() {
           <Route path="/registrar">
             <Registrar user={user}/>
           </Route>
+          <Route path="/reloadUser" component={UserReloader}/>
           <Route path="/">
             <Home />
           </Route>
