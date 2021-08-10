@@ -8,6 +8,8 @@ export default function MenuModViagem({match,user}){
   if(user)
     if(user.isAdmin)
       autorizado=true
+  if(user.id==match.params.id)
+    autorizado=true
   
   function deleteViajante(){
     axios.delete(`/viajantes/${match.params.id}`).then(()=>history.push('/reloadUser/viajantes'))
