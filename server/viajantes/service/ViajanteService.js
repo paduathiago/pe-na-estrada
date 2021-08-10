@@ -56,9 +56,9 @@ class ViajanteService {
     if(numAdmin==1){
       const viajante=await Viajante.findByPk(id)
       if(viajante.id==id)
-        return false;
+        return true;
     }
-    return true
+    return false
       
   }
 }
