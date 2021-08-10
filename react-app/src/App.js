@@ -35,7 +35,7 @@ function App() {
         <ConditionalMenu user={user} setUser={setUser}/>
         <Switch>
           <Route path="/login">
-            <Login setUser={setUser}/>
+            <Login user={user} setUser={setUser}/>
           </Route>
           <Route path="/viagens">
             <Viagens user={user}/>
@@ -44,10 +44,10 @@ function App() {
             <Me user={user}/>
           </Route>
           <Route path="/viajantes">
-            <Viajantes/>
+            <Viajantes user={user}/>
           </Route>
           <Route path="/registrar">
-            <Registrar/>
+            <Registrar user={user}/>
           </Route>
           <Route path="/">
             <Home />

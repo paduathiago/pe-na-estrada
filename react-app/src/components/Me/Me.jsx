@@ -12,17 +12,20 @@ export default function Me({user}) {
       })
       .catch( (err) => console.log(err.response) )
     },[user.id]);
-  return (
-    <div>
-      <p>{user.nome}</p>
-      <Image width="400px" height="400px" src={user.imagemPerfil} roundedCircle />
-      <p>{user.introducao}</p>
-      <div className="viagens">
-        <ListaInline itens={viagens} ifNone="Nenhuma viagem cadastrada."
-          itensEnvolvidos="Viagens envolvido(a)" tituloAttr="localizacao" 
-          rota="viagens"/>
+  if(!user)
+    return <p>Você precisa estar logado para acessar essa página!</p>
+  else
+    return (
+      <div>
+        <p>{user.nome}</p>
+        <Image width="400px" height="400px" src={user.imagemPerfil} roundedCircle />
+        <p>{user.introducao}</p>
+        <div className="viagens">
+          <ListaInline itens={viagens} ifNone="Nenhuma viagem cadastrada."
+            itensEnvolvidos="Viagens envolvido(a)" tituloAttr="localizacao" 
+            rota="viagens"/>
+        </div>
       </div>
-    </div>
 
-  )
+    )
 }

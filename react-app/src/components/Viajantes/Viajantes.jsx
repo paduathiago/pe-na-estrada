@@ -12,7 +12,7 @@ import Viajante from './Viajante/Viajante'
 import './Viajantes.css';
 
 
-export default function Viajantes() {
+export default function Viajantes({user}) {
     
   const [viajantes, setViajantes] = useState(false);
   useEffect(() => {
@@ -33,6 +33,9 @@ export default function Viajantes() {
     </div>
   </div>
   }
+  if(!user)
+    return <p>Você precisa estar logado para acessar essa página!</p>
+  else
     return(
     <div className="pagina-viajantes">
       <Switch>
