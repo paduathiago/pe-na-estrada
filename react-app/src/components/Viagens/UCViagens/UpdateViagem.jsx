@@ -12,6 +12,8 @@ export default function UpdateViagem({match,user}){
   const [inicio,setInicio]=useState('')
   const [fim,setFinal]=useState('')
   const [viajantes,setViajantes]=useState('')
+  const [addViajantes,setAddViajantes]=useState('[ ]')
+  const [remViajantes,setRemViajantes]=useState('[ ]')
   useEffect(() => {
     axios.get(`/viagens/${match.params.id}`)
       .then( (res) => {
@@ -50,7 +52,7 @@ export default function UpdateViagem({match,user}){
     function handleSubmit(event){
       event.preventDefault()
       axios.put(`/viagens/${match.params.id}`,{localizacao,descricao,imagemViagem,inicio,fim,
-        viajantes}).then(()=>{
+        addViajantes,remViajantes}).then(()=>{
           history.push(`/viagens/${match.params.id}`)
           //window.location.reload()
       })
@@ -97,9 +99,18 @@ export default function UpdateViagem({match,user}){
               />
           </div>
           <div id="viajantes">
-            <label htmlFor='viajantes'><p>Lista de viajantes:</p></label>
-            <input type='text' placeholder="Digite a lista de viajantes" name="viajantes"
-              required onChange={handleChange(setViajantes)} value={viajantes}
+            <p>Lista de viajantes:{viajantes}</p>
+          </div>
+          <div id="addViajantes">
+            <label htmlFor='addViajantes'><p>Viajantes a adicionar:</p></label>
+            <input type='text' placeholder="Digite os viajantes a adicionar" name="addViajantes"
+              required onChange={handleChange(setAddViajantes)} value={addViajantes}
+              />
+          </div>
+          <div id="remViajantes">
+            <label htmlFor='remViajantes'><p>Viajantes a remover:</p></label>
+            <input type='text' placeholder="Digite os viajantes a remover" name="remViajantes"
+              required onChange={handleChange(setRemViajantes)} value={remViajantes}
               />
           </div>
           <button type="submit">Editar viagem</button>
