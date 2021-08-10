@@ -23,8 +23,7 @@ export default function Form() {
             let viajante=res.data.Viajante
             const viagens=res.data.Viagens
             viajante.Viagens=viagens
-            history.push('/reloadUser')
-            history.push('/me')
+            history.push('/reloadUser/me')
           })
           .catch( (err) => console.log(err.response) )
           
