@@ -26,7 +26,9 @@ export default function UpdateViajante({match,user}){
   },[match.params.id]);
   let autorizado=false
   if(user)
-    if(user.id==match.params.id)
+    if(user.isAdmin)
+      autorizado=true
+    else if(user.id==match.params.id)
       autorizado=true
   if(!autorizado)
     return <p>Você não está autorizado a acessar essa página!</p>
