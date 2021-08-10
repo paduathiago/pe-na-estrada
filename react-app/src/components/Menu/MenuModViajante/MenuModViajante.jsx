@@ -5,13 +5,12 @@ import { useHistory } from 'react-router-dom';
 export default function MenuModViagem({match,user}){
   const history=useHistory();
   let autorizado=false
-  console.log(user)
   if(user)
     if(user.isAdmin)
       autorizado=true
   
   function deleteViajante(){
-    axios.delete(`/viajantes/${match.params.id}`).then(()=>history.push('/viajantes'))
+    axios.delete(`/viajantes/${match.params.id}`).then(()=>history.push('/reloadUser/viajantes'))
     .catch((err)=>console.log(err.response.data));
     
   }
