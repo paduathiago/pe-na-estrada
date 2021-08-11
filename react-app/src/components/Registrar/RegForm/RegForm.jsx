@@ -2,6 +2,7 @@ import Logo from '../../../assets/logo.png'
 import { Link, useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
+import './RegForm.css';
 
 export default function RegForm() {
     const history=useHistory();
@@ -76,11 +77,6 @@ export default function RegForm() {
                 onChange={handleChange(setSenha)} value={senha}
                 />
             <br className="unselectable" />
-            <span className="password">
-              <Link to="/">
-                Esqueci minha senha
-              </Link>
-            </span>
             </div>
             <button type="submit">Registrar</button>
             <br className="unselectable" />

@@ -1,3 +1,4 @@
+import './RegWelcome.css';
 
 export default function RegWelcome() {
   return (
