@@ -12,14 +12,21 @@ export default function MenuModViagem({match,user}){
     autorizado=true
   
   function deleteViajante(){
+    if(match.params.id == user.id){
+      axios.delete(`/viajantes/${match.params.id}`).then(()=>{
+        axios.get('/logout').then(()=>{
+          history.push('/reloadUser/')
+        }).catch((err)=>console.log(err.response.data));
+      })
+      .catch((err)=>console.log(err.response.data));
+   }
+   else{
     axios.delete(`/viajantes/${match.params.id}`).then(()=>{
-      axios.get('/logout').then(()=>{
-        history.push('/reloadUser/')
+      history.push('/reloadUser/viajantes')
       }).catch((err)=>console.log(err.response.data));
-    })
-    .catch((err)=>console.log(err.response.data));
-    
+   }
   }
+
   if(autorizado)
     return <div className="MenuUD">
       <Link to={`/viajantes/${match.params.id}/editar`}>
