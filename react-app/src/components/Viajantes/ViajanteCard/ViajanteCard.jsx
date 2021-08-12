@@ -15,7 +15,7 @@ export default function ViajanteCard(props) {
           </Card.Text>
         </Card.Body>
         <Card.Body>
-          <Link to={`/viajantes/${props.viajantes.id}`}>
+          <Link to={(props.viajantes.id == props.user.id)?`/me`:`/viajantes/${props.viajantes.id}`}>
             <Button variant="primary">
                 Ver mais
             </Button>

@@ -57,13 +57,13 @@ export default function CreateViagem({user}){
         </div>
         <div id="inicio">
           <label htmlFor='inicio'><p>Data de início:</p></label>
-          <input type='text' placeholder="Digite a data de início" name="inicio"
+          <input type='date' placeholder="Digite a data de início" name="inicio"
             required onChange={handleChange(setInicio)} value={inicio}
             />
         </div>
         <div id="fim">
           <label htmlFor='fim'><p>Data final:</p></label>
-          <input type='text' placeholder="Digite a data fim" name="fim"
+          <input type='date' placeholder="Digite a data fim" name="fim"
             required onChange={handleChange(setFinal)} value={fim}
             />
         </div>

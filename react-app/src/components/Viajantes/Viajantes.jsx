@@ -22,7 +22,7 @@ export default function Viajantes({user}) {
   }, []);
 
   let loadedViajantes = [];
-  const viajantesToCards = (element, index) => <ViajanteCard key={index} viajantes={element} />
+  const viajantesToCards = (element, index) => <ViajanteCard key={index} viajantes={element} user = {user} />
   
   if(viajantes) loadedViajantes = viajantes.map(viajantesToCards)
   function viajantesList(){
