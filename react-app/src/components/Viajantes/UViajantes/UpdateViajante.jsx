@@ -12,6 +12,10 @@ export default function UpdateViajante({match,user}){
   const [introducao,setIntroducao]=useState('')
   const [imagemPerfil,setImagemPerfil]=useState('')
   const [senha,setSenha]=useState('')
+ 
+
+
+
   useEffect(() => {
   axios.get(`/viajantes/${match.params.id}`)
     .then( (res) => {
@@ -51,6 +55,18 @@ export default function UpdateViajante({match,user}){
       })
       .catch((err)=>setMsg(err.response.data))
   }
+
+  var isAdminForm;
+  if (user.isAdmin) {
+    isAdminForm = (         
+    <div id="isAdmin">
+    <label htmlFor='isAdmin'><p>É admin?:</p></label>
+    <input type='text' placeholder="Digite se o usuário deve ser admin" name="isAdmin"
+    required onChange={handleChange(setIsAdmin)} value={isAdmin}
+    />
+  </div>);
+  } 
+
     return <div className="UpdateViajante" onSubmit={handleSubmit}>
   <form method="POST">
         <div className="container2">
@@ -80,10 +96,7 @@ export default function UpdateViajante({match,user}){
           />
         </div>
         <div id="isAdmin">
-          <label htmlFor='isAdmin'><p>É admin?:</p></label>
-          <input type='text' placeholder="Digite se o usuário deve ser admin" name="isAdmin"
-          required onChange={handleChange(setIsAdmin)} value={isAdmin}
-          />
+          {isAdminForm}
         </div>
         <div id="Email">
           <label htmlFor='email'><p>E-mail:</p></label>
