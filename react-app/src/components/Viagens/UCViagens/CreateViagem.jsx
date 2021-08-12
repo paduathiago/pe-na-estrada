@@ -1,5 +1,5 @@
 import Logo from '../../../assets/logo.png'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
@@ -13,6 +13,31 @@ export default function CreateViagem({user}){
   const [inicio,setInicio]=useState('')
   const [fim,setFinal]=useState('')
   const [viajantes,setViajantes]=useState('')
+  const [viajantesBack,setViajantesBack]=useState('')
+  const [idsFiltrados,setIdsFiltrados]=useState('')
+  useEffect(() => {
+    axios.get('/viajantes/')
+    .then( (res) => setViajantesBack(res.data) )
+    .catch( (err) => console.log(err.response) )
+  }, []);
+
+  function handleListaViajantes(event){
+    let nomesViajantes = viajantesBack.map(value => value.nome)
+    let idsViajantes = viajantesBack.map(value => value.id)
+    let nomesId = {}
+    for (let index = 0; index < nomesViajantes.length; index++) {
+      nomesId[nomesViajantes[index]] = idsViajantes[index]
+    }
+    let nomesFiltrados = nomesViajantes.filter(el => el.toLowerCase().indexOf(event.target.value.toLowerCase()) > -1);
+    
+    let idsViajantesSelecionados = [];
+    for (let index = 0; index < nomesFiltrados.length; index++) {
+      idsViajantesSelecionados.push(nomesId[nomesFiltrados[index]])
+    }
+    console.log(idsViajantesSelecionados)
+    setIdsFiltrados(idsViajantesSelecionados)
+  }
+
   function handleChange(setProp){
     return (event)=>setProp(event.target.value)
   }
@@ -70,7 +95,7 @@ export default function CreateViagem({user}){
         <div id="viajantes">
           <label htmlFor='viajantes'><p>Lista de viajantes:</p></label>
           <input type='text' placeholder="Digite a lista de viajantes" name="viajantes"
-            required onChange={handleChange(setViajantes)} value={viajantes}
+            required onChange={handleChange(setViajantes)} onInput={handleListaViajantes} value={viajantes}
             />
         </div>
         <button type="submit">Registrar viagem</button>

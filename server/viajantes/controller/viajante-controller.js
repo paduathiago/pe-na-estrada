@@ -53,6 +53,15 @@ viajanteRouter.get('/', async (req, res)=>{
   }
 });
 
+viajanteRouter.get('/', async (req, res)=>{
+  try {// E se req.query.limit nao existir?
+    const viajantes =await getAllViajantes();
+    res.json(viajantes).status(200);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 viajanteRouter.get('/:id', async (req, res) =>{
   try {// E se o ID for invalido?
     const viajanteId = req.params.id;

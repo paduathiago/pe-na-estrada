@@ -18,6 +18,9 @@ class ViajanteService {
       {limit: numeroViajantes, order: [['updatedAt', 'DESC']], raw: true},
     );
   }
+  async getAllViajantes() {
+    return await Viajante.findAll();
+  }
   async getViajanteById(id) {
     const viajante= await Viajante.findByPk(id,{
       attributes: {
