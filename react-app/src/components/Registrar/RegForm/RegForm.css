@@ -1,3 +1,11 @@
 button{
-    margin-top: 10px;
+    margin-top: 0.5vw;
+}
+
+.RegForm{
+    font-size: 1.2vw;
+}
+
+.container2{
+    height: 100vw;
 }
