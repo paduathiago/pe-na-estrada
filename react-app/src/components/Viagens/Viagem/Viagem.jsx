@@ -21,9 +21,9 @@ export default function Viagem( {user, match}) {
   return (
     <div className="Viagem">
       <MenuModViagem user={user} match={match}/>
-      <p>{viagem.localizacao}</p>
+      <p className="Local">{viagem.localizacao}</p>
       <Image width="400px" height="400px" src={viagem.imagemViagem} roundedCircle />
-      <p>{viagem.descricao}</p>
+      <p className="Descr">{viagem.descricao}</p>
       <div className="viajantes">
         <ListaInline itens={viajantes} ifNone="Nenhum viajante cadastrado nessa viagem"
         itensEnvolvidos="Viajantes envolvidos" tituloAttr="nome" rota="viajantes"/>

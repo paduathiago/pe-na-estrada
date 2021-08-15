@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import MenuModViagens from '../../Menu/MenuModViagens/MenuModViagens';
 import ViagemCard from '../ViagemCard/ViagemCard'
+import './ViagensList.css';
 
 
 export default function ViagensList({user}){

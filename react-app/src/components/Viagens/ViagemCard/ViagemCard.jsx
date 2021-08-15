@@ -1,6 +1,7 @@
 import React from 'react'
 import { ListGroup, Card, Button, ListGroupItem} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import './ViagemCard.css';
 
 export default function ViagemCard(props) {
 

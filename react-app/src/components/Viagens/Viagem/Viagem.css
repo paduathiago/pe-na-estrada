@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bitter&display=swap');
+
+.Viagem{
+    background-color: #9393ed;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    
+}
+.Local{
+    font-size: 1.8vw;
+    padding-top: 2vw;
+    margin-bottom: 2vw;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+}
+
+.Descr{
+    text-align: justify;
+    line-height: 1.6;
+    margin-top: 2.5vw;
+    font-family: 'Bitter', serif;
+    font-size: 1.25vw;
+    text-indent: 5vw;
+}
+
+.viajantes{
+    font-size: 1.22vw;
+    font-family: 'Bitter', serif;
+    padding-bottom: 1.4vw;
+}
