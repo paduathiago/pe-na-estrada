@@ -28,13 +28,16 @@ export default function DropdownViajantesList({lista,setViajantes,viajantes}){
   const viajantesToOptions = (element, index) => <option value={element} />
   if(nomesFiltrados) loadedViajantes = nomesFiltrados.map(viajantesToOptions)
   return <div>
-      <input list='viajantesList' placeholder="Digite a lista de viajantes" name="viajantes"
+      <input list='viajantesList' placeholder="Digite a lista de viajantes" name="viajantes" autoComplete="off"
         required onChange={handleChange(setViajantes)} value={viajantes} 
         onInput={handleListaViajantes}
         />
       <datalist id="viajantesList">
         {loadedViajantes}
       </datalist>
+      {/* Falta só consneguir renderizar um novo botão com as mesmas propriedades do 1º */}
+      <button /*onClick={handlePlusButton}*/ >+</button> 
+      <button /*onClick={handleMinusButton}*/ >-</button>
     </div>
 
 }
