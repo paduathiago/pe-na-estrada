@@ -2,6 +2,7 @@ import Logo from '../../../assets/logo.png'
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+import './UCViagens.css'
 
 export default function UpdateViagem({match,user}){
   const history=useHistory();
