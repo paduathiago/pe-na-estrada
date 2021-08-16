@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap');
+
+.title{
+    font-size: 2vw;
+    padding-top: 1.8vw;
+    padding-bottom: 0.5vw;
+    font-family: 'Lato', sans-serif;
+    color: #f0f7ff;
+    text-align: center;
+    background-color: blueviolet;
+}
+
+.top{
+    background-color: blueviolet;
+}

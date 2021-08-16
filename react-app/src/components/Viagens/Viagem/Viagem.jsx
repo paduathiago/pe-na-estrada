@@ -4,7 +4,7 @@ import { Image } from 'react-bootstrap';
 import './Viagem.css'
 import ListaInline from '../../ListaInline/ListaInline'
 import MenuModViagem from '../../Menu/MenuModViagem/MenuModViagem';
-
+import erroPrinter from '../../../erroPrinter';
 
 export default function Viagem( {user, match}) {
   const [viagem, setViagem] = useState(false);
@@ -15,7 +15,7 @@ export default function Viagem( {user, match}) {
         setViagem(res.data.Viagem);
         setViajantes(res.data.Viajantes)
       })
-      .catch( (err) => console.log(err.response) )
+      .catch( erroPrinter )
   },[match.params.id]);
 
   return (

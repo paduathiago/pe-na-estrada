@@ -3,6 +3,7 @@ import { Image } from 'react-bootstrap';
 import axios from 'axios';
 import ListaInline from '../ListaInline/ListaInline'
 import MenuModMe from '../Menu/MenuModMe/MenuModMe';
+import erroPrinter from '../../erroPrinter';
 
 export default function Me({user}) {
   const [viagens, setViagens] = useState(false);
@@ -11,7 +12,7 @@ export default function Me({user}) {
       .then( (res) => {
       setViagens(res.data.Viagens);
       })
-      .catch( (err) => console.log(err.response) )
+      .catch( erroPrinter )
     },[user.id]);
   if(!user)
     return <p>Você precisa estar logado para acessar essa página!</p>

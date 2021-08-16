@@ -24,7 +24,11 @@ export default function RegForm() {
           axios.post('/viajantes',{email,senha,imagemPerfil,nome,introducao,isAdmin}).then(()=>{
             history.push('/login')
           })
-          .catch((err)=>setMsg(err.response.data))
+          .catch((err)=>err.response?(
+            err.response.data?setMsg(err.response.data)
+            :
+            setMsg(err.response)
+          ):setMsg(err))
         }
         const imgAlt="http://robohash.org/"+encodeURIComponent(`${nome}`)
         if(imagemPerfil===''){
@@ -45,33 +49,33 @@ export default function RegForm() {
               />
               <br />
             <p>{msg}</p>
-            <div id="nome">
+            <div class="campos_registro" id="nome">
               <label htmlFor='nome'><p>Nome:</p></label>
-              <input type='text' placeholder="Digite seu nome" name="nome"
+              <input class="formulario_registrar" type='text' placeholder="Digite seu nome" name="nome"
                 required onChange={handleChange(setNome)} value={nome}
                 />
             </div>
-            <div id="introducao">
+            <div class="campos_registro">
               <label htmlFor='introducao'><p>Introdução:</p></label>
-              <input type='text' placeholder="Digite sua introducao" name="introducao"
+              <input class="formulario_registrar" type='text' placeholder="Digite sua introducao" name="introducao"
                 required onChange={handleChange(setIntroducao)} value={introducao}
                 />
             </div>
-            <div id="imagemPerfil">
+            <div class="campos_registro" id="imagemPerfil">
               <label htmlFor='imagemPerfil'><p>URL da imagem de perfil:</p></label>
-              <input type='text' placeholder="Digite o URL pra sua imagem de perfil" 
+              <input class="formulario_registrar" type='text' placeholder="Digite o URL pra sua imagem de perfil" 
                name="imagemPerfil" onChange={handleChange(setImagemPerfil)} value={imagemPerfil}
                 />
             </div>
-            <div id="Email">
+            <div class="campos_registro" id="Email">
               <label htmlFor='email'><p>E-mail:</p></label>
-              <input type='text' placeholder="Digite seu email" name="email"
+              <input class="formulario_registrar" type='text' placeholder="Digite seu email" name="email"
                 required onChange={handleChange(setEmail)} value={email}
                 />
             </div>
-            <div id="Password">
+            <div class="campos_registro" id="Password">
               <label htmlFor='password'><p>Senha:</p></label>
-              <input id="form-bottom"
+              <input class="formulario_registrar" id="form-bottom"
                 placeholder="Digite sua senha"
                 name="password" required
                 onChange={handleChange(setSenha)} value={senha}

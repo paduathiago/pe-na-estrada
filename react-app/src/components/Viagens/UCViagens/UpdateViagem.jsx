@@ -3,6 +3,9 @@ import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import './UCViagens.css'
+import erroPrinter from '../../../erroPrinter';
+
+import DropdownViajantesList from '../../Viajantes/DropdownViajantesList/DropdownViajantesList'
 
 export default function UpdateViagem({match,user}){
   const history=useHistory();
@@ -13,8 +16,11 @@ export default function UpdateViagem({match,user}){
   const [inicio,setInicio]=useState('')
   const [fim,setFinal]=useState('')
   const [viajantes,setViajantes]=useState('')
+  const [viajantesAdd,setViajantesAdd]=useState('')
+  const [viajantesRem,setViajantesRem]=useState('')
   const [addViajantes,setAddViajantes]=useState('[ ]')
   const [remViajantes,setRemViajantes]=useState('[ ]')
+  const [viajantesBack,setViajantesBack]=useState('')
   useEffect(() => {
     axios.get(`/viagens/${match.params.id}`)
       .then( (res) => {
@@ -29,7 +35,7 @@ export default function UpdateViagem({match,user}){
           viajatess[v]=res.data.Viajantes[v].id
         setViajantes("[ "+viajatess+" ]")
       })
-      .catch( (err) => console.log(err.response) )
+      .catch( erroPrinter )
   },[match.params.id]);
   let autorizado=false
   if(user){
@@ -57,7 +63,11 @@ export default function UpdateViagem({match,user}){
           history.push(`/viagens/${match.params.id}`)
           //window.location.reload()
       })
-      .catch((err)=>setMsg(err.response.data))
+      .catch((err)=>err.response?(
+        err.response.data?setMsg(err.response.data)
+        :
+        setMsg(err.response)
+      ):setMsg(err))
     }
     return <div className="UpdateViagem" onSubmit={handleSubmit}>
       <form method="PUT">
@@ -99,8 +109,13 @@ export default function UpdateViagem({match,user}){
               required onChange={handleChange(setFinal)} value={fim}
               />
           </div>
-          <div id="viajantes">
-            <p>Lista de viajantes:{viajantes}</p>
+          <div id="viajantesAdd">
+          <label htmlFor='viajantes'><p>Lista de viajantes a adicionar:</p></label>
+            <DropdownViajantesList lista={viajantesBack} setViajantes={setViajantesAdd}/>
+          </div>
+          <div id="viajantesRem">
+          <label htmlFor='viajantes'><p>Lista de viajantes a remover:</p></label>
+            <DropdownViajantesList lista={viajantesBack} setViajantes={setViajantesRem}/>
           </div>
           <div id="addViajantes">
             <label htmlFor='addViajantes'><p>Viajantes a adicionar:</p></label>

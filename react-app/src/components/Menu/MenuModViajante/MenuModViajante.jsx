@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom';
+import erroPrinter from '../../../erroPrinter';
 
 export default function MenuModViagem({match,user}){
   const history=useHistory();
@@ -16,14 +17,14 @@ export default function MenuModViagem({match,user}){
       axios.delete(`/viajantes/${match.params.id}`).then(()=>{
         axios.get('/logout').then(()=>{
           history.push('/reloadUser/')
-        }).catch((err)=>console.log(err.response.data));
+        }).catch(erroPrinter);
       })
-      .catch((err)=>console.log(err.response.data));
+      .catch(erroPrinter);
    }
    else{
     axios.delete(`/viajantes/${match.params.id}`).then(()=>{
       history.push('/reloadUser/viajantes')
-      }).catch((err)=>console.log(err.response.data));
+      }).catch(erroPrinter);
    }
   }
 

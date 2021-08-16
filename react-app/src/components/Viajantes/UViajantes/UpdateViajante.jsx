@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import './UViajantes.css'
+import erroPrinter from '../../../erroPrinter';
 
 export default function UpdateViajante({match,user}){
   const history=useHistory();
@@ -27,7 +28,7 @@ export default function UpdateViajante({match,user}){
     setIntroducao(viajante.introducao)
     setImagemPerfil(viajante.imagemPerfil)
     })
-    .catch( (err) => console.log(err.response) )
+    .catch( erroPrinter )
   },[match.params.id]);
   let autorizado=false
   if(user)
@@ -48,13 +49,21 @@ export default function UpdateViajante({match,user}){
       }).then(()=>{
         history.push(`/viajantes/${match.params.id}`)
       })
-      .catch((err)=>setMsg(err.response.data))
+      .catch((err)=>err.response?(
+        err.response.data?setMsg(err.response.data)
+        :
+        setMsg(err.response)
+      ):setMsg(err))
     else
       axios.put(`/viajantes/${match.params.id}`,{nome,email,isAdmin,introducao,imagemPerfil,
       senha}).then(()=>{
         history.push(`/viajantes/${match.params.id}`)
       })
-      .catch((err)=>setMsg(err.response.data))
+      .catch((err)=>err.response?(
+        err.response.data?setMsg(err.response.data)
+        :
+        setMsg(err.response)
+      ):setMsg(err))
   }
 
   var isAdminForm;

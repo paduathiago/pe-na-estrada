@@ -9,6 +9,7 @@ import {
 import ViajanteCard from '././ViajanteCard/ViajanteCard'
 import Viajante from './Viajante/Viajante'
 import UpdateViajante from './UViajantes/UpdateViajante'
+import erroPrinter from '../../erroPrinter';
 
 import './Viajantes.css';
 
@@ -18,7 +19,7 @@ export default function Viajantes({user}) {
   useEffect(() => {
     axios.get('/viajantes/?limit=15')
     .then( (res) => setViajantes(res.data) )
-    .catch( (err) => console.log(err.response) )
+    .catch( erroPrinter )
   }, []);
 
   let loadedViajantes = [];

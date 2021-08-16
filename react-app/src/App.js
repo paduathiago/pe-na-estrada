@@ -17,7 +17,7 @@ import Footer from './components/Footer/Footer'
 import Registrar from './components/Registrar/Registrar'
 import { useState, useEffect } from 'react';
 import UserReloader from './components/UserReloader/UserReloader';
-
+import erroPrinter from './erroPrinter'
 
 function App() {
   axios.defaults.baseURL=process.env.REACT_APP_API_URL;
@@ -33,7 +33,7 @@ function App() {
         viajante.Viagens=viagens
         setUser(viajante) 
       })
-      .catch( (err) => console.log(err.response) )
+      .catch( erroPrinter )
   }, []);
   return (
     <div className="App">

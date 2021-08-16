@@ -9,3 +9,19 @@ button{
 .container2{
     height: 100vw;
 }
+
+.formulario_registrar{
+    width: 100%;
+    padding: 0.2%, 0.2%;
+    margin: auto;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.campos_registro{
+    width: 50%;
+    align-self: auto;
+    margin: auto;
+    text-align: left;
+}

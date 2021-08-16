@@ -56,10 +56,6 @@ export default function DropdownViajantesList({lista,setViajantes}){
       resultNomes+="."
     setViajantesFinaisNomes(resultNomes)
     setViajantes(result)
-    
-    console.log("QUE")
-    console.log(viajantesFinais)
-    console.log(result)
   }
 
   function handlePlusButton(event){

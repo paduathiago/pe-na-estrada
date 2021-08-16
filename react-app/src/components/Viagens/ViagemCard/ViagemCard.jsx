@@ -18,8 +18,8 @@ export default function ViagemCard(props) {
           </Card.Text>
         </Card.Body>
         <ListGroup className="list-group-flush">
-          <ListGroupItem>Início: {dataInicio.toLocaleDateString()}</ListGroupItem>
-          <ListGroupItem>Fim: {dataFim.toLocaleDateString()}</ListGroupItem>
+          <ListGroupItem className="inicio">Início: {dataInicio.toLocaleDateString()}</ListGroupItem>
+          <ListGroupItem className="fim">Fim: {dataFim.toLocaleDateString()}</ListGroupItem>
         </ListGroup>
         <Card.Body>
           <Link to={`/viagens/${props.viagens.id}`}>

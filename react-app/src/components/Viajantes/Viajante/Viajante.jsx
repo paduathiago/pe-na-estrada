@@ -4,6 +4,7 @@ import { Image } from 'react-bootstrap';
 import './Viajante.css'
 import ListaInline from '../../ListaInline/ListaInline'
 import MenuModViajante from '../../Menu/MenuModViajante/MenuModViajante'
+import erroPrinter from '../../../erroPrinter';
 
 export default function Viajante( {match,user}) {
   const [viajante, setViajante] = useState(false);
@@ -14,7 +15,7 @@ export default function Viajante( {match,user}) {
         setViajante(res.data.Viajante);
         setViagens(res.data.Viagens);
       })
-      .catch( (err) => console.log(err.response) )
+      .catch(erroPrinter)
   },[match.params.id]);
   if(!user)
     return <p>Você precisa estar logado para acessar essa página!</p>
