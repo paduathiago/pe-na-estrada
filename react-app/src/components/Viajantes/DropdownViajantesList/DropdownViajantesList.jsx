@@ -89,7 +89,7 @@ export default function DropdownViajantesList({lista,setViajantes}){
   }
 
   let loadedViajantes = [];
-  const viajantesToOptions = (element, index) => <option value={element} />
+  const viajantesToOptions = (element, index) => <option key={index} value={element} />
   if(nomesFiltrados) loadedViajantes = nomesFiltrados.map(viajantesToOptions)
   return <div>
       <input list='viajantesList' placeholder="Digite a lista de viajantes" name="viajantes" autoComplete="off"
