@@ -118,7 +118,21 @@ function insertAdminFilter(req, res, next) {
 
 async function removeAllAdmFilter(req, res, next) {
   const lastAdmin=await isTheLastAdmin(req.params.id);
+  console.log(lastAdmin)
   if (lastAdmin) {
+    res.status(403).send('Operacao negada.');
+    // Não dando detalhe pros possíveis hackers :D
+    // Mas basicamente isso aqui impede que todos os admins sejam deletados,
+    // pois isso geraria uma inconsistência, já que não teria mais como
+    // adicionar novos admins.
+  } else next();
+}
+
+async function removeAllAdmFilterPut(req, res, next) {
+  const lastAdmin=await isTheLastAdmin(req.params.id);
+  console.log(lastAdmin)
+  console.log(req.body.isAdmin)
+  if (lastAdmin&&(req.body.isAdmin==false||req.body.isAdmin=="false")) {
     res.status(403).send('Operacao negada.');
     // Não dando detalhe pros possíveis hackers :D
     // Mas basicamente isso aqui impede que todos os admins sejam deletados,
@@ -136,4 +150,5 @@ module.exports={
   isAdminOrInvolved,
   insertAdminFilter,
   removeAllAdmFilter,
+  removeAllAdmFilterPut,
 };

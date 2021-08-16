@@ -5,6 +5,7 @@ const {
   roleChangeFilter,
   insertAdminFilter,
   removeAllAdmFilter,
+  removeAllAdmFilterPut,
 }=require('../../middlewares/auth-middlewares');
 const {
   createViajante,
@@ -80,6 +81,7 @@ viajanteRouter.put(
   viajanteValidate('update'),
   jwtMiddleware,
   isAdminOrRequester,
+  removeAllAdmFilterPut,
   roleChangeFilter,
   async (req, res) =>{
     try {// E se nao tiver req.params? Ou req.params.id? Ou req.body?
