@@ -52,7 +52,8 @@ export default function DropdownViajantesList({lista,setViajantes}){
       resultNomes+=idNomes[viajantesFinais[v]]
     }
     result+=" ]"
-    resultNomes+="."
+    if(viajantesFinais.length>0)
+      resultNomes+="."
     setViajantesFinaisNomes(resultNomes)
     setViajantes(result)
     
@@ -69,7 +70,7 @@ export default function DropdownViajantesList({lista,setViajantes}){
       nomesId[nomesViajantes[index]] = idsViajantes[index]
     }
     let id=nomesId[event.target.parentNode.firstChild.value]
-    if (!(viajantesFinais.includes(id))) {
+    if (!(viajantesFinais.includes(id))&&typeof id !== 'undefined') {
       viajantesFinais.push(id)
       updateViajantes()
     }
