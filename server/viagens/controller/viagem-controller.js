@@ -3,6 +3,7 @@ const ViagemService = require('../service/ViagemService');
 const {
   jwtMiddleware,
   isAdminOrInvolved,
+  isAdminOrInvolvedCreate,
 } = require('../../middlewares/auth-middlewares');
 
 const {objectValidator} = require('../../middlewares/data-validators');
@@ -15,7 +16,8 @@ viagemRouter.post('/',
     'viajantes'
   ]),
   viagemValidate('create'),
-  jwtMiddleware, async (req, res)=>{
+  jwtMiddleware,
+  isAdminOrInvolvedCreate, async (req, res)=>{
     try {
       const viagem={
         imagemViagem: req.body.imagemViagem,

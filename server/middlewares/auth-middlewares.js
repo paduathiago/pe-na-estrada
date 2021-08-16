@@ -102,6 +102,14 @@ async function isAdminOrInvolved(req, res, next) {
   }
 }
 
+async function isAdminOrInvolvedCreate(req, res, next) {
+  if (req.viajante.isAdmin==true||req.body.viajantes.includes(req.viajante.id)) {
+    next();
+  } else {
+    res.status(401).send('Voce nao esta autorizado a realizar essa operacao.');
+  }
+}
+
 function roleChangeFilter(req, res, next) {
   if (req.viajante.isAdmin==true) next();
   else if (req.body.isAdmin=='true') {
@@ -148,6 +156,7 @@ module.exports={
   isAdminOrRequester,
   roleChangeFilter,
   isAdminOrInvolved,
+  isAdminOrInvolvedCreate,
   insertAdminFilter,
   removeAllAdmFilter,
   removeAllAdmFilterPut,
