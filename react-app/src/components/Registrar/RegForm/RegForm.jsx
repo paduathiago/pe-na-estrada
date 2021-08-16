@@ -57,9 +57,9 @@ export default function RegForm() {
             </div>
             <div class="campos_registro">
               <label htmlFor='introducao'><p>Introdução:</p></label>
-              <input class="formulario_registrar" type='text' placeholder="Digite sua introducao" name="introducao"
+              <textarea class="formulario_registrar" type='text' placeholder="Digite sua introducao" name="introducao"
                 required onChange={handleChange(setIntroducao)} value={introducao}
-                />
+                ></textarea>
             </div>
             <div class="campos_registro" id="imagemPerfil">
               <label htmlFor='imagemPerfil'><p>URL da imagem de perfil:</p></label>

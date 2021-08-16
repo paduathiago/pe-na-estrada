@@ -5,9 +5,15 @@ import axios from 'axios';
 import './UCViagens.css'
 import erroPrinter from '../../../erroPrinter';
 
-import DropdownViajantesList from '../../Viajantes/DropdownViajantesList/DropdownViajantesList'
+import DropdownViajantesListUpdate from '../../Viajantes/DropdownViajantesList/DropdownViajantesListUpdate'
 
 export default function UpdateViagem({match,user}){
+  const [idsFiltrados,setIdsFiltrados]=useState('')
+  const [nomesFiltrados,setNomesFiltrados]=useState([])
+  const [viajantesInput,setViajantesInput]=useState('')
+  const [viajantesFinais,setViajantesFinais]=useState([])
+  const [viajantesFinaisNomes,setViajantesFinaisNomes]=useState('')
+
   const history=useHistory();
   const [msg,setMsg]=useState('Submeta os novos dados da viagem:')
   const [localizacao,setLocal]=useState('')
@@ -15,12 +21,19 @@ export default function UpdateViagem({match,user}){
   const [imagemViagem,setImagem]=useState('')
   const [inicio,setInicio]=useState('')
   const [fim,setFinal]=useState('')
+  const [addViajantes,setAddViajantes]=useState('')
+  const [remViajantes,setRemViajantes]=useState('')
+
+
   const [viajantes,setViajantes]=useState('')
-  const [viajantesAdd,setViajantesAdd]=useState('')
-  const [viajantesRem,setViajantesRem]=useState('')
-  const [addViajantes,setAddViajantes]=useState('[ ]')
-  const [remViajantes,setRemViajantes]=useState('[ ]')
   const [viajantesBack,setViajantesBack]=useState('')
+
+  useEffect(() => {
+    axios.get('/viajantes/')
+    .then( (res) => setViajantesBack(res.data) )
+    .catch(erroPrinter)
+  }, []);
+
   useEffect(() => {
     axios.get(`/viagens/${match.params.id}`)
       .then( (res) => {
@@ -109,25 +122,16 @@ export default function UpdateViagem({match,user}){
               required onChange={handleChange(setFinal)} value={fim}
               />
           </div>
-          <div id="viajantesAdd">
-          <label htmlFor='viajantes'><p>Lista de viajantes a adicionar:</p></label>
-            <DropdownViajantesList lista={viajantesBack} setViajantes={setViajantesAdd}/>
-          </div>
-          <div id="viajantesRem">
-          <label htmlFor='viajantes'><p>Lista de viajantes a remover:</p></label>
-            <DropdownViajantesList lista={viajantesBack} setViajantes={setViajantesRem}/>
-          </div>
-          <div id="addViajantes">
-            <label htmlFor='addViajantes'><p>Viajantes a adicionar:</p></label>
-            <input type='text' placeholder="Digite os viajantes a adicionar" name="addViajantes"
-              required onChange={handleChange(setAddViajantes)} value={addViajantes}
-              />
-          </div>
-          <div id="remViajantes">
-            <label htmlFor='remViajantes'><p>Viajantes a remover:</p></label>
-            <input type='text' placeholder="Digite os viajantes a remover" name="remViajantes"
-              required onChange={handleChange(setRemViajantes)} value={remViajantes}
-              />
+          <div id="viajantes">
+            <label htmlFor='viajantes'><p>Lista de viajantes:</p></label>
+            <DropdownViajantesListUpdate
+             lista={viajantesBack} setViajantes={setViajantes} idsFiltrados={idsFiltrados}
+             setIdsFiltrados={setIdsFiltrados} nomesFiltrados={nomesFiltrados}
+             setNomesFiltrados={setNomesFiltrados} viajantesInput={viajantesInput}
+             setViajantesInput={setViajantesInput} viajantesFinais={viajantesFinais}
+             setViajantesFinais={setViajantesFinais} viajantesFinaisNomes={viajantesFinaisNomes}
+             setViajantesFinaisNomes={setViajantesFinaisNomes}
+             />
           </div>
           <button type="submit">Editar viagem</button>
           <br className="unselectable" />

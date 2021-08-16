@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
 import './Form.css';
+import '/../../Registar/RegForm/Regform.css'
 import erroPrinter from '../../../erroPrinter';
 
 export default function Form() {
@@ -48,15 +49,15 @@ export default function Form() {
               />
               <br />
             <p>{msg}</p>
-            <div id="Email">
+            <div class="campos_registro" id="Email">
               <label htmlFor='email'><p>Login:</p></label>
-              <input type='text' placeholder="Digite seu email" name="email"
+              <input class="formulario_registrar" type='text' placeholder="Digite seu email" name="email"
                 required onChange={handleEmailChange} value={email}
                 />
             </div>
-            <div id="Password">
+            <div class="campos_registro" id="Password">
               <label htmlFor='password'><p>Senha:</p></label>
-              <input id="form-bottom" type="password"
+              <input class="formulario_registrar" id="form-bottom" type="password"
                 placeholder="Digite sua senha"
                 name="password" required
                 onChange={handleSenhaChange} value={senha}
