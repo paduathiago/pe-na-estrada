@@ -1,5 +1,5 @@
 .pNome{
-    font-size: 2vw;
+    font-size: medium;
     text-align: center;
 }
 
@@ -10,9 +10,9 @@
     width: fit-content;
     height: min-content;
     margin: auto;
-    margin-top: 10px;
+    margin-top: 20px;
     position: relative;
-    max-width: 80%;
+    max-width: 75%;
 }
 
 .pIntro{
@@ -23,8 +23,8 @@
 
 .backUser{
     height: 100vh;
+    width: 100%;
     display: table;
-    padding-bottom: 10%;
     background-color: #9393ed;
 }
 
@@ -36,6 +36,3 @@
     text-align: center;
     padding: 10px;
 }
-
-
-
