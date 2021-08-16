@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom';
+import '../Botao.css'
 import erroPrinter from '../../../erroPrinter';
 
 export default function MenuModViagem({user}){
@@ -21,7 +22,7 @@ export default function MenuModViagem({user}){
       Editar como {user.nome}
     </button>
     </Link>
-    <button onClick={deleteViajante}>
+    <button className="Delete" onClick={deleteViajante}>
     Deletar viajante
     </button>
   </div>

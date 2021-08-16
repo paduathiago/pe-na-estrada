@@ -10,6 +10,12 @@ button{
     height: 100vw;
 }
 
+.Form{
+    height: 100vh;
+    width: 100%;
+    display: table;
+    align-content: center;
+}
 .formulario_registrar{
     width: 100%;
     padding: 0.2%, 0.2%;

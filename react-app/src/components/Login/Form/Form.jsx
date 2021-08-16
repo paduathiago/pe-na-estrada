@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
 import './Form.css';
-import '/../../Registar/RegForm/Regform.css'
+import '/../../Registar/RegForm/Regform.css';
 import erroPrinter from '../../../erroPrinter';
 
 export default function Form() {

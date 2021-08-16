@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom';
+import '../Botao.css'
 import erroPrinter from '../../../erroPrinter';
 
 export default function MenuModViagens({match,user}){
@@ -25,11 +26,11 @@ export default function MenuModViagens({match,user}){
   if(autorizado)
     return <div className="MenuCriar">
       <Link to={`/viagens/${match.params.id}/editar`}>
-        <button className="Criar">
+        <button className="Editar">
           Editar como {user.nome}
         </button>
       </Link>
-      <button onClick={deleteViagem}>
+      <button className="Delete" onClick={deleteViagem}>
         Deletar viagem
       </button>
     </div>
