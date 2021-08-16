@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import './UViajantes.css'
+import '../../Registrar/RegForm/RegForm';
 import erroPrinter from '../../../erroPrinter';
 
 export default function UpdateViajante({match,user}){
@@ -71,7 +72,7 @@ export default function UpdateViajante({match,user}){
     isAdminForm = (         
     <div id="isAdmin">
     <label htmlFor='isAdmin'><p>É admin?:</p></label>
-    <input type='text' placeholder="Digite se o usuário deve ser admin" name="isAdmin"
+    <input class="formulario_registrar" type='text' placeholder="Digite se o usuário deve ser admin" name="isAdmin"
     required onChange={handleChange(setIsAdmin)} value={isAdmin}
     />
   </div>);
@@ -87,36 +88,36 @@ export default function UpdateViajante({match,user}){
           />
           <br />
         <p>{msg}</p>
-        <div id="nome">
+        <div class="campos_registro" id="nome">
           <label htmlFor='nome'><p>Nome:</p></label>
-          <input type='text' placeholder="Digite seu nome" name="nome"
+          <input class="formulario_registrar" type='text' placeholder="Digite seu nome" name="nome"
           required onChange={handleChange(setNome)} value={nome}
           />
         </div>
-        <div id="introducao">
+        <div class="campos_registro" id="introducao">
           <label htmlFor='introducao'><p>Introdução:</p></label>
-          <input type='text' placeholder="Digite sua introducao" name="introducao"
+          <input class="formulario_registrar" type='text' placeholder="Digite sua introducao" name="introducao"
           required onChange={handleChange(setIntroducao)} value={introducao}
           />
         </div>
-        <div id="imagemPerfil">
+        <div class="campos_registro" id="imagemPerfil">
           <label htmlFor='imagemPerfil'><p>URL da imagem de perfil:</p></label>
-          <input type='text' placeholder="Digite o URL pra sua imagem de perfil" 
+          <input class="formulario_registrar" type='text' placeholder="Digite o URL pra sua imagem de perfil" 
           name="imagemPerfil" onChange={handleChange(setImagemPerfil)} value={imagemPerfil}
           />
         </div>
-        <div id="isAdmin">
+        <div class="campos_registro" id="isAdmin">
           {isAdminForm}
         </div>
-        <div id="Email">
+        <div class="campos_registro" id="Email">
           <label htmlFor='email'><p>E-mail:</p></label>
-          <input type='text' placeholder="Digite seu email" name="email"
+          <input class="formulario_registrar" type='text' placeholder="Digite seu email" name="email"
           required onChange={handleChange(setEmail)} value={email}
           />
         </div>
-        <div id="Password">
+        <div class="campos_registro" id="Password">
           <label htmlFor='password'><p>Senha:</p></label>
-          <input id="form-bottom"
+          <input class="formulario_registrar" id="form-bottom"
           placeholder="Senha (vazio para não mudar)"
           name="password"
           onChange={handleChange(setSenha)} value={senha}

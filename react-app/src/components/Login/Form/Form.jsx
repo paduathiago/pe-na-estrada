@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
 import './Form.css';
-import '/../../Registar/RegForm/Regform.css';
+import '../../Registrar/RegForm/RegForm';
 import erroPrinter from '../../../erroPrinter';
 
 export default function Form() {
@@ -19,24 +19,24 @@ export default function Form() {
         setSenha(event.target.value)
     }
     function handleSubmit(event){
-        event.preventDefault()
-        axios.post('/login',{email,senha}).then((res)=>{
-          axios.get('/me')
-          .then( (res) => {
-            let viajante=res.data.Viajante
-            const viagens=res.data.Viagens
-            viajante.Viagens=viagens
-            history.push('/reloadUser/me')
-          })
-          .catch( erroPrinter )
-          
+      event.preventDefault()
+      axios.post('/login',{email,senha}).then((res)=>{
+        axios.get('/me')
+        .then( (res) => {
+          let viajante=res.data.Viajante
+          const viagens=res.data.Viagens
+          viajante.Viagens=viagens
+          history.push('/reloadUser/me')
         })
-        .catch((err)=>err.response?(
-            err.response.data?setMsg(err.response.data)
-            :
-            setMsg(err.response)
-          ):setMsg(err))
-    }
+        .catch( erroPrinter )
+        
+      })
+      .catch((err)=>err.response?(
+          err.response.data?setMsg(err.response.data)
+          :
+          setMsg(err.response)
+        ):setMsg(err))
+  }
 
     return (
       <div className="Form" onSubmit={handleSubmit}>

@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import './UCViagens.css'
 import erroPrinter from '../../../erroPrinter';
+import '../../Registrar/RegForm/RegForm.css';
 
 import DropdownViajantesList from '../../Viajantes/DropdownViajantesList/DropdownViajantesList'
 
@@ -53,41 +54,41 @@ export default function CreateViagem({user}){
           />
           <br />
         <p>{msg}</p>
-        <div id="localizacao">
+        <div class="campos_registro" id="localizacao">
           <label htmlFor='localizacao'><p>Local:</p></label>
-          <input type='text' placeholder="Digite o local viajado" name="localizacao"
+          <input class="formulario_registrar" type='text' placeholder="Digite o local viajado" name="localizacao"
             required onChange={handleChange(setLocal)} value={localizacao}
             />
         </div>
-        <div id="descricao">
+        <div class="campos_registro" id="descricao">
           <label htmlFor='descricao'><p>Descrição:</p></label>
-          <input type='text' placeholder="Digite a descricao da viagem" name="descricao"
-            required onChange={handleChange(setDescricao)} value={descricao}
-            />
+          <textarea class="formulario_registrar" type='text' placeholder="Digite a descricao da viagem" name="descricao"
+            required onChange={handleChange(setDescricao)} value={descricao}>
+          </textarea>
         </div>
-        <div id="imagemViagem">
+        <div class="campos_registro" id="imagemViagem">
           <label htmlFor='imagemViagem'><p>URL da imagem da viagem:</p></label>
-          <input type='text' placeholder="Digite o URL pra uma imagem da viagem" 
+          <input class="formulario_registrar" type='text' placeholder="Digite o URL pra uma imagem da viagem" 
           name="imagemViagem" onChange={handleChange(setImagem)} value={imagemViagem}
             />
         </div>
-        <div id="inicio">
+        <div class="campos_registro" id="inicio">
           <label htmlFor='inicio'><p>Data de início:</p></label>
-          <input type='date' placeholder="Digite a data de início" name="inicio"
+          <input class="formulario_registrar" type='date' placeholder="Digite a data de início" name="inicio"
             required onChange={handleChange(setInicio)} value={inicio}
             />
         </div>
-        <div id="fim">
+        <div class="campos_registro" id="fim">
           <label htmlFor='fim'><p>Data final:</p></label>
-          <input type='date' placeholder="Digite a data fim" name="fim"
+          <input class="formulario_registrar" type='date' placeholder="Digite a data fim" name="fim"
             required onChange={handleChange(setFinal)} value={fim}
             />
         </div>
-        <div id="viajantes">
+        <div class="campos_registro" id="viajantes">
           <label htmlFor='viajantes'><p>Lista de viajantes:</p></label>
           <DropdownViajantesList lista={viajantesBack} setViajantes={setViajantes}/>
         </div>
-        <button type="submit">Registrar viagem</button>
+        <button id='registrar_viagem' type="submit">Registrar viagem</button>
         <br className="unselectable" />
         <br className="unselectable" />
       </div>

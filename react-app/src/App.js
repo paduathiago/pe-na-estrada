@@ -21,6 +21,7 @@ import erroPrinter from './erroPrinter'
 
 function App() {
   axios.defaults.baseURL=process.env.REACT_APP_API_URL;
+  console.log(axios.defaults.baseURL)
   axios.defaults.withCredentials = true;
   document.title="Rotas Worldwide"
 

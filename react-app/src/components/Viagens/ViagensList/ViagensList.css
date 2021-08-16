@@ -1,15 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Tinos&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
 
 .title{
     font-size: 2vw;
     padding-top: 1.8vw;
     padding-bottom: 0.5vw;
     font-family: 'Lato', sans-serif;
-    color: #f0f7ff;
+    color: black;
     text-align: center;
-    background-color: blueviolet;
+    background-color: #f0f7ff;
+    font-weight: 550;
 }
 
 .top{
-    background-color: blueviolet;
+    background-color: #f0f7ff;
 }

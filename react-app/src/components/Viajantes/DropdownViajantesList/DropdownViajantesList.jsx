@@ -93,7 +93,7 @@ export default function DropdownViajantesList({lista,setViajantes}){
   if(nomesFiltrados) loadedViajantes = nomesFiltrados.map(viajantesToOptions)
   return <div>
       <input list='viajantesList' placeholder="Digite a lista de viajantes" name="viajantes" autoComplete="off"
-        required onChange={handleChange(setViajantesInput)} value={viajantesInput} 
+        onChange={handleChange(setViajantesInput)} value={viajantesInput} 
         onInput={handleListaViajantes}
         />
       <datalist id="viajantesList">

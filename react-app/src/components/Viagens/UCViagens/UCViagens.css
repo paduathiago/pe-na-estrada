@@ -11,3 +11,12 @@
     color: #f0f7ff;
     padding-top: 2.5vw;
 }
+button{
+    padding: 0.2%;
+}
+#registrar_viagem{
+    cursor: pointer;
+    padding: 7px;
+    margin-right: 8px;
+    width: auto;
+}
