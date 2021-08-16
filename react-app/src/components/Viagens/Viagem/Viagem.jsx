@@ -25,7 +25,7 @@ export default function Viagem( {user, match}) {
       <Image width="400px" height="400px" src={viagem.imagemViagem} roundedCircle />
       <p className="Descr">{viagem.descricao}</p>
       <div className="viajantes">
-        <ListaInline itens={viajantes} ifNone="Nenhum viajante cadastrado nessa viagem"
+        <ListaInline userId={user.id} itens={viajantes} ifNone="Nenhum viajante cadastrado nessa viagem"
         itensEnvolvidos="Viajantes envolvidos" tituloAttr="nome" rota="viajantes"/>
       </div>
     </div>

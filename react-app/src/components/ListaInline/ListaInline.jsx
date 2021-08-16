@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import './ListaInline.css'
 
-export default function ListaInline({itens,itensEnvolvidos,ifNone,tituloAttr,rota}){
+export default function ListaInline({itens,itensEnvolvidos,ifNone,tituloAttr,rota, userId}){
   let listedItens = [];
   let loadedItens = [];
   const itensToLista = (element, index) => {
@@ -11,7 +11,13 @@ export default function ListaInline({itens,itensEnvolvidos,ifNone,tituloAttr,rot
     }
   }
   const itensToDiv = (element, index) => {
-    const url=`/${rota}/${element.id}`;
+    let url;
+    if(element.id == userId){
+      url =`/me`
+    }
+    else{
+      url=`/${rota}/${element.id}`;
+    }
     return <div className="itemNome"><Link to={url}>{element.titulo}</Link></div>
   }
   let hasItens=false;
