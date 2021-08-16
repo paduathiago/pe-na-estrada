@@ -38,15 +38,26 @@ export default function DropdownViajantesList({lista,setViajantes}){
     for (let index = 0; index < idsViajantes.length; index++) {
       idNomes[idsViajantes[index]] = nomesViajantes[index]
     }
-    setViajantesFinaisNomes("")
+    let resultNomes=""
     for(let v in viajantesFinais){
-      result+=viajantesFinais[v]+", "
-      setViajantesFinaisNomes(viajantesFinaisNomes+idNomes[viajantesFinais[v]]+", ")
+      if(v==viajantesFinais.length-1&&viajantesFinais.length!=1){
+        resultNomes+=" e "
+        result+=", "
+      }
+      else if(v!=0){
+        result+=", "
+        resultNomes+=", "
+      }
+      result+=viajantesFinais[v]
+      resultNomes+=idNomes[viajantesFinais[v]]
     }
     result+=" ]"
+    resultNomes+="."
+    setViajantesFinaisNomes(resultNomes)
     setViajantes(result)
+    
+    console.log("QUE")
     console.log(viajantesFinais)
-    console.log(viajantesFinaisNomes)
     console.log(result)
   }
 
@@ -65,13 +76,19 @@ export default function DropdownViajantesList({lista,setViajantes}){
   }
 
   function handleMinusButton(event){
-    if (viajantesFinais.length > 0) {
-      //viajantesFinais.pop();      
-      
+    let nomesViajantes = lista.map(value => value.nome)
+    let idsViajantes = lista.map(value => value.id)
+    let nomesId = {}
+    for (let index = 0; index < nomesViajantes.length; index++) {
+      nomesId[nomesViajantes[index]] = idsViajantes[index]
     }
-    else {
+    let id=nomesId[event.target.parentNode.firstChild.value]
 
+    if (viajantesFinais.includes(id)) {
+      viajantesFinais.splice(viajantesFinais.indexOf(id),1)
+      updateViajantes()
     }
+    
   }
 
   let loadedViajantes = [];
@@ -87,7 +104,7 @@ export default function DropdownViajantesList({lista,setViajantes}){
       </datalist>
       {/* Falta só consneguir renderizar um novo botão com as mesmas propriedades do 1º */}
       <button onClick={handlePlusButton} >+</button> 
-      <button onClick={handleMinusButton} >-</button>
+      <button disabled={viajantesFinais.length>0? false : true} onClick={handleMinusButton} >-</button>
       <p>{viajantesFinaisNomes}</p>
     </div>
 
