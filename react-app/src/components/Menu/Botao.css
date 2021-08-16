@@ -1,0 +1,22 @@
+.Editar{
+    border-radius: 1rem;
+    width: fit-content;
+    height: fit-content;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    vertical-align: middle;
+    padding: 3px 8px;
+}
+
+.Delete{
+    border-radius: 1rem;
+    width: fit-content;
+    height: min-content;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    vertical-align: middle;
+    background-color: rgb(146, 38, 38);
+    padding: 3px 8px;
+}

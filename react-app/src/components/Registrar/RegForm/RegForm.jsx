@@ -53,7 +53,7 @@ export default function RegForm() {
             </div>
             <div id="introducao">
               <label htmlFor='introducao'><p>Introdução:</p></label>
-              <input type='text' placeholder="Digite sua introducao" name="introducao"
+              <textarea placeholder="Digite sua introducao" name="introducao"
                 required onChange={handleChange(setIntroducao)} value={introducao}
                 />
             </div>

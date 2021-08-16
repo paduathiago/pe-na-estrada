@@ -1,1 +1,12 @@
 /* Estou fazendo os estilos inline no ViagemCard.jsx */
+  
+@media screen and (max-width: 600px) {
+    .viajante-card {
+      width: 100vw;
+      height: 100vh;
+      display: table;
+      margin: auto;
+      align-content: center;
+      padding: auto;;
+    }
+  }

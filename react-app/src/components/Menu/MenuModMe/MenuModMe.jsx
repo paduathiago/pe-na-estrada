@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom';
+import '../Botao.css'
 
 export default function MenuModViagem({user}){
   const history=useHistory();
@@ -20,7 +21,7 @@ export default function MenuModViagem({user}){
       Editar como {user.nome}
     </button>
     </Link>
-    <button onClick={deleteViajante}>
+    <button className="Delete" onClick={deleteViajante}>
     Deletar viajante
     </button>
   </div>
