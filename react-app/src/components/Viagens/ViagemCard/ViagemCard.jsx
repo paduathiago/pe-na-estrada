@@ -9,11 +9,11 @@ export default function ViagemCard(props) {
   let dataFim = new Date(props.viagens.fim)
   return (
     <div className="viagem-card">
-      <Card style={{ width: '16vw'}}>
-        <Card.Img style={{ height: '21vh' }} variant="top" src={props.viagens.imagemViagem}   />
+      <Card>
+        <Card.Img variant="top" src={props.viagens.imagemViagem}   />
         <Card.Body>
           <Card.Title>{props.viagens.localizacao}</Card.Title>
-          <Card.Text style={{height: '100px'}}>
+          <Card.Text >
             {props.viagens.descricao.length > 100? props.viagens.descricao.substring(0, 100)+"..." : props.viagens.descricao}
           </Card.Text>
         </Card.Body>
@@ -23,7 +23,7 @@ export default function ViagemCard(props) {
         </ListGroup>
         <Card.Body>
           <Link to={`/viagens/${props.viagens.id}`}>
-            <Button variant="primary">
+            <Button class="botaoViagens" variant="primary">
                 Ver mais
             </Button>
           </Link>                        

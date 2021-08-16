@@ -7,7 +7,7 @@
     padding-right: 5vw;
 }
 
-.Nome{
+.pNome{
     font-size: 1.8vw;
     text-align: center;
     font-family: 'Lato', sans-serif;
@@ -15,11 +15,11 @@
     margin-bottom: 2vw;
 }
 
-.Intro{
+.pIntro{
     text-align: justify;
     line-height: 1.6;
     font-family: 'Bitter', serif;
-    font-size: 1.3vw;
+    font-size: 1.2vw;
     text-indent: 5vw;
     padding-left: 6vw;
     padding-right: 6vw;

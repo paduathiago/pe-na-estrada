@@ -1,7 +1,52 @@
-.viagens {
+.viagensListViagens {
   display: flex;
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
   background-color: #f0f7ff;
+}
+.card{
+  width: 16vw;
+}
+.viagem-card{
+  width: 16vw;
+}
+
+@media(max-device-width: 600px){
+  .viagensListViagens {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    background-color: #f0f7ff;
+  }
+  .card{
+    width: 100%;
+  }
+  .viagem-card{
+    width: 70%;
+  }
+}
+
+@media(max-device-width: 1000px) and (min-device-width:600px){
+  .viagensListViagens {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    background-color: #f0f7ff;
+  }
+  .card{
+    width: 100%;
+  }
+  .viagem-card{
+    width: 80%;
+    align-items: center;
+
+    margin:auto;
+  }
 }

@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Image } from 'react-bootstrap';
 import './ViagemV2.css'
+import './Viagem.css';
 import ListaInline from '../../ListaInline/ListaInline'
 import MenuModViagem from '../../Menu/MenuModViagem/MenuModViagem';
 import erroPrinter from '../../../erroPrinter';

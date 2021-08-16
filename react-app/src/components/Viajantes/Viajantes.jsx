@@ -4,6 +4,7 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
+import './Viajantes.css';
 
 
 import ViajanteCard from '././ViajanteCard/ViajanteCard'
@@ -30,7 +31,7 @@ export default function Viajantes({user}) {
     if(!user)
       return <p>Você precisa estar logado para acessar essa página!</p>
     else
-      return <div>
+      return <div className="cima">
         <p className="title">Viajantes</p>
         <div className="viajantes">
           {loadedViajantes}

@@ -20,7 +20,7 @@ export default function ViagensList({user}){
   return <div className="top">
     <MenuModViagens user={user}/>
     <p className="title">Viagens</p>
-    <div className="viagens">
+    <div className="viagensListViagens">
       {loadedViagens}
     </div>
   </div>

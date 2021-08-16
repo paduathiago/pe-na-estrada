@@ -1,6 +1,15 @@
 /* Estou fazendo os estilos inline no ViagemCard.jsx */
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+.botaoViagens{
+    width: '3vw';
+    height: '5vh';
+}
+
 .viagem-card{
     background-color: #f0f7ff;
+    display: flex;
+    justify-content: space-around;
 }
 
 .card{
@@ -11,13 +20,16 @@
     padding-left: 0.6vw;
     padding-right: 0.6vw;
     padding-top: 1vh;
+    font-family: 'Lato', sans-serif;
 }
 
 .inicio{
     background-color: #9393ed;
+    font-family: 'Lato', sans-serif;
 }
 
 .fim{
     background-color: #9393ed;
+    font-family: 'Lato', sans-serif;
 }
 

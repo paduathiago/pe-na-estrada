@@ -1,6 +1,74 @@
+/*.viajantes {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: #f0f7ff;
+}
+
+.title{
+  background-color: #f0f7ff;
+}
+
+.cima{
+  background-color: #f0f7ff;
+}
+*/
+
+.cima{
+  background-color: #f0f7ff;
+}
+
 .viajantes {
   display: flex;
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
+  background-color: #f0f7ff;
 }
+.lista-viajantes{
+  width: 50%;
+  height: 100%;
+}
+.viajantes-card{
+  width: 16vw;
+}
+
+@media(max-device-width: 600px){
+  .viajantes {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    background-color: #f0f7ff;
+  }
+  .lista-viajantes{
+    width: 100%;
+  }
+  .viajantes-card{
+    width: 70%;
+  }
+}
+/*
+@media(max-device-width: 1000px) and (min-device-width:600px){
+  .viajantes {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    background-color: #f0f7ff;
+  }
+  .lista-viajantes{
+    width: 50%;
+  }
+  .viajantes-card{
+    width: 70%;
+    align-items: center;
+
+    margin:auto;
+  }
+}*/
