@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
 import './Form.css';
+import erroPrinter from '../../../erroPrinter';
 
 export default function Form() {
     const history=useHistory();
@@ -26,17 +27,21 @@ export default function Form() {
             viajante.Viagens=viagens
             history.push('/reloadUser/me')
           })
-          .catch( (err) => console.log(err.response) )
+          .catch( erroPrinter )
           
         })
-        .catch((err)=>setMsg(err.response.data))
+        .catch((err)=>err.response?(
+            err.response.data?setMsg(err.response.data)
+            :
+            setMsg(err.response)
+          ):setMsg(err))
     }
 
     return (
       <div className="Form" onSubmit={handleSubmit}>
         <form method="POST">
           <div className="container2">
-            <img src={Logo} 
+            <img className="imagem" src={Logo} 
                 alt="logo"
                 width="240px"
                 height="220px"

@@ -1,1 +1,23 @@
 /* Estou fazendo os estilos inline no ViagemCard.jsx */
+.viagem-card{
+    background-color: blueviolet;
+}
+
+.card{
+    background-color: #9393ed;
+    margin: 0.6vw;
+    margin-top: 0.6vw;
+    margin-bottom: 2vw;
+    padding-left: 0.6vw;
+    padding-right: 0.6vw;
+    padding-top: 1vh;
+}
+
+.inicio{
+    background-color: #9393ed;
+}
+
+.fim{
+    background-color: #9393ed;
+}
+

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import './UCViagens.css'
+import erroPrinter from '../../../erroPrinter';
 
 import DropdownViajantesList from '../../Viajantes/DropdownViajantesList/DropdownViajantesList'
 
@@ -20,7 +21,7 @@ export default function CreateViagem({user}){
   useEffect(() => {
     axios.get('/viajantes/')
     .then( (res) => setViajantesBack(res.data) )
-    .catch( (err) => console.log(err.response) )
+    .catch(erroPrinter)
   }, []);
 
 
@@ -33,7 +34,11 @@ export default function CreateViagem({user}){
       viajantes}).then(()=>{
         history.push(`/reloadUser/viagens`)
     })
-    .catch((err)=>setMsg(err.response.data))
+    .catch((err)=>err.response?(
+      err.response.data?setMsg(err.response.data)
+      :
+      setMsg(err.response)
+    ):setMsg(err))
   } 
   if(!user)
     return <p>Você precisa estar logado para acessar essa página!</p>

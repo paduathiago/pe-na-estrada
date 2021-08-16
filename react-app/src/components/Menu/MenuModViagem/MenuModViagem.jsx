@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom';
 import '../Botao.css'
+import erroPrinter from '../../../erroPrinter';
 
 export default function MenuModViagens({match,user}){
   const history=useHistory();
@@ -19,7 +20,7 @@ export default function MenuModViagens({match,user}){
   }
   function deleteViagem(){
     axios.delete(`/viagens/${match.params.id}`).then(()=>history.push('/viagens'))
-    .catch((err)=>console.log(err.response.data));
+    .catch(erroPrinter);
     
   }
   if(autorizado)

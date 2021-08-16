@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom'
 import './MenuLogado.css'
 import axios from 'axios';
 import { useHistory } from 'react-router';
-//MENU TEMPORARIO! ARRUMAR!!!
+import erroPrinter from '../../../erroPrinter';
+
 export default function Menu(){
   const history = useHistory();
   function logout(){
-    axios.get('/logout').catch((err)=>console.log(err.response.data));
+    axios.get('/logout').catch(erroPrinter);
     const home=encodeURIComponent("")
     history.push(`/reloadUser/${home}`)
   }

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom';
 import '../Botao.css'
+import erroPrinter from '../../../erroPrinter';
 
 export default function MenuModViagem({user}){
   const history=useHistory();
@@ -10,9 +11,9 @@ export default function MenuModViagem({user}){
   axios.delete(`/viajantes/${user.id}`).then(()=>{
     axios.get('/logout').then(()=>{
       history.push('/reloadUser/')
-    }).catch((err)=>console.log(err.response.data));
+    }).catch(erroPrinter);
   })
-  .catch((err)=>console.log(err.response.data));
+  .catch(erroPrinter);
   
   }
   return <div className="MenuUD">
