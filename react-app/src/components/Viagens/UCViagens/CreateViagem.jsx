@@ -80,8 +80,7 @@ export default function CreateViagem({user}){
         </div>
         <div id="viajantes">
           <label htmlFor='viajantes'><p>Lista de viajantes:</p></label>
-          <DropdownViajantesList lista={viajantesBack} setViajantes={setViajantes}
-            viajantes={viajantes}/>
+          <DropdownViajantesList lista={viajantesBack} setViajantes={setViajantes}/>
         </div>
         <button type="submit">Registrar viagem</button>
         <br className="unselectable" />

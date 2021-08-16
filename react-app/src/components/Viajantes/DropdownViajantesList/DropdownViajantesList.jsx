@@ -1,11 +1,15 @@
 import { useState} from 'react';
 
-export default function DropdownViajantesList({lista,setViajantes,viajantes}){
+export default function DropdownViajantesList({lista,setViajantes}){
   const [idsFiltrados,setIdsFiltrados]=useState('')
   const [nomesFiltrados,setNomesFiltrados]=useState([])
+  const [viajantesInput,setViajantesInput]=useState('')
+  const [viajantesFinais,setViajantesFinais]=useState([])
+  const [viajantesFinaisNomes,setViajantesFinaisNomes]=useState('')
   function handleChange(setProp){
     return (event)=>setProp(event.target.value)
   }
+  
   function handleListaViajantes(event){
     let nomesViajantes = lista.map(value => value.nome)
     let idsViajantes = lista.map(value => value.id)
@@ -13,15 +17,61 @@ export default function DropdownViajantesList({lista,setViajantes,viajantes}){
     for (let index = 0; index < nomesViajantes.length; index++) {
       nomesId[nomesViajantes[index]] = idsViajantes[index]
     }
+    
     let nomesFiltrados = nomesViajantes.filter(el => el.toLowerCase().indexOf(event.target.value.toLowerCase()) > -1);
     
     let idsViajantesSelecionados = [];
     for (let index = 0; index < nomesFiltrados.length; index++) {
       idsViajantesSelecionados.push(nomesId[nomesFiltrados[index]])
     }
-    console.log(idsViajantesSelecionados)
-    setNomesFiltrados(nomesFiltrados)
     setIdsFiltrados(idsViajantesSelecionados)
+    
+    setNomesFiltrados(nomesFiltrados)
+
+  }
+
+  function updateViajantes(){
+    let result="[ "
+    let nomesViajantes = lista.map(value => value.nome)
+    let idsViajantes = lista.map(value => value.id)
+    let idNomes = {}
+    for (let index = 0; index < idsViajantes.length; index++) {
+      idNomes[idsViajantes[index]] = nomesViajantes[index]
+    }
+    setViajantesFinaisNomes("")
+    for(let v in viajantesFinais){
+      result+=viajantesFinais[v]+", "
+      setViajantesFinaisNomes(viajantesFinaisNomes+idNomes[viajantesFinais[v]]+", ")
+    }
+    result+=" ]"
+    setViajantes(result)
+    console.log(viajantesFinais)
+    console.log(viajantesFinaisNomes)
+    console.log(result)
+  }
+
+  function handlePlusButton(event){
+    let nomesViajantes = lista.map(value => value.nome)
+    let idsViajantes = lista.map(value => value.id)
+    let nomesId = {}
+    for (let index = 0; index < nomesViajantes.length; index++) {
+      nomesId[nomesViajantes[index]] = idsViajantes[index]
+    }
+    let id=nomesId[event.target.parentNode.firstChild.value]
+    if (!(viajantesFinais.includes(id))) {
+      viajantesFinais.push(id)
+      updateViajantes()
+    }
+  }
+
+  function handleMinusButton(event){
+    if (viajantesFinais.length > 0) {
+      //viajantesFinais.pop();      
+      
+    }
+    else {
+
+    }
   }
 
   let loadedViajantes = [];
@@ -29,15 +79,16 @@ export default function DropdownViajantesList({lista,setViajantes,viajantes}){
   if(nomesFiltrados) loadedViajantes = nomesFiltrados.map(viajantesToOptions)
   return <div>
       <input list='viajantesList' placeholder="Digite a lista de viajantes" name="viajantes" autoComplete="off"
-        required onChange={handleChange(setViajantes)} value={viajantes} 
+        required onChange={handleChange(setViajantesInput)} value={viajantesInput} 
         onInput={handleListaViajantes}
         />
       <datalist id="viajantesList">
         {loadedViajantes}
       </datalist>
       {/* Falta só consneguir renderizar um novo botão com as mesmas propriedades do 1º */}
-      <button /*onClick={handlePlusButton}*/ >+</button> 
-      <button /*onClick={handleMinusButton}*/ >-</button>
+      <button onClick={handlePlusButton} >+</button> 
+      <button onClick={handleMinusButton} >-</button>
+      <p>{viajantesFinaisNomes}</p>
     </div>
 
 }
