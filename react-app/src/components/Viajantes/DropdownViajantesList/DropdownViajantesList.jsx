@@ -103,9 +103,8 @@ export default function DropdownViajantesList({lista,setViajantes}){
       <datalist id="viajantesList">
         {loadedViajantes}
       </datalist>
-      {/* Falta só consneguir renderizar um novo botão com as mesmas propriedades do 1º */}
-      <button onClick={handlePlusButton} >+</button> 
-      <button disabled={viajantesFinais.length>0? false : true} onClick={handleMinusButton} >-</button>
+      <button type="button" onClick={handlePlusButton} >+</button> 
+      <button type="button" disabled={viajantesFinais.length>0? false : true} onClick={handleMinusButton} >-</button>
       <p>{viajantesFinaisNomes}</p>
     </div>
 
