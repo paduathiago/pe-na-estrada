@@ -6,6 +6,7 @@ export default function DropdownViajantesList({lista,setViajantes,viajantes}){
   function handleChange(setProp){
     return (event)=>setProp(event.target.value)
   }
+  
   function handleListaViajantes(event){
     let nomesViajantes = lista.map(value => value.nome)
     let idsViajantes = lista.map(value => value.id)
@@ -13,6 +14,7 @@ export default function DropdownViajantesList({lista,setViajantes,viajantes}){
     for (let index = 0; index < nomesViajantes.length; index++) {
       nomesId[nomesViajantes[index]] = idsViajantes[index]
     }
+    
     let nomesFiltrados = nomesViajantes.filter(el => el.toLowerCase().indexOf(event.target.value.toLowerCase()) > -1);
     
     let idsViajantesSelecionados = [];
@@ -20,8 +22,36 @@ export default function DropdownViajantesList({lista,setViajantes,viajantes}){
       idsViajantesSelecionados.push(nomesId[nomesFiltrados[index]])
     }
     console.log(idsViajantesSelecionados)
-    setNomesFiltrados(nomesFiltrados)
     setIdsFiltrados(idsViajantesSelecionados)
+    
+    setNomesFiltrados(nomesFiltrados)
+
+    console.log()
+  }
+
+  let viajantesFinais=[]
+
+  function updateViajantes(){
+    let result="[ "
+    for(let v in viajantesFinais){
+      result+=viajantesFinais[v]+", "
+    }
+    result+=" ]"
+    console.log(result)
+  }
+
+  function handlePlusButton(event){
+    let nomesViajantes = lista.map(value => value.nome)
+    let idsViajantes = lista.map(value => value.id)
+    let nomesId = {}
+    for (let index = 0; index < nomesViajantes.length; index++) {
+      nomesId[nomesViajantes[index]] = idsViajantes[index]
+    }
+    let id=nomesId[event.target.parentNode.firstChild.value]
+    if (!(viajantesFinais.includes(id))) {
+      viajantesFinais.push(id)
+    }
+    updateViajantes()
   }
 
   let loadedViajantes = [];
@@ -36,8 +66,9 @@ export default function DropdownViajantesList({lista,setViajantes,viajantes}){
         {loadedViajantes}
       </datalist>
       {/* Falta só consneguir renderizar um novo botão com as mesmas propriedades do 1º */}
-      <button /*onClick={handlePlusButton}*/ >+</button> 
+      <button onClick={handlePlusButton} >+</button> 
       <button /*onClick={handleMinusButton}*/ >-</button>
+      <p>{viajantesFinais}</p>
     </div>
 
 }
